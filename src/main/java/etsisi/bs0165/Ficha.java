@@ -3,6 +3,7 @@ package etsisi.bs0165;
 import java.awt.*;
 
 public class Ficha {
+    //ATRIBUTOS
     private char contenido;
     private Color color;
 
@@ -27,7 +28,7 @@ public class Ficha {
 
     //MÉTODOS
     public String mostrar(){
-        return " "+contenido+" ";
+        return ""+contenido+"";
     }
 
 }
