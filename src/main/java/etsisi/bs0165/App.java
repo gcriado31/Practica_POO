@@ -11,6 +11,6 @@ public class App
         System.out.println( "Hello World!" );
         Tablero prueba= new Tablero(4,4);
         prueba.dibujar();
-        System.out.println(prueba.isEmpty(1,3));
+
     }
 }

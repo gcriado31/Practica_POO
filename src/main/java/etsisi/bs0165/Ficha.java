@@ -31,4 +31,7 @@ public class Ficha {
         return ""+contenido+"";
     }
 
+    public boolean equals(Ficha ficha) {
+        return (contenido== ficha.getContenido() && color.equals(ficha.getColor()));
+    }
 }

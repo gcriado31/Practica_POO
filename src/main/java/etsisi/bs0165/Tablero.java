@@ -1,11 +1,10 @@
 package etsisi.bs0165;
 /*
         FALTA:
-            - PEDIRCOLUMNA
-            - PEDIRFILA
-            - HAYGANADOR
-            - TABLERO LLENO
+
 */
+
+import java.util.Scanner;
 
 public class Tablero {
     //ATRIBUTOS
@@ -40,15 +39,33 @@ public class Tablero {
     }
 
     //MÉTODOS
-    public boolean isEmpty (int fila, int columna){
+    private boolean isEmpty (int fila, int columna){
         return casillas[fila][columna].isEmpty();
     }
 
-    public void ponerFicha (int fila, int columna, Ficha ficha){
-        if(isEmpty(fila,columna)){
-            casillas[fila][columna].setFicha(ficha);
-        }else{  //SEGURAMENTE AQUÍ POSTERIORMENTE IRÁ UNA EXCEPCION "CasillaLlenaException"
-            System.out.println("LA CASIILLA ESTÁ LLENA");
+    public boolean tableroLleno(){
+        int contadorCasillasVacias=0;
+        for (int i = 0; i < casillas.length; i++) {
+            for (int j = 0; j < casillas[i].length; j++) {
+                if (isEmpty(i,j)){
+                    contadorCasillasVacias++;
+                }
+            }
+        }
+       return (contadorCasillasVacias==0);
+    }
+
+    public void ponerFicha (Ficha ficha){
+        boolean casillaCorrecta=false;
+        while(casillaCorrecta==false) {
+            int fila = pedirFila();
+            int columna = pedirColumna();
+            if (isEmpty(fila, columna)) {
+                casillas[fila][columna].setFicha(ficha);
+                casillaCorrecta=true;
+            } else {  //SEGURAMENTE AQUÍ POSTERIORMENTE IRÁ UNA EXCEPCION "CasillaLlenaException"
+                System.out.println("LA CASILLA ESTÁ LLENA\nELIJA OTRA");
+            }
         }
     }
 
@@ -63,7 +80,84 @@ public class Tablero {
         System.out.println("-----------------------------");
     }
 
+    private int pedirFila(){
+        Scanner input = new Scanner(System.in);
+        System.out.print("INTRODUZCA UNA FILA: ");
+        int pos=input.nextInt();
+        boolean posCorrecta = pos<=numFilas;
+        while(!posCorrecta){   //SEGURAMENTE AQUÍ POSTERIORMENTE IRÁ UNA EXCEPCION "FilaIncorrectaException"
+            System.out.print("ERROR FILA INCORRECTA\nINTRODUZCA UNA FILA: ");
+            pos=input.nextInt();
+            posCorrecta = pos<=numFilas;
+            System.out.println();
+        }
+        System.out.println();
+        return pos;
+    }
 
+    private int pedirColumna(){
+        Scanner input = new Scanner(System.in);
+        System.out.print("INTRODUZCA UNA COLUMNA: ");
+        int pos=input.nextInt();
+        boolean posCorrecta = pos<=numFilas;
+        while(!posCorrecta){   //SEGURAMENTE AQUÍ POSTERIORMENTE IRÁ UNA EXCEPCION "ColumnaIncorrectaException"
+            System.out.print("ERROR COLUMNA INCORRECTA\nINTRODUZCA UNA COLUMNA: ");
+            pos=input.nextInt();
+            posCorrecta = pos<=numFilas;
+            System.out.println();
+        }
+        System.out.println();
+        return pos;
+    }
 
+    public boolean hayGanador(Ficha ficha){
+        boolean hayGanador=false;
+        if(checkFilas(ficha)||checkColumnas(ficha)){
+            return true;
+        }
+        return hayGanador;
+    }
+
+    private boolean checkFilas (Ficha ficha){
+        int i = 0;
+        boolean hayganador=false;
+        while(i < casillas.length && hayganador==false) {
+            int contadorCasillas=0;
+            for (int j = 0; j < casillas[i].length; j++) {
+                if(!isEmpty(i,j)){
+                    if (casillas[i][j].getFicha().equals(ficha)){
+                        contadorCasillas++;
+                    }
+                }
+            }
+            if(contadorCasillas>=4){
+                hayganador=true;
+            }else {
+                i++;
+            }
+        }
+        return hayganador;
+    }
+
+    private boolean checkColumnas (Ficha ficha){
+        int i = 0;
+        boolean hayganador=false;
+        while(i < casillas.length && hayganador==false) {
+            int contadorCasillas=0;
+            for (int j = 0; j < casillas[i].length; j++) {
+                if(!isEmpty(i,j)){
+                    if (casillas[j][i].getFicha().equals(ficha)){
+                        contadorCasillas++;
+                    }
+                }
+            }
+            if(contadorCasillas>=4){
+                hayganador=true;
+            }else {
+                i++;
+            }
+        }
+        return hayganador;
+    }
 
 }
