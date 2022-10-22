@@ -160,4 +160,14 @@ public class Tablero {
         return hayganador;
     }
 
+    public boolean checkDiagonales(){
+        // FALTA POR HACER
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Tablero t1= new Tablero(6,7);
+        t1.checkDiagonales();
+    }
+
 }
