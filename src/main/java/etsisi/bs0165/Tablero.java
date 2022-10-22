@@ -57,7 +57,7 @@ public class Tablero {
 
     public void ponerFicha (Ficha ficha){
         boolean casillaCorrecta=false;
-        while(casillaCorrecta==false) {
+        while(!casillaCorrecta) {
             int fila = pedirFila();
             int columna = pedirColumna();
             if (isEmpty(fila, columna)) {
@@ -121,7 +121,7 @@ public class Tablero {
     private boolean checkFilas (Ficha ficha){
         int i = 0;
         boolean hayganador=false;
-        while(i < casillas.length && hayganador==false) {
+        while(i < casillas.length && !hayganador) {
             int contadorCasillas=0;
             for (int j = 0; j < casillas[i].length; j++) {
                 if(!isEmpty(i,j)){
@@ -142,7 +142,7 @@ public class Tablero {
     private boolean checkColumnas (Ficha ficha){
         int i = 0;
         boolean hayganador=false;
-        while(i < casillas.length && hayganador==false) {
+        while(i < casillas.length && !hayganador) {
             int contadorCasillas=0;
             for (int j = 0; j < casillas[i].length; j++) {
                 if(!isEmpty(i,j)){

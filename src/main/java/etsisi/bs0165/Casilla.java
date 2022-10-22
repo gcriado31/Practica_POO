@@ -5,7 +5,7 @@ public class Casilla {
     private int fila;
     private int columna;
     private Ficha ficha;
-    private final static String CASILLA_VACIA="\t";
+    private static final String CASILLA_VACIA="\t";
 
     //CONSTRUCTORES
     public Casilla(int fila,int columna){
