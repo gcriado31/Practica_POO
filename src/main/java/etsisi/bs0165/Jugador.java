@@ -1,25 +1,31 @@
 package etsisi.bs0165;
 
-/*
-*  FALTA:
-* */
 
+/**
+ * Esta clase respresenta al jugador, pondrá ficha a través de Tablero y almacena nombre y ficha del jugador.
+ */
 public class Jugador {
     // ATRIBUTOS
     private String nombre;
+    private int fichasRestantes;
     private Ficha ficha;
     private Tablero tablero;
+    private final String ERROR_TABLERO_LLENO="ERROR: TABLERO LLENO";
+    private final int MAX_FICHAS=21;
+
 
     //CONSTRUCTORES
     public Jugador (String nombre, Ficha ficha){
         this.nombre=nombre;
         this.ficha=ficha;
+        this.fichasRestantes=MAX_FICHAS;
     }
 
     public Jugador (String nombre, Ficha ficha, Tablero tablero){
         this.nombre=nombre;
         this.ficha=ficha;
         this.tablero=tablero;
+        this.fichasRestantes=MAX_FICHAS;
     }
 
     //SETTERS Y GETTERS
@@ -35,9 +41,20 @@ public class Jugador {
         return nombre;
     }
 
+    public Ficha getFicha() {
+        return ficha;
+    }
+    public int getFichasRestantes() {
+        return fichasRestantes;
+    }
+
     //MÉTODOS
     public void poner (){
-        tablero.ponerFicha(ficha);
+        if(!tablero.tableroLleno()){
+            tablero.ponerFicha(ficha);
+        }else{  //SEGURAMENTE AQUÍ POSTERIORMENTE IRÁ UNA EXCEPCION "TableroLlenoException"
+            System.out.println(ERROR_TABLERO_LLENO);
+        }
     }
 
 }

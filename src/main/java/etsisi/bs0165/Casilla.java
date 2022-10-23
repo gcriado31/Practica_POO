@@ -1,11 +1,14 @@
 package etsisi.bs0165;
 
+/**
+ * Almacena la ficha y crea la forma de representación de los bordes laterales
+ */
 public class Casilla {
     //ATRIBUTOS
     private int fila;
     private int columna;
     private Ficha ficha;
-    private static final String CASILLA_VACIA="\t";
+    private final String CASILLA_VACIA="  ";
 
     //CONSTRUCTORES
     public Casilla(int fila,int columna){

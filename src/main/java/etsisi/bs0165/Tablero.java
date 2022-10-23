@@ -1,16 +1,19 @@
 package etsisi.bs0165;
-/*
-        FALTA:
-
-*/
-
+import java.awt.*;
 import java.util.Scanner;
 
+/**
+ *  Esta clase representará el tablero, pondrá las fichas, controlará si hay ganador o si se llena.
+ */
 public class Tablero {
+
     //ATRIBUTOS
     private int numColumnas;
     private int numFilas;
     private Casilla [][] casillas;
+    private final String INTRODUCIR_COLUMNA="INTRODUZCA UNA COLUMNA: ";
+    private final String ERROR_COLUMNA_LLENA="LA COLUMNA ESTÁ LLENA\nELIJA OTRA";
+    private final String ERROR_COLUMNA_INCORRECTA="ERROR COLUMNA INCORRECTA\n"+INTRODUCIR_COLUMNA;
 
     //CONSTRUCTOR
     public Tablero(int numFilas,int numColumnas){
@@ -19,12 +22,14 @@ public class Tablero {
         iniciarCasillas();
     }
 
-
-    private void iniciarCasillas(){     // Este método inicia el array de casillas con la ficha en blanco
+    /**
+     * Este método inicia el array de casillas con las casillas en blanco
+     */
+    private void iniciarCasillas(){
         this.casillas = new Casilla[numFilas][numColumnas];
         for (int i = 0; i < numFilas; i++) {
             for (int j = 0; j < numColumnas; j++) {
-             casillas[i][j]=new Casilla(i,j);
+             this.casillas[i][j]=new Casilla(i,j);
             }
         }
     }
@@ -56,52 +61,61 @@ public class Tablero {
     }
 
     public void ponerFicha (Ficha ficha){
-        boolean casillaCorrecta=false;
-        while(!casillaCorrecta) {
-            int fila = pedirFila();
-            int columna = pedirColumna();
-            if (isEmpty(fila, columna)) {
-                casillas[fila][columna].setFicha(ficha);
-                casillaCorrecta=true;
-            } else {  //SEGURAMENTE AQUÍ POSTERIORMENTE IRÁ UNA EXCEPCION "CasillaLlenaException"
-                System.out.println("LA CASILLA ESTÁ LLENA\nELIJA OTRA");
-            }
+        int columna=pedirColumna();
+        int fila=caeFichaFila(columna);
+        while (fila==-1) { // Mientras se seleccione una columna llena se pedirá una nueva y se mostrará un mensaje de error (FUTURA ColumnaLlenaExcepcion)
+            System.out.println(ERROR_COLUMNA_LLENA);
+            columna=pedirColumna();
+            fila=caeFichaFila(columna);
         }
+        casillas[fila][columna].setFicha(ficha);
+    }
+
+    /**
+     * Desliza la ficha por la columna
+     *
+     * @param columna Se introduce la columna para que deslice por ella hasta la posición más baja vacía
+     * @return  Devuelve la posición fila mas baja que está vacía. En caso de que esté llena la columna devolverá -1
+     */
+    private int caeFichaFila(int columna){
+        boolean casillaLlena=false;
+        int indicadorFila=0;
+        do{
+            if(!isEmpty(indicadorFila,columna)){
+                casillaLlena=true;
+                indicadorFila--; //Restamos 1 ya que esa posición está ocupada
+            }else{
+                indicadorFila++;
+            }
+        }while(!casillaLlena && indicadorFila<numFilas);
+        if(indicadorFila==numFilas){ //Esto significa que la columna está vacía y ha llegado hasta el final
+            indicadorFila=numFilas-1;
+        }
+        return indicadorFila;
     }
 
     public void dibujar(){
-        System.out.println("-----------------------------");
+        System.out.println("-----------------------------------------------------");
         for (int i = 0; i < numFilas; i++) {
             for (int j = 0; j < numColumnas; j++) {
-                System.out.print(casillas[i][j].dibujar()+" \t");
+                System.out.print(casillas[i][j].dibujar()+"\t");
             }
             System.out.println();
         }
-        System.out.println("-----------------------------");
+        System.out.println("------------------------------------------------------");
     }
 
-    private int pedirFila(){
-        Scanner input = new Scanner(System.in);
-        System.out.print("INTRODUZCA UNA FILA: ");
-        int pos=input.nextInt();
-        boolean posCorrecta = pos<=numFilas;
-        while(!posCorrecta){   //SEGURAMENTE AQUÍ POSTERIORMENTE IRÁ UNA EXCEPCION "FilaIncorrectaException"
-            System.out.print("ERROR FILA INCORRECTA\nINTRODUZCA UNA FILA: ");
-            pos=input.nextInt();
-            posCorrecta = pos<=numFilas;
-            System.out.println();
-        }
-        System.out.println();
-        return pos;
-    }
-
+    /**
+     * Pide la columna
+     * @return Devuelve el valor de la columna después de asegurase de que existe dicha columna
+     */
     private int pedirColumna(){
         Scanner input = new Scanner(System.in);
-        System.out.print("INTRODUZCA UNA COLUMNA: ");
+        System.out.print(INTRODUCIR_COLUMNA);
         int pos=input.nextInt();
-        boolean posCorrecta = pos<=numFilas;
+        boolean posCorrecta = pos<=numColumnas;
         while(!posCorrecta){   //SEGURAMENTE AQUÍ POSTERIORMENTE IRÁ UNA EXCEPCION "ColumnaIncorrectaException"
-            System.out.print("ERROR COLUMNA INCORRECTA\nINTRODUZCA UNA COLUMNA: ");
+            System.out.print(ERROR_COLUMNA_INCORRECTA);
             pos=input.nextInt();
             posCorrecta = pos<=numFilas;
             System.out.println();
@@ -167,7 +181,9 @@ public class Tablero {
 
     public static void main(String[] args) {
         Tablero t1= new Tablero(6,7);
-        t1.checkDiagonales();
+        t1.dibujar();
+        t1.ponerFicha(new Ficha('P', Color.BLUE));
+        t1.dibujar();
     }
 
 }

@@ -1,7 +1,10 @@
 package etsisi.bs0165;
-
 import java.awt.*;
 
+
+/**
+ * La ficha que representa a cada jugador en el tablero
+ */
 public class Ficha {
     //ATRIBUTOS
     private char contenido;
@@ -12,10 +15,10 @@ public class Ficha {
         this.contenido=contenido;
         this.color=color;
     }
-    public Ficha (){
+    /*public Ficha (){
         this.contenido=' ';
         this.color=Color.BLACK;
-    }
+    }*/
 
     //GETTERS
     public char getContenido() {
@@ -28,9 +31,12 @@ public class Ficha {
 
     //MÉTODOS
     public String mostrar(){
-        return ""+contenido+"";
+        return " "+contenido+" ";
     }
 
+    /**
+     * @return Devuelve true or false dependiendo de si el contenido y el color es el mismo
+     */
     public boolean equals(Ficha ficha) {
         return (contenido== ficha.getContenido() && color.equals(ficha.getColor()));
     }
