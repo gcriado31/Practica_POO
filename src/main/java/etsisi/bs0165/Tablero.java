@@ -13,7 +13,7 @@ public class Tablero {
     private Casilla [][] casillas;
     private final String INTRODUCIR_COLUMNA="INTRODUZCA UNA COLUMNA: ";
     private final String ERROR_COLUMNA_LLENA="LA COLUMNA ESTÁ LLENA\nELIJA OTRA";
-    private final String ERROR_COLUMNA_INCORRECTA="ERROR COLUMNA INCORRECTA\n"+INTRODUCIR_COLUMNA;
+    private final String ERROR_COLUMNA_INCORRECTA="ERROR COLUMNA INCORRECTA\nVALORES VALIDOS [0-6]\n"+INTRODUCIR_COLUMNA;
     private final int INICIO_BUCLE=0;
     /**
      * Esta constante es el número de fichas que hay que tener en horizontal, vertical o diagonal para ganar
