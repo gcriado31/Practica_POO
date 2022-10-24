@@ -14,7 +14,7 @@ public class Casilla {
     public Casilla(int fila,int columna){
         this.fila=fila;
         this.columna=columna;
-        this.ficha=null;
+        this.ficha=new Ficha();
     }
     public Casilla (int fila, int columna, Ficha ficha){
         this.fila=fila;
@@ -46,7 +46,7 @@ public class Casilla {
         }
     }
     public boolean isEmpty(){
-        return this.ficha==null;
+        return this.ficha.getContenido()==' ';
     }
 
 }

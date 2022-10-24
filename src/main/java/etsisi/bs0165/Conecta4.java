@@ -4,9 +4,11 @@ package etsisi.bs0165;
 *   Falta:
 *      - CREAR UN ACTUALIZA TABLERO EN CALSE TURNO
 *      - ELIMINA ARRAY JUGADORES PARA JUGAR CON TURNO
-*      - CREAR CONSTANTE INICIO BUCLES TODAS LAS CLASES
 *
 */
+
+import java.awt.*;
+import java.util.Scanner;
 
 public class Conecta4 {
     // ATRIBUTOS
@@ -20,13 +22,16 @@ public class Conecta4 {
     private final int NUM_COLUMNAS=7;
     private final String BIENVENIDA="Bienvenido a Conecta 4\nConsigue conectar 4 fichas en linea o en diagonal para ganar";
     private final String EMPATE="¡¡¡EMPATE!!!";
-    private final String GANADOR="EL GANADOR ES "+ganador.getNombre()+" ¡ENHORABUENA!";
+    private final String GANADOR="EL GANADOR ES ";
+    private final Ficha fichaAzul=new Ficha('A',Color.BLUE);
+    private final Ficha fichaRoja= new Ficha('R',Color.BLUE);
 
     // CONSTRUCTOR
-    public Conecta4 (Jugador[] jugadores){
-        this.jugadores=jugadores;
+    public Conecta4 (){
+        this.jugadores=menuJugadores();
         this.turno=new Turno(jugadores);
         this.tablero=new Tablero(NUM_FILAS,NUM_COLUMNAS);
+        actualizaTableroEnJugadores(this.tablero);
     }
 
     // MÉTODOS
@@ -35,7 +40,50 @@ public class Conecta4 {
     }
 
     public void jugar(){
+        boolean fin=false;
+        while(!fin){
+            dibujar();
+            System.out.println("Turno de: "+turno.nombreJugadorConTurno());
+            turno.tieneTurno().poner();
+            if (hayGanador()){
+                fin=true;
+                this.ganador=turno.tieneTurno();
+                resultados();
+            }else if(tablero.tableroLleno()){
+                fin=true;
+                this.ganador=null;
+                resultados();
+            }else{
+                actualizaTableroEnJugadores(turno.tieneTurno().getTablero());
+                turno.cambiaTurno();
+            }
+        }
 
+    }
+
+    private Jugador[] menuJugadores(){
+        Jugador[] jugadors = new Jugador[NUMERO_JUGADORES];
+        System.out.println(BIENVENIDA);
+        for (int i = INICIO_BUCLE; i <NUMERO_JUGADORES; i++) {
+            int pos=i+1;
+            System.out.println("---JUGADOR "+pos+"---");
+            if(i==0){
+                jugadors[i]=new Jugador(infoJugador(),fichaAzul);
+                System.out.println("Se le ha asignado la ficha azul");
+            }else{
+                jugadors[i]=new Jugador(infoJugador(), fichaRoja);
+                System.out.println("Se le ha asignado la ficha azul");
+            }
+        }
+        return jugadors;
+    }
+
+    private String infoJugador(){
+        Scanner input= new Scanner(System.in);
+        System.out.print("Introduzca su nombre: ");
+        String nombre= input.nextLine();
+        System.out.println();
+        return nombre;
     }
 
     public void actualizaTableroEnJugadores(Tablero tablero){
@@ -54,9 +102,21 @@ public class Conecta4 {
     }
 
     public void resultados(){
-        if(hayGanador()){
-
+        if(ganador!=null){
+            System.out.println(GANADOR+ganador.getNombre()+" ¡ENHORABUENA!");
+        }else{
+            System.out.println(EMPATE);
         }
+        System.out.println("Tablero resultante ");
+        dibujar();
+    }
+
+    public static void main(String[] args) {
+        Jugador[] jugadores = new Jugador[2];
+        jugadores[0]=new Jugador("Guillermo",new Ficha('G', Color.BLUE));
+        jugadores[1]= new Jugador ("Alex", new Ficha('A', Color.RED));
+        Conecta4 prueba=new Conecta4();
+        prueba.jugar();
     }
 
 }

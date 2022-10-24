@@ -15,10 +15,10 @@ public class Ficha {
         this.contenido=contenido;
         this.color=color;
     }
-    /*public Ficha (){
+   public Ficha (){
         this.contenido=' ';
         this.color=Color.BLACK;
-    }*/
+    }
 
     //GETTERS
     public char getContenido() {
