@@ -40,25 +40,45 @@ public class Conecta4 {
     }
 
     public void jugar(){
-        boolean fin=false;
-        while(!fin){
-            dibujar();
-            System.out.println("Turno de: "+turno.nombreJugadorConTurno());
-            turno.tieneTurno().poner();
-            if (hayGanador()){
-                fin=true;
-                this.ganador=turno.tieneTurno();
-                resultados();
-            }else if(tablero.tableroLleno()){
-                fin=true;
-                this.ganador=null;
-                resultados();
-            }else{
-                actualizaTableroEnJugadores(turno.tieneTurno().getTablero());
-                turno.cambiaTurno();
+        boolean finJuego=false;
+        boolean finAplicacion=false;
+        do {
+            while (!finJuego) {
+                dibujar();
+                System.out.println("Turno de: " + turno.nombreJugadorConTurno());
+                turno.tieneTurno().poner();
+                if (hayGanador()) {
+                    finJuego = true;
+                    this.ganador = turno.tieneTurno();
+                    resultados();
+                } else if (tablero.tableroLleno()) {
+                    finJuego = true;
+                    this.ganador = null;
+                    resultados();
+                } else {
+                    actualizaTableroEnJugadores(turno.tieneTurno().getTablero());
+                    turno.cambiaTurno();
+                }
             }
-        }
+            finAplicacion=fin();
+            if(finAplicacion){
+                this.tablero=new Tablero(NUM_FILAS,NUM_COLUMNAS);
+                actualizaTableroEnJugadores(tablero);
+                finJuego=false;
+                System.out.println("\n----- NUEVA PARTIDA ------\n");
+            }
+        }while (finAplicacion);
+    }
 
+    /**
+     * Este método será el fin del juego y dará la opcion de volver a jugar otra partida
+     * @return Si el jugador(es) quiere volver a jugar "true" si no "false"
+     */
+    private boolean fin(){
+        Scanner input= new Scanner(System.in);
+        System.out.println("¿DESEA VOLVER A JUGAR?(S/N)");
+        char respuesta= input.nextLine().toUpperCase().charAt(0);
+        return respuesta=='S';
     }
 
     private Jugador[] menuJugadores(){
@@ -112,9 +132,6 @@ public class Conecta4 {
     }
 
     public static void main(String[] args) {
-        Jugador[] jugadores = new Jugador[2];
-        jugadores[0]=new Jugador("Guillermo",new Ficha('G', Color.BLUE));
-        jugadores[1]= new Jugador ("Alex", new Ficha('A', Color.RED));
         Conecta4 prueba=new Conecta4();
         prueba.jugar();
     }
