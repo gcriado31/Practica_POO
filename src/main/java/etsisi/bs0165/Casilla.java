@@ -38,6 +38,11 @@ public class Casilla {
     }
 
     //MÉTODOS
+
+    /**
+     * Este método dibuja la ficha o espacio en blaco en caso de que no haya ficha con los bordes.
+     * @return String con la repsentación de la casilla
+     */
     public String dibujar(){
         if (isEmpty()){
             return "|"+CASILLA_VACIA+"|";
@@ -45,6 +50,11 @@ public class Casilla {
             return "|"+ficha.mostrar()+"|";
         }
     }
+
+    /**
+     * Comprueba si la ficha está vacia.
+     * @return En caso de que esté vacía devuleve "true".
+     */
     public boolean isEmpty(){
         return this.ficha.getContenido()==' ';
     }

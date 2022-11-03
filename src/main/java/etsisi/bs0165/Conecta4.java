@@ -1,15 +1,10 @@
 package etsisi.bs0165;
-
-/*
-*   Falta:
-*      - CREAR UN ACTUALIZA TABLERO EN CALSE TURNO
-*      - ELIMINA ARRAY JUGADORES PARA JUGAR CON TURNO
-*
-*/
-
 import java.awt.*;
 import java.util.Scanner;
 
+/**
+ * Esta clase se encarga del juego
+ */
 public class Conecta4 {
     // ATRIBUTOS
     private Turno turno;
@@ -35,10 +30,17 @@ public class Conecta4 {
     }
 
     // MÉTODOS
+
+    /**
+     * Dibuja el tablero.
+     */
     public void dibujar(){
         tablero.dibujar();
     }
 
+    /**
+     * Ejecuta el juego y mientras el jugador(es) quiera(n) se ejecutará una nueva partida.
+     */
     public void jugar(){
         boolean finJuego=false;
         boolean finAplicacion=false;
@@ -62,17 +64,24 @@ public class Conecta4 {
             }
             finAplicacion=fin();
             if(finAplicacion){
-                this.tablero=new Tablero(NUM_FILAS,NUM_COLUMNAS);
-                actualizaTableroEnJugadores(tablero);
+                nuevaPartida();
                 finJuego=false;
-                System.out.println("\n----- NUEVA PARTIDA ------\n");
             }
         }while (finAplicacion);
     }
 
     /**
-     * Este método será el fin del juego y dará la opcion de volver a jugar otra partida
-     * @return Si el jugador(es) quiere volver a jugar "true" si no "false"
+     * Carga una nueva partida.
+     */
+    private void nuevaPartida(){
+        this.tablero=new Tablero(NUM_FILAS,NUM_COLUMNAS);
+        actualizaTableroEnJugadores(tablero);
+        System.out.println("\n----- NUEVA PARTIDA ------\n");
+    }
+
+    /**
+     * Este método será el fin del juego y dará la opcion de volver a jugar otra partida.
+     * @return Si el jugador(es) quiere volver a jugar "true" si no "false".
      */
     private boolean fin(){
         Scanner input= new Scanner(System.in);
@@ -81,6 +90,10 @@ public class Conecta4 {
         return respuesta=='S';
     }
 
+    /**
+     * Da la bienvenida a los jugadores y almacena los jugadores.
+     * @return Se devuelve el array de jugadores con toda la información.
+     */
     private Jugador[] menuJugadores(){
         Jugador[] jugadors = new Jugador[NUMERO_JUGADORES];
         System.out.println(BIENVENIDA);
@@ -98,6 +111,10 @@ public class Conecta4 {
         return jugadors;
     }
 
+    /**
+     * Pregunta la información al jugador.
+     * @return Se devuelve un String con la información del juegador.
+     */
     private String infoJugador(){
         Scanner input= new Scanner(System.in);
         System.out.print("Introduzca su nombre: ");
@@ -106,12 +123,20 @@ public class Conecta4 {
         return nombre;
     }
 
+    /**
+     * Se recorre el array de jugadores actualizando el tablero.
+     * @param tablero Se pasa el tablero que se quiere actualizar.
+     */
     public void actualizaTableroEnJugadores(Tablero tablero){
         for(int i=INICIO_BUCLE;i<NUMERO_JUGADORES;i++){
             jugadores[i].setTablero(tablero);
         }
     }
 
+    /**
+     * Llama al método hayGanador de tablero para saber si hay ganador.
+     * @return Devolverá "true" si hay ganador, si no "false".
+     */
     public boolean hayGanador(){
         return tablero.hayGanador(turno.tieneTurno().getFicha());
     }
@@ -121,6 +146,9 @@ public class Conecta4 {
         return turno.tieneTurno();
     }
 
+    /**
+     * Presenta los resultados
+     */
     public void resultados(){
         if(ganador!=null){
             System.out.println(GANADOR+ganador.getNombre()+" ¡ENHORABUENA!");

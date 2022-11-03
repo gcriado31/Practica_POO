@@ -49,6 +49,10 @@ public class Jugador {
     }
 
     //MÉTODOS
+
+    /**
+     * Método del jugador para poner su ficha.
+     */
     public void poner (){
         if(!tablero.tableroLleno()){
             tablero.ponerFicha(ficha);

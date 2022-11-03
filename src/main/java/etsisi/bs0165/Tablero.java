@@ -28,7 +28,7 @@ public class Tablero {
     }
 
     /**
-     * Este método inicia el array de casillas con las casillas en blanco
+     * Este método inicia el array de casillas con las casillas en blanco.
      */
     private void iniciarCasillas(){
         this.casillas = new Casilla[numFilas][numColumnas];
@@ -53,6 +53,10 @@ public class Tablero {
         return casillas[fila][columna].isEmpty();
     }
 
+    /**
+     * Comprueba si el tablero está lleno.
+     * @return Devolverá "true" si está lleno.
+     */
     public boolean tableroLleno(){
         int contadorCasillasVacias=0;
         for (int i = INICIO_BUCLE; i < casillas.length; i++) {
@@ -65,6 +69,10 @@ public class Tablero {
        return (contadorCasillasVacias==0);
     }
 
+    /**
+     * Este método se encarga de poner la ficha en el tablero.
+     * @param ficha Se pasa una Ficha para saber qué ficha se ha de poner.
+     */
     public void ponerFicha (Ficha ficha){
         int columna=pedirColumna();
         int fila=caeFichaFila(columna);
@@ -77,10 +85,10 @@ public class Tablero {
     }
 
     /**
-     * Desliza la ficha por la columna
+     * Desliza la ficha por la columna.
      *
-     * @param columna Se introduce la columna para que deslice por ella hasta la posición más baja vacía
-     * @return  Devuelve la posición fila mas baja que está vacía. En caso de que esté llena la columna devolverá -1
+     * @param columna Se introduce la columna para que deslice por ella hasta la posición más baja vacía.
+     * @return  Devuelve la posición fila mas baja que está vacía. En caso de que esté llena la columna devolverá -1.
      */
     private int caeFichaFila(int columna){
         boolean casillaLlena=false;
@@ -111,8 +119,8 @@ public class Tablero {
     }
 
     /**
-     * Pide la columna
-     * @return Devuelve el valor de la columna después de asegurase de que existe dicha columna
+     * Pide la columna.
+     * @return Devuelve el valor de la columna después de asegurase de que existe dicha columna.
      */
     private int pedirColumna(){
         Scanner input = new Scanner(System.in);
@@ -129,6 +137,11 @@ public class Tablero {
         return pos;
     }
 
+    /**
+     * Este método se encarga de encontrar (si hay) ganador.
+     * @param ficha Se pasa una Ficha para buscar si esa ficha es ganadora.
+     * @return Devuelve "true" si hay ganador.
+     */
     public boolean hayGanador(Ficha ficha){
         boolean hayGanador=false;
         if(checkFilas(ficha)){
@@ -139,6 +152,11 @@ public class Tablero {
         return hayGanador;
     }
 
+    /**
+     * Busca por filas si hay 4 fichas en horizontal.
+     * @param ficha Se pasa una Ficha para buscar si esa ficha es ganadora.
+     * @return Devuelve "true" si hay ganador.
+     */
     private boolean checkFilas (Ficha ficha){
         int i = INICIO_BUCLE;
         boolean hayganador=false;
@@ -160,6 +178,11 @@ public class Tablero {
         return hayganador;
     }
 
+    /**
+     * Busca por filas si hay 4 fichas en vertical.
+     * @param ficha Se pasa una Ficha para buscar si esa ficha es ganadora.
+     * @return Devuelve "true" si hay ganador.
+     */
     private boolean checkColumnas (Ficha ficha){
         int i = 0;
         boolean hayganador=false;
@@ -181,7 +204,12 @@ public class Tablero {
         return hayganador;
     }
 
-    public boolean checkDiagonales(){
+    /**
+     * Busca por filas si hay 4 fichas en diagonal.
+     * @param ficha Se pasa una Ficha para buscar si esa ficha es ganadora.
+     * @return Devuelve "true" si hay ganador.
+     */
+    public boolean checkDiagonales(Ficha ficha){
         // FALTA POR HACER
         return false;
     }

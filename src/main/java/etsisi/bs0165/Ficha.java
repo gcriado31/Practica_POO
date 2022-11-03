@@ -29,12 +29,12 @@ public class Ficha {
         return color;
     }
 
-    //MÉTODOS
+    //MÉTODO
     public String mostrar(){
         return " "+contenido+" ";
     }
 
-    /**
+    /** Este método comprueba si la ficha es igual a otra.
      * @return Devuelve true or false dependiendo de si el contenido y el color es el mismo
      */
     public boolean equals(Ficha ficha) {

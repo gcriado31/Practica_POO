@@ -17,6 +17,11 @@ public class Turno {
     }
 
     // MÉTODOS
+
+    /**
+     * Calcula el jugador siguiente.
+     * @return Devolverá el valor del jugador siguiente en caso de que se haya llegado al final se devuleve 0 (vuelve al principio).
+     */
     private int calculaSiguienteJugador(){
         jugadorEnCurso++;
         if(jugadorEnCurso>=jugadores.length){   // COMPROBAMOS QUE jugadorEnCurso LLEGA AL FINAL PARA VOLVER AL JUGADOR INICIAL Y ESTABLECER UNA NUEVA RONDA
@@ -26,6 +31,9 @@ public class Turno {
         }
     }
 
+    /**
+     * Cambia el turno de los jugadores.
+     */
     public void cambiaTurno(){
         jugadorEnCurso=calculaSiguienteJugador();
     }
