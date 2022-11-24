@@ -72,8 +72,9 @@ public class Tablero {
     /**
      * Este método se encarga de poner la ficha en el tablero.
      * @param ficha Se pasa una Ficha para saber qué ficha se ha de poner.
+     * @return Devuelve las coordenadas de dónde se ha puesto la ficha.
      */
-    public void ponerFicha (Ficha ficha){
+    public Coodenadas ponerFicha (Ficha ficha){
         int columna=pedirColumna();
         int fila=caeFichaFila(columna);
         while (fila==-1) { // Mientras se seleccione una columna llena se pedirá una nueva y se mostrará un mensaje de error (FUTURA ColumnaLlenaExcepcion)
@@ -82,6 +83,7 @@ public class Tablero {
             fila=caeFichaFila(columna);
         }
         casillas[fila][columna].setFicha(ficha);
+        return new Coodenadas(fila,columna);
     }
 
     /**
@@ -140,14 +142,17 @@ public class Tablero {
     /**
      * Este método se encarga de encontrar (si hay) ganador.
      * @param ficha Se pasa una Ficha para buscar si esa ficha es ganadora.
+     * @param posicion Se pasa la posición de la ficha puesta para partir de dicha posición al tirar diagonales.
      * @return Devuelve "true" si hay ganador.
      */
-    public boolean hayGanador(Ficha ficha){
+    public boolean hayGanador(Ficha ficha,Coodenadas posicion){
         boolean hayGanador=false;
         if(checkFilas(ficha)){
-            return true;
+            hayGanador= true;
         } else if (checkColumnas(ficha)) {
-            return true;
+            hayGanador= true;
+        } else if (checkDiagonales(ficha,posicion)) {
+            hayGanador= true;
         }
         return hayGanador;
     }
@@ -207,18 +212,117 @@ public class Tablero {
     /**
      * Busca por filas si hay 4 fichas en diagonal.
      * @param ficha Se pasa una Ficha para buscar si esa ficha es ganadora.
+     * @param posicion Se pasa la posición de la ficha puesta para partir de dicha posición al tirar diagonales.
      * @return Devuelve "true" si hay ganador.
      */
-    public boolean checkDiagonales(Ficha ficha){
-        // FALTA POR HACER
-        return false;
+    private boolean checkDiagonales(Ficha ficha,Coodenadas posicion){
+        boolean hayGanador=false;
+        int diagonalIzquierdaArriba=diagonalIzquierdaArriba(ficha,posicion);
+        int diagonalIzquierdaAbajo=diagonalIzquierdaAbajo(ficha,posicion);
+        int diagonalDerechaArriba=diagonalDerechaArriba(ficha,posicion);
+        int diagonalDerechaAbajo=diagonalDerechaAbajo(ficha,posicion);
+        // Sumamos las dos grandes diagonales por si sumadas dan 4. Se le resta 1 porque la ficha se cuenta dos veces
+        int diagonalGrande1=(diagonalIzquierdaArriba+diagonalDerechaAbajo)-1;
+        int diagonalGrande2=(diagonalDerechaArriba+diagonalIzquierdaAbajo)-1;
+
+        if((diagonalIzquierdaArriba==4) || (diagonalDerechaArriba==4) || (diagonalDerechaAbajo==4) || (diagonalIzquierdaAbajo==4) || (diagonalGrande1==4) || (diagonalGrande2==4)){
+            hayGanador=true;
+        }
+        return hayGanador;
     }
+
+    private int diagonalIzquierdaArriba(Ficha ficha,Coodenadas posicion){
+        int fila= posicion.getFila();
+        int columna= posicion.getColumna();
+        boolean hayGanador= false;
+
+        int contadorFichas=0;
+        while(isInArray(fila,columna) && !hayGanador){
+            if(casillas[fila][columna].getFicha().equals(ficha)){
+                contadorFichas++;
+            }
+            if(contadorFichas==4){
+                hayGanador=true;
+            }else{
+                fila--;
+                columna--;
+            }
+        }
+        return contadorFichas;
+    }
+
+    private int diagonalIzquierdaAbajo(Ficha ficha,Coodenadas posicion){
+        int fila= posicion.getFila();
+        int columna= posicion.getColumna();
+        boolean hayGanador= false;
+
+        int contadorFichas=0;
+        while(isInArray(fila,columna) && !hayGanador){
+            if(casillas[fila][columna].getFicha().equals(ficha)){
+                contadorFichas++;
+            }
+            if(contadorFichas==4){
+                hayGanador=true;
+            }else{
+                fila++;
+                columna--;
+            }
+        }
+        return contadorFichas;
+    }
+
+    private int diagonalDerechaAbajo(Ficha ficha,Coodenadas posicion){
+        int fila= posicion.getFila();
+        int columna= posicion.getColumna();
+        boolean hayGanador= false;
+
+        int contadorFichas=0;
+        while(isInArray(fila,columna) && !hayGanador){
+            if(casillas[fila][columna].getFicha().equals(ficha)){
+                contadorFichas++;
+            }
+            if(contadorFichas==4){
+                hayGanador=true;
+            }else{
+                fila++;
+                columna++;
+            }
+        }
+        return contadorFichas;
+    }
+
+    private int diagonalDerechaArriba(Ficha ficha,Coodenadas posicion){
+        int fila= posicion.getFila();
+        int columna= posicion.getColumna();
+        boolean hayGanador= false;
+
+        int contadorFichas=0;
+        while(isInArray(fila,columna) && !hayGanador){
+            if(casillas[fila][columna].getFicha().equals(ficha)){
+                contadorFichas++;
+            }
+            if(contadorFichas==4){
+                hayGanador=true;
+            }else{
+                fila--;
+                columna++;
+            }
+        }
+        return contadorFichas;
+    }
+
+    private boolean isInArray(int fila, int columna){
+        return (fila<numFilas && columna<numColumnas && fila>=0 && columna>=0);
+    }
+
+
 
     public static void main(String[] args) {
         Tablero t1= new Tablero(6,7);
         t1.dibujar();
         t1.ponerFicha(new Ficha('P', Color.BLUE));
         t1.dibujar();
+        System.out.println(t1.isInArray(1,-1));
     }
 
 }

@@ -48,8 +48,8 @@ public class Conecta4 {
             while (!finJuego) {
                 dibujar();
                 System.out.println("Turno de: " + turno.nombreJugadorConTurno());
-                turno.tieneTurno().poner();
-                if (hayGanador()) {
+                Coodenadas ficha=turno.tieneTurno().poner();
+                if (hayGanador(ficha)) {
                     finJuego = true;
                     this.ganador = turno.tieneTurno();
                     resultados();
@@ -137,8 +137,8 @@ public class Conecta4 {
      * Llama al método hayGanador de tablero para saber si hay ganador.
      * @return Devolverá "true" si hay ganador, si no "false".
      */
-    public boolean hayGanador(){
-        return tablero.hayGanador(turno.tieneTurno().getFicha());
+    public boolean hayGanador(Coodenadas posicion){
+        return tablero.hayGanador(turno.tieneTurno().getFicha(), posicion);
     }
 
     public Jugador cambiarTurno(){
