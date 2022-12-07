@@ -24,7 +24,7 @@ public class Tablero {
     public Tablero(int numFilas,int numColumnas){
         this.numFilas=numFilas;
         this.numColumnas=numColumnas;
-        iniciarCasillas();
+        this.iniciarCasillas();
     }
 
     /**
@@ -128,7 +128,7 @@ public class Tablero {
         Scanner input = new Scanner(System.in);
         System.out.print(INTRODUCIR_COLUMNA);
         int pos=input.nextInt();
-        boolean posCorrecta = pos<=numColumnas;
+        boolean posCorrecta = (pos<=numColumnas);
         while(!posCorrecta){   //SEGURAMENTE AQUÍ POSTERIORMENTE IRÁ UNA EXCEPCION "ColumnaIncorrectaException"
             System.out.print(ERROR_COLUMNA_INCORRECTA);
             pos=input.nextInt();

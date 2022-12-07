@@ -53,10 +53,13 @@ public class Jugador {
     /**
      * Método del jugador para poner su ficha.
      */
-    public Coodenadas poner (){
-        if(!tablero.tableroLleno()){
+    public Coodenadas poner () throws SinFichasException {
+        if(!tablero.tableroLleno() && this.fichasRestantes>0){
+            this.fichasRestantes--;
             return tablero.ponerFicha(ficha);
-        }else{  //SEGURAMENTE AQUÍ POSTERIORMENTE IRÁ UNA EXCEPCION "TableroLlenoException"
+        } else if (this.fichasRestantes==0) {
+            throw new SinFichasException();
+        } else{  //SEGURAMENTE AQUÍ POSTERIORMENTE IRÁ UNA EXCEPCION "TableroLlenoException"
             System.out.println(ERROR_TABLERO_LLENO);
             return null;
         }

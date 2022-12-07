@@ -2,6 +2,18 @@ package etsisi.bs0165;
 import java.awt.*;
 import java.util.Scanner;
 
+/*
+    TODO:
+        SOLUCIONAR SinFichasException
+        HACER MAS EXCEPCIONES
+        IMPLENTAR INTERFAZ/SUPERCLASE JUGADOR PARA JUGADORIA (TIENE QUE IMPLEMENTAR METODO ELEGIRMEJOR COLUMNA
+        MIRAR TABLERO SI TIENE POSIBLE HERENCIA
+        MODOS DE JUEGO ENTRENAMIENTO Y DEMO
+        MODIFICAR METODO JUEGO PARA LOS MODOS
+        CLASE VALIDACIONES
+        INTENTAR CLASE MENÚS
+ */
+
 /**
  * Esta clase se encarga del juego
  */
@@ -48,7 +60,7 @@ public class Conecta4 {
             while (!finJuego) {
                 dibujar();
                 System.out.println("Turno de: " + turno.nombreJugadorConTurno());
-                Coodenadas ficha=turno.tieneTurno().poner();
+                Coodenadas ficha=null;//turno.tieneTurno().poner();
                 if (hayGanador(ficha)) {
                     finJuego = true;
                     this.ganador = turno.tieneTurno();
