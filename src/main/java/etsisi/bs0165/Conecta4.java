@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 /*
     TODO
-        SOLUCIONAR SinFichasException
         HACER MAS EXCEPCIONES
         IMPLEMENTAR INTERFAZ/SUPERCLASE JUGADOR PARA JUGADORIA (TIENE QUE IMPLEMENTAR MÉTODO ELEGIR MEJOR COLUMNA)
         MIRAR TABLERO SI TIENE POSIBLE HERENCIA
@@ -57,10 +56,10 @@ public class Conecta4 {
      */
     public void jugar(){
         boolean finJuego=false;
-        boolean finAplicacion=false;
+        boolean finAplicacion;
         do {
             while (!finJuego) {
-                dibujar();
+                this.dibujar();
                 System.out.println("Turno de: " + turno.nombreJugadorConTurno());
                 Coordenadas ficha = null ;
                 try {
@@ -70,23 +69,23 @@ public class Conecta4 {
                     finJuego=true;
                 }finally {
                     if (ficha!=null) {
-                        if (hayGanador(ficha)) {
+                        if (this.hayGanador(ficha)) {
                             finJuego = true;
                             this.ganador = turno.tieneTurno();
-                            resultados();
+                            this.resultados();
                         } else if (tablero.tableroLleno()) {
                             finJuego = true;
                             this.ganador = null;
                             resultados();
                         } else {
                             actualizaTableroEnJugadores(turno.tieneTurno().getTablero());
-                            turno.cambiaTurno();
+                            this.cambiarTurno();
                         }
                     }
                 }
 
             }
-            finAplicacion=fin();
+            finAplicacion=this.fin();
             if(finAplicacion){
                 nuevaPartida();
                 finJuego=false;
@@ -165,9 +164,11 @@ public class Conecta4 {
         return tablero.hayGanador(turno.tieneTurno().getFicha(), posicion);
     }
 
-    public Jugador cambiarTurno(){
+    /**
+     * Cambia el turno.
+     */
+    public void cambiarTurno(){
         turno.cambiaTurno();
-        return turno.tieneTurno();
     }
 
     /**
