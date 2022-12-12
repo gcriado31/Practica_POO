@@ -1,7 +1,7 @@
 package etsisi.bs0165;
 
 /**
- * Excepcion que saltará en caso de que los jugadores se queden sin fichas
+ * Excepcion que saltará en caso de que los jugadores se queden sin fichas.
  */
 public class SinFichasException extends Exception{
     //ATRIBUTOS

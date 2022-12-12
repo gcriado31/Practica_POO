@@ -88,7 +88,7 @@ public class Tablero {
                 fila=this.caeFichaFila(columna);
                 casillas[fila][columna].setFicha(ficha);
                 repetir=true;
-            }catch (ColumnaLlenaException ex){
+            }catch (ColumnaLlenaException | ColumnaIncorrectaException ex){
                 System.out.println(ex.getMessage());
             }
         }
@@ -107,6 +107,7 @@ public class Tablero {
      *
      * @param columna Se introduce la columna para que deslice por ella hasta la posición más baja vacía.
      * @return  Devuelve la posición fila mas baja que está vacía. En caso de que esté llena la columna devolverá -1.
+     * @throws ColumnaLlenaException Si la columna seleccionada por el ususario está llena
      */
     private int caeFichaFila(int columna) throws ColumnaLlenaException {
         boolean casillaLlena=false;
@@ -142,19 +143,23 @@ public class Tablero {
     /**
      * Pide la columna.
      * @return Devuelve el valor de la columna después de asegurase de que existe dicha columna.
+     * @throws ColumnaIncorrectaException Si el usuario intenta seleccionar una columna que no está entre el mínimo y el máximo
      */
-    private int pedirColumna(){
+    private int pedirColumna() throws ColumnaIncorrectaException {
         Scanner input = new Scanner(System.in);
         System.out.print(INTRODUCIR_COLUMNA);
         int pos=input.nextInt();
-        boolean posCorrecta = (pos<=numColumnas);
+        if (!((pos<=numColumnas)&&(pos>=0))){
+            throw new ColumnaIncorrectaException(0,(numColumnas-1));
+        }
+        /*boolean posCorrecta = ((pos<=numColumnas)&&(pos>=0));
         while(!posCorrecta){   //SEGURAMENTE AQUÍ POSTERIORMENTE IRÁ UNA EXCEPCION "ColumnaIncorrectaException"
             System.out.print(ERROR_COLUMNA_INCORRECTA);
             pos=input.nextInt();
-            posCorrecta = pos<=numFilas;
+            posCorrecta =((pos<=numColumnas)&&(pos>=0));
             System.out.println();
         }
-        System.out.println();
+        System.out.println();*/
         return pos;
     }
 
