@@ -5,20 +5,17 @@ package etsisi.bs0165;
  */
 public class Casilla {
     //ATRIBUTOS
-    private int fila;
-    private int columna;
+    private Coordenadas coordenadas;
     private Ficha ficha;
     private final String CASILLA_VACIA="  ";
 
     //CONSTRUCTORES
     public Casilla(int fila,int columna){
-        this.fila=fila;
-        this.columna=columna;
+        this.coordenadas=new Coordenadas(fila,columna);
         this.ficha=new Ficha();
     }
     public Casilla (int fila, int columna, Ficha ficha){
-        this.fila=fila;
-        this.columna=columna;
+        this.coordenadas=new Coordenadas(fila,columna);
         this.ficha=ficha;
     }
 
@@ -29,14 +26,14 @@ public class Casilla {
     public void setFicha(Ficha ficha) {
         this.ficha = ficha;
     }
-    public int getFila() {
-        return fila;
+
+    public Coordenadas getCoordenadas() {
+        return coordenadas;
     }
 
-    public int getColumna() {
-        return columna;
+    public void setCoordenadas(Coordenadas coordenadas) {
+        this.coordenadas = coordenadas;
     }
-
     //MÉTODOS
 
     /**

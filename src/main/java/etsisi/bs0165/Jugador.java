@@ -1,6 +1,7 @@
 package etsisi.bs0165;
 
 
+
 /**
  * Esta clase respresenta al jugador, pondrá ficha a través de Tablero y almacena nombre y ficha del jugador.
  */
@@ -53,13 +54,13 @@ public class Jugador {
     /**
      * Método del jugador para poner su ficha.
      */
-    public Coodenadas poner () throws SinFichasException {
-        if(!tablero.tableroLleno() && this.fichasRestantes>0){
+    public Coordenadas poner ()throws SinFichasException {
+        if(!tablero.tableroLleno()){
             this.fichasRestantes--;
             return tablero.ponerFicha(ficha);
-        } else if (this.fichasRestantes==0) {
-            throw new SinFichasException();
-        } else{  //SEGURAMENTE AQUÍ POSTERIORMENTE IRÁ UNA EXCEPCION "TableroLlenoException"
+        }else if (this.fichasRestantes==0) {
+            throw new SinFichasException(this.nombre);
+        }else{  //SEGURAMENTE AQUÍ POSTERIORMENTE IRÁ UNA EXCEPCION "TableroLlenoException"
             System.out.println(ERROR_TABLERO_LLENO);
             return null;
         }

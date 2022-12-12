@@ -3,13 +3,13 @@ package etsisi.bs0165;
 /**
  * Esta clase almacenará la fila y columna donde cae la ficha que se ha puesto
  */
-public class Coodenadas {
+public class Coordenadas {
     // ATRIBUTOS
     private int fila;
     private int columna;
 
     // CONSTRUCTOR
-    public Coodenadas (int fila, int columna){
+    public Coordenadas(int fila, int columna){
         this.fila=fila;
         this.columna=columna;
     }

@@ -2,6 +2,10 @@ package etsisi.bs0165;
 import java.awt.*;
 import java.util.Scanner;
 
+/*
+    TODO: COPIAR checkColumnas, checkFila, checkDiagonales (y métodos auxiliares)
+ */
+
 /**
  *  Esta clase representará el tablero, pondrá las fichas, controlará si hay ganador o si se llena.
  */
@@ -12,13 +16,13 @@ public class Tablero {
     private int numFilas;
     private Casilla [][] casillas;
     private final String INTRODUCIR_COLUMNA="INTRODUZCA UNA COLUMNA: ";
-    private final String ERROR_COLUMNA_LLENA="LA COLUMNA ESTÁ LLENA\nELIJA OTRA";
+
     private final String ERROR_COLUMNA_INCORRECTA="ERROR COLUMNA INCORRECTA\nVALORES VALIDOS [0-6]\n"+INTRODUCIR_COLUMNA;
     private final int INICIO_BUCLE=0;
     /**
      * Esta constante es el número de fichas que hay que tener en horizontal, vertical o diagonal para ganar
      */
-    private final int NUM_FICHAS_GANADOR=4;
+    private final int NUM_FICHAS_GANADOR=4; // VA A CLASE VALIDACIONES
 
     //CONSTRUCTOR
     public Tablero(int numFilas,int numColumnas){
@@ -31,7 +35,7 @@ public class Tablero {
      * Este método inicia el array de casillas con las casillas en blanco.
      */
     private void iniciarCasillas(){
-        this.casillas = new Casilla[numFilas][numColumnas];
+        this.casillas = new Casilla[this.numFilas][this.numColumnas];
         for (int i = INICIO_BUCLE; i < numFilas; i++) {
             for (int j = INICIO_BUCLE; j < numColumnas; j++) {
              this.casillas[i][j]=new Casilla(i,j);
@@ -74,16 +78,28 @@ public class Tablero {
      * @param ficha Se pasa una Ficha para saber qué ficha se ha de poner.
      * @return Devuelve las coordenadas de dónde se ha puesto la ficha.
      */
-    public Coodenadas ponerFicha (Ficha ficha){
-        int columna=pedirColumna();
-        int fila=caeFichaFila(columna);
+    public Coordenadas ponerFicha (Ficha ficha){
+        int columna=0;
+        int fila=0;
+        boolean repetir=false;
+        while (!repetir) {
+            try {
+                columna=pedirColumna();
+                fila=this.caeFichaFila(columna);
+                casillas[fila][columna].setFicha(ficha);
+                repetir=true;
+            }catch (ColumnaLlenaException ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+        /*int fila=caeFichaFila(columna);
         while (fila==-1) { // Mientras se seleccione una columna llena se pedirá una nueva y se mostrará un mensaje de error (FUTURA ColumnaLlenaExcepcion)
             System.out.println(ERROR_COLUMNA_LLENA);
             columna=pedirColumna();
             fila=caeFichaFila(columna);
-        }
-        casillas[fila][columna].setFicha(ficha);
-        return new Coodenadas(fila,columna);
+        }*/
+
+        return new Coordenadas(fila,columna);
     }
 
     /**
@@ -92,7 +108,7 @@ public class Tablero {
      * @param columna Se introduce la columna para que deslice por ella hasta la posición más baja vacía.
      * @return  Devuelve la posición fila mas baja que está vacía. En caso de que esté llena la columna devolverá -1.
      */
-    private int caeFichaFila(int columna){
+    private int caeFichaFila(int columna) throws ColumnaLlenaException {
         boolean casillaLlena=false;
         int indicadorFila=0;
         do{
@@ -105,6 +121,9 @@ public class Tablero {
         }while(!casillaLlena && indicadorFila<numFilas);
         if(indicadorFila==numFilas){ //Esto significa que la columna está vacía y ha llegado hasta el final
             indicadorFila=numFilas-1;
+        }
+        if(indicadorFila==-1){
+            throw new ColumnaLlenaException();
         }
         return indicadorFila;
     }
@@ -145,7 +164,7 @@ public class Tablero {
      * @param posicion Se pasa la posición de la ficha puesta para partir de dicha posición al tirar diagonales.
      * @return Devuelve "true" si hay ganador.
      */
-    public boolean hayGanador(Ficha ficha,Coodenadas posicion){
+    public boolean hayGanador(Ficha ficha, Coordenadas posicion){
         boolean hayGanador=false;
         if(checkFilas(ficha)){
             hayGanador= true;
@@ -215,7 +234,7 @@ public class Tablero {
      * @param posicion Se pasa la posición de la ficha puesta para partir de dicha posición al tirar diagonales.
      * @return Devuelve "true" si hay ganador.
      */
-    private boolean checkDiagonales(Ficha ficha,Coodenadas posicion){
+    private boolean checkDiagonales(Ficha ficha, Coordenadas posicion){
         boolean hayGanador=false;
         int diagonalIzquierdaArriba=diagonalIzquierdaArriba(ficha,posicion);
         int diagonalIzquierdaAbajo=diagonalIzquierdaAbajo(ficha,posicion);
@@ -231,7 +250,7 @@ public class Tablero {
         return hayGanador;
     }
 
-    private int diagonalIzquierdaArriba(Ficha ficha,Coodenadas posicion){
+    private int diagonalIzquierdaArriba(Ficha ficha, Coordenadas posicion){
         int fila= posicion.getFila();
         int columna= posicion.getColumna();
         boolean hayGanador= false;
@@ -251,7 +270,7 @@ public class Tablero {
         return contadorFichas;
     }
 
-    private int diagonalIzquierdaAbajo(Ficha ficha,Coodenadas posicion){
+    private int diagonalIzquierdaAbajo(Ficha ficha, Coordenadas posicion){
         int fila= posicion.getFila();
         int columna= posicion.getColumna();
         boolean hayGanador= false;
@@ -271,7 +290,7 @@ public class Tablero {
         return contadorFichas;
     }
 
-    private int diagonalDerechaAbajo(Ficha ficha,Coodenadas posicion){
+    private int diagonalDerechaAbajo(Ficha ficha, Coordenadas posicion){
         int fila= posicion.getFila();
         int columna= posicion.getColumna();
         boolean hayGanador= false;
@@ -291,7 +310,7 @@ public class Tablero {
         return contadorFichas;
     }
 
-    private int diagonalDerechaArriba(Ficha ficha,Coodenadas posicion){
+    private int diagonalDerechaArriba(Ficha ficha, Coordenadas posicion){
         int fila= posicion.getFila();
         int columna= posicion.getColumna();
         boolean hayGanador= false;

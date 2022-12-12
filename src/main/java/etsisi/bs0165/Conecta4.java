@@ -3,15 +3,17 @@ import java.awt.*;
 import java.util.Scanner;
 
 /*
-    TODO:
+    TODO
         SOLUCIONAR SinFichasException
         HACER MAS EXCEPCIONES
-        IMPLENTAR INTERFAZ/SUPERCLASE JUGADOR PARA JUGADORIA (TIENE QUE IMPLEMENTAR METODO ELEGIRMEJOR COLUMNA
+        IMPLEMENTAR INTERFAZ/SUPERCLASE JUGADOR PARA JUGADORIA (TIENE QUE IMPLEMENTAR MÉTODO ELEGIR MEJOR COLUMNA)
         MIRAR TABLERO SI TIENE POSIBLE HERENCIA
         MODOS DE JUEGO ENTRENAMIENTO Y DEMO
-        MODIFICAR METODO JUEGO PARA LOS MODOS
-        CLASE VALIDACIONES
-        INTENTAR CLASE MENÚS
+        MODIFICAR MÉTODO JUEGO PARA LOS MODOS
+        CLASE VALIDACIONES (MEJORANDO ALGORITMOS DE CHECK FILAS Y CHECK COLUMNAS)
+        INTENTAR CLASE MENÚS (como superclase/interfaz que luego va a cada tipo de juego normal,demo,entrenamiento)
+
+
  */
 
 /**
@@ -60,19 +62,29 @@ public class Conecta4 {
             while (!finJuego) {
                 dibujar();
                 System.out.println("Turno de: " + turno.nombreJugadorConTurno());
-                Coodenadas ficha=null;//turno.tieneTurno().poner();
-                if (hayGanador(ficha)) {
-                    finJuego = true;
-                    this.ganador = turno.tieneTurno();
-                    resultados();
-                } else if (tablero.tableroLleno()) {
-                    finJuego = true;
-                    this.ganador = null;
-                    resultados();
-                } else {
-                    actualizaTableroEnJugadores(turno.tieneTurno().getTablero());
-                    turno.cambiaTurno();
+                Coordenadas ficha = null ;
+                try {
+                    ficha=turno.tieneTurno().poner();
+                }catch (SinFichasException ex){
+                    System.out.println(ex.getMessage());
+                    finJuego=true;
+                }finally {
+                    if (ficha!=null) {
+                        if (hayGanador(ficha)) {
+                            finJuego = true;
+                            this.ganador = turno.tieneTurno();
+                            resultados();
+                        } else if (tablero.tableroLleno()) {
+                            finJuego = true;
+                            this.ganador = null;
+                            resultados();
+                        } else {
+                            actualizaTableroEnJugadores(turno.tieneTurno().getTablero());
+                            turno.cambiaTurno();
+                        }
+                    }
                 }
+
             }
             finAplicacion=fin();
             if(finAplicacion){
@@ -88,7 +100,7 @@ public class Conecta4 {
     private void nuevaPartida(){
         this.tablero=new Tablero(NUM_FILAS,NUM_COLUMNAS);
         actualizaTableroEnJugadores(tablero);
-        System.out.println("\n----- NUEVA PARTIDA ------\n");
+        System.out.println("\n\n----- NUEVA PARTIDA ------\n");
     }
 
     /**
@@ -117,7 +129,7 @@ public class Conecta4 {
                 System.out.println("Se le ha asignado la ficha azul");
             }else{
                 jugadors[i]=new Jugador(infoJugador(), fichaRoja);
-                System.out.println("Se le ha asignado la ficha azul");
+                System.out.println("Se le ha asignado la ficha roja");
             }
         }
         return jugadors;
@@ -149,7 +161,7 @@ public class Conecta4 {
      * Llama al método hayGanador de tablero para saber si hay ganador.
      * @return Devolverá "true" si hay ganador, si no "false".
      */
-    public boolean hayGanador(Coodenadas posicion){
+    public boolean hayGanador(Coordenadas posicion){
         return tablero.hayGanador(turno.tieneTurno().getFicha(), posicion);
     }
 
