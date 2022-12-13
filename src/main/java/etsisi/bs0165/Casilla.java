@@ -14,10 +14,6 @@ public class Casilla {
         this.coordenadas=new Coordenadas(fila,columna);
         this.ficha=new Ficha();
     }
-    public Casilla (int fila, int columna, Ficha ficha){
-        this.coordenadas=new Coordenadas(fila,columna);
-        this.ficha=ficha;
-    }
 
     //SETTERS Y GETTERS
     public Ficha getFicha() {
@@ -25,14 +21,6 @@ public class Casilla {
     }
     public void setFicha(Ficha ficha) {
         this.ficha = ficha;
-    }
-
-    public Coordenadas getCoordenadas() {
-        return coordenadas;
-    }
-
-    public void setCoordenadas(Coordenadas coordenadas) {
-        this.coordenadas = coordenadas;
     }
     //MÉTODOS
 

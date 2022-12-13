@@ -35,7 +35,7 @@ public interface ModoJuego {
      * Se actualiza el tablero en los jugadores.
      * @param tablero Se pasa el tablero que se quiere actualizar.
      */
-    void actualizaTableroEnJugadores(Tablero tablero);
+    void actualizaTablero(Tablero tablero);
 
     /**
      * Este método será el fin del juego y dará la opcion de volver a jugar otra partida.

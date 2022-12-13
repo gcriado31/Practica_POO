@@ -9,7 +9,6 @@ import java.util.Scanner;
         MIRAR TABLERO SI TIENE POSIBLE HERENCIA
         MODOS DE JUEGO ENTRENAMIENTO Y DEMO
         MODIFICAR MÉTODO JUEGO PARA LOS MODOS
-        CLASE VALIDACIONES (MEJORANDO ALGORITMOS DE CHECK FILAS Y CHECK COLUMNAS)
         INTENTAR CLASE MENÚS (como superclase/interfaz que luego va a cada tipo de juego normal,demo,entrenamiento)
 
 
@@ -34,11 +33,14 @@ public class Conecta4 {
     private final Ficha fichaAzul=new Ficha('A',Color.BLUE);
     private final Ficha fichaRoja= new Ficha('R',Color.BLUE);
 
+    private Validaciones reglas;
+
     // CONSTRUCTOR
     public Conecta4 (){
         this.jugadores=menuJugadores();
         this.turno=new Turno(jugadores);
         this.tablero=new Tablero(NUM_FILAS,NUM_COLUMNAS);
+        this.reglas= new Validaciones(tablero);
         actualizaTableroEnJugadores(this.tablero);
     }
 
@@ -69,6 +71,7 @@ public class Conecta4 {
                     finJuego=true;
                 }finally {
                     if (ficha!=null) {
+                        this.reglas.setTablero(tablero);
                         if (this.hayGanador(ficha)) {
                             finJuego = true;
                             this.ganador = turno.tieneTurno();
@@ -151,7 +154,7 @@ public class Conecta4 {
      * @param tablero Se pasa el tablero que se quiere actualizar.
      */
     public void actualizaTableroEnJugadores(Tablero tablero){
-        for(int i=INICIO_BUCLE;i<NUMERO_JUGADORES;i++){
+        for(int i=INICIO_BUCLE;i<NUMERO_JUGADORES;i++) {
             jugadores[i].setTablero(tablero);
         }
     }
@@ -161,7 +164,7 @@ public class Conecta4 {
      * @return Devolverá "true" si hay ganador, si no "false".
      */
     public boolean hayGanador(Coordenadas posicion){
-        return tablero.hayGanador(turno.tieneTurno().getFicha(), posicion);
+        return reglas.hayGanador(turno.tieneTurno().getFicha(), posicion);
     }
 
     /**
