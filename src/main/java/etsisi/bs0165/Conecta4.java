@@ -6,7 +6,6 @@ import java.util.Scanner;
     TODO
         HACER MAS EXCEPCIONES
         IMPLEMENTAR INTERFAZ/SUPERCLASE JUGADOR PARA JUGADORIA (TIENE QUE IMPLEMENTAR MÉTODO ELEGIR MEJOR COLUMNA)
-        MIRAR TABLERO SI TIENE POSIBLE HERENCIA
         MODOS DE JUEGO ENTRENAMIENTO Y DEMO
         MODIFICAR MÉTODO JUEGO PARA LOS MODOS
         INTENTAR CLASE MENÚS (como superclase/interfaz que luego va a cada tipo de juego normal,demo,entrenamiento)
@@ -60,34 +59,7 @@ public class Conecta4 {
         boolean finJuego=false;
         boolean finAplicacion;
         do {
-            while (!finJuego) {
-                this.dibujar();
-                System.out.println("Turno de: " + turno.nombreJugadorConTurno());
-                Coordenadas ficha = null ;
-                try {
-                    ficha=turno.tieneTurno().poner();
-                }catch (SinFichasException ex){
-                    System.out.println(ex.getMessage());
-                    finJuego=true;
-                }finally {
-                    if (ficha!=null) {
-                        this.reglas.setTablero(tablero);
-                        if (this.hayGanador(ficha)) {
-                            finJuego = true;
-                            this.ganador = turno.tieneTurno();
-                            this.resultados();
-                        } else if (tablero.tableroLleno()) {
-                            finJuego = true;
-                            this.ganador = null;
-                            resultados();
-                        } else {
-                            actualizaTableroEnJugadores(turno.tieneTurno().getTablero());
-                            this.cambiarTurno();
-                        }
-                    }
-                }
 
-            }
             finAplicacion=this.fin();
             if(finAplicacion){
                 nuevaPartida();
@@ -111,7 +83,7 @@ public class Conecta4 {
      */
     private boolean fin(){
         Scanner input= new Scanner(System.in);
-        System.out.println("¿DESEA VOLVER A JUGAR?(S/N)");
+        System.out.println("¿DESEA SALIR DE LA APLICACIÓN?(S/N)");
         char respuesta= input.nextLine().toUpperCase().charAt(0);
         return respuesta=='S';
     }

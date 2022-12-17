@@ -7,11 +7,11 @@ package etsisi.bs0165;
  */
 public class Jugador {
     // ATRIBUTOS
-    private String nombre;
-    private int fichasRestantes;
-    private Ficha ficha;
-    private Tablero tablero;
-    private final String ERROR_TABLERO_LLENO="ERROR: TABLERO LLENO";
+    protected String nombre;
+    protected int fichasRestantes;
+    protected Ficha ficha;
+    protected Tablero tablero;
+    protected final String ERROR_TABLERO_LLENO="ERROR: TABLERO LLENO";
     private final int MAX_FICHAS=21;
 
 
@@ -22,12 +22,12 @@ public class Jugador {
         this.fichasRestantes=MAX_FICHAS;
     }
 
-    public Jugador (String nombre, Ficha ficha, Tablero tablero){
+    /*public Jugador (String nombre, Ficha ficha, Tablero tablero){
         this.nombre=nombre;
         this.ficha=ficha;
         this.tablero=tablero;
         this.fichasRestantes=MAX_FICHAS;
-    }
+    }*/
 
     //SETTERS Y GETTERS
     public void setTablero(Tablero tablero) {
@@ -43,10 +43,14 @@ public class Jugador {
     }
 
     public Ficha getFicha() {
-        return ficha;
+        return this.ficha;
     }
     public int getFichasRestantes() {
         return fichasRestantes;
+    }
+
+    public void setFichasRestantes(int fichasRestantes) {
+        this.fichasRestantes = fichasRestantes;
     }
 
     //MÉTODOS
@@ -55,7 +59,7 @@ public class Jugador {
      * Método del jugador para poner su ficha.
      */
     public Coordenadas poner ()throws SinFichasException {
-        if(!tablero.tableroLleno()){
+        if(!this.tablero.tableroLleno()){
             this.fichasRestantes--;
             return tablero.ponerFicha(ficha);
         }else if (this.fichasRestantes==0) {

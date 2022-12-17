@@ -21,19 +21,7 @@ public class Tablero {
     public Tablero(int numFilas,int numColumnas){
         this.numFilas=numFilas;
         this.numColumnas=numColumnas;
-        this.iniciarCasillas();
-    }
-
-    /**
-     * Este método inicia el array de casillas con las casillas en blanco.
-     */
-    private void iniciarCasillas(){
-        this.casillas = new Casilla[this.numFilas][this.numColumnas];
-        for (int i = INICIO_BUCLE; i < numFilas; i++) {
-            for (int j = INICIO_BUCLE; j < numColumnas; j++) {
-             this.casillas[i][j]=new Casilla(i,j);
-            }
-        }
+        this.casillas=Inicios.iniciarCasillas(this.numFilas,this.numColumnas);
     }
 
     //GETTERS
@@ -93,11 +81,27 @@ public class Tablero {
     }
 
     /**
+     * Este método sirve para que la ficha de la IA caiga por la columna seleccionada.
+     * @param columna Número de columna por donde tiene que caer la ficha.
+     * @return Devuelve la fila donde se queda la ficha.
+     * @throws ColumnaLlenaException Si la columna está llena se lanzará esta excepcion.
+     */
+    public int caeFichaIA(int columna) throws ColumnaLlenaException {
+        return this.caeFichaFila(columna);
+    }
+
+    public Coordenadas ponerFichaIA(int fila,int columna, Ficha ficha){
+        casillas[fila][columna].setFicha(ficha);
+        return new Coordenadas(fila,columna);
+    }
+
+
+    /**
      * Desliza la ficha por la columna.
      *
      * @param columna Se introduce la columna para que deslice por ella hasta la posición más baja vacía.
      * @return  Devuelve la posición fila mas baja que está vacía. En caso de que esté llena la columna devolverá -1.
-     * @throws ColumnaLlenaException Si la columna seleccionada por el ususario está llena
+     * @throws ColumnaLlenaException Si la columna seleccionada por el usuario está llena.
      */
     private int caeFichaFila(int columna) throws ColumnaLlenaException {
         boolean casillaLlena=false;
