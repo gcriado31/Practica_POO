@@ -18,7 +18,7 @@ public abstract class ModoJuego {
     protected final String GANADOR="EL GANADOR ES ";
     protected final int NUMERO_JUGADORES=2;
     protected final Ficha fichaAzul=new Ficha('A', Color.BLUE);
-    protected final Ficha fichaRoja= new Ficha('R',Color.BLUE);
+    protected final Ficha fichaRoja= new Ficha('R',Color.RED);
 
     // ATRIBUTOS PRIVADOS
     private final int NUM_FILAS=6;

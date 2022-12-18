@@ -61,6 +61,8 @@ public class Validaciones {
             if(!(tablero.isEmpty(i,j))){
                 if(tablero.getFichaPos(i,j).equals(ficha)){
                     contadorCasillas++;
+                }else{
+                    contadorCasillas=0;
                 }
             }
             if(contadorCasillas>=NUM_FICHAS_GANADOR){
@@ -86,6 +88,8 @@ public class Validaciones {
             if(!(tablero.isEmpty(i,j))){
                 if(tablero.getFichaPos(i,j).equals(ficha)){
                     contadorCasillas++;
+                }else{
+                    contadorCasillas=0;
                 }
             }
             if(contadorCasillas>=NUM_FICHAS_GANADOR){

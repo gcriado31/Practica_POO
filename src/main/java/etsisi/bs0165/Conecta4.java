@@ -33,10 +33,6 @@ public class Conecta4 {
     // CONSTRUCTOR
     public Conecta4 (){
         this.tablero=new Tablero(NUM_FILAS,NUM_COLUMNAS);
-        this.entrenamiento=new ModoEntrenamiento(this.tablero);
-        this.enfrentamiento=new ModoEnfrentamiento(this.tablero);
-        this.demo=new ModoDemo(this.tablero);
-
     }
 
     // MÉTODOS
@@ -45,14 +41,33 @@ public class Conecta4 {
      * Ejecuta el juego y mientras el jugador(es) quiera(n) se ejecutará.
      */
     public void jugar(){
-        boolean finAplicacion;
+        boolean finAplicacion=false;
+        System.out.println(BIENVENIDA);
         do {
-            System.out.println(BIENVENIDA);
-            finAplicacion=this.fin();
-            if(finAplicacion){
-
+            switch (this.seleccionModo()){
+                case '1':
+                    System.out.println("--- MODO ENFRENTAMIENTO ---");
+                    this.enfrentamiento=new ModoEnfrentamiento(this.tablero);
+                    this.enfrentamiento.jugar();
+                    break;
+                case '2':
+                    System.out.println("--- MODO ENTRENAMIENTO ---");
+                    this.entrenamiento=new ModoEntrenamiento(this.tablero);
+                    this.entrenamiento.jugar();
+                    break;
+                case '3':
+                    this.demo=new ModoDemo(this.tablero);
+                    this.demo.jugar();
+                    break;
+                case'0':
+                    finAplicacion=this.fin();
+                    System.out.println(DESPEDIDA);
+                    break;
+                default:
+                    System.out.println("TECLA INCORRECTA");
+                    break;
             }
-        }while (finAplicacion);
+        }while (!finAplicacion);
     }
 
     private char seleccionModo(){
@@ -60,17 +75,19 @@ public class Conecta4 {
                             "\n\t1. MODO ENFRENTAMIENTO."+
                             "\n\t2. MODO ENTRENAMIENTO."+
                             "\n\t3. MODO DEMO."+
-                            "\n\t0. S.");
-        return '0';
+                            "\n0. SALIR DE LA APLICACIÓN.");
+        Scanner input=new Scanner(System.in);
+
+        return input.nextLine().charAt(0);
     }
 
     /**
-     * Este método será el fin del juego y dará la opcion de volver a jugar otra partida.
-     * @return Si el jugador(es) quiere volver a jugar "true" si no "false".
+     * Este método será el fin de la aplicación y dará la opción de salir de ella.
+     * @return Si el jugador(es) quiere salir de la aplicación "true" si no "false".
      */
     private boolean fin(){
         Scanner input= new Scanner(System.in);
-        System.out.println("¿DESEA SALIR DE LA APLICACIÓN?(S/N)");
+        System.out.println("¿SEGURO QUE DESEA SALIR DE LA APLICACIÓN?(S/N)");
         char respuesta= input.nextLine().toUpperCase().charAt(0);
         return respuesta=='S';
     }

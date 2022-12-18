@@ -1,4 +1,7 @@
 package etsisi.bs0165;
+
+import java.awt.*;
+
 /**
  * En esta clase se desarrollará en modo de juego Enfrentamiento.
  */
@@ -20,7 +23,7 @@ public class ModoDemo extends ModoJuego{
         do{
             while(!finJuego) {
                 super.dibujar();
-                int numJugador=super.turno.jugadorEnCurso;
+                int numJugador=super.turno.jugadorEnCurso +1;
                 System.out.println("Turno de: " + super.turno.nombreJugadorConTurno()+" "+numJugador);
                 Coordenadas posicion = null;
                 try {
@@ -60,7 +63,13 @@ public class ModoDemo extends ModoJuego{
     @Override
     protected void resultados() {
         if(this.ganador!=null){
-            System.out.println(super.GANADOR+this.ganador.getNombre()+" Con el color de ficha "+this.ganador.getFicha().getColor().toString());
+            String color;
+            if(this.ganador.getFicha().getColor().equals(Color.BLUE)){
+                color=" azul ";
+            }else{
+                color=" rojo ";
+            }
+            System.out.println(super.GANADOR+this.ganador.getNombre()+" Con color"+color+". Ya que encajó las 4 fichas.");
         }else{
             System.out.println(super.EMPATE);
         }
