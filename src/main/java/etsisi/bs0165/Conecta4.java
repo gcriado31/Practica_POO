@@ -15,66 +15,53 @@ import java.util.Scanner;
 
 /**
  * Esta clase se encarga del juego
+ * @author Guillermo Criado
+ * @version 3.0
  */
 public class Conecta4 {
     // ATRIBUTOS
-    private Turno turno;
-    private Jugador [] jugadores;
-    private Jugador ganador;
     private Tablero tablero;
-    private final int NUMERO_JUGADORES=2;
-    private final int INICIO_BUCLE=0;
     private final int NUM_FILAS=6;
     private final int NUM_COLUMNAS=7;
-    private final String BIENVENIDA="Bienvenido a Conecta 4\nConsigue conectar 4 fichas en linea o en diagonal para ganar";
-    private final String EMPATE="¡¡¡EMPATE!!!";
-    private final String GANADOR="EL GANADOR ES ";
-    private final Ficha fichaAzul=new Ficha('A',Color.BLUE);
-    private final Ficha fichaRoja= new Ficha('R',Color.BLUE);
 
-    private Validaciones reglas;
+    private final String BIENVENIDA="Bienvenido a Conecta 4\nConsigue conectar 4 fichas en horizontal, vertical o en diagonal para ganar";
+    private final String DESPEDIDA="Hasta luego. Esperamos volver a verle de nuevo.";
+    private ModoEntrenamiento entrenamiento;
+    private ModoEnfrentamiento enfrentamiento;
+    private ModoDemo demo;
 
     // CONSTRUCTOR
     public Conecta4 (){
-        this.jugadores=menuJugadores();
-        this.turno=new Turno(jugadores);
         this.tablero=new Tablero(NUM_FILAS,NUM_COLUMNAS);
-        this.reglas= new Validaciones(tablero);
-        actualizaTableroEnJugadores(this.tablero);
+        this.entrenamiento=new ModoEntrenamiento(this.tablero);
+        this.enfrentamiento=new ModoEnfrentamiento(this.tablero);
+        this.demo=new ModoDemo(this.tablero);
+
     }
 
     // MÉTODOS
 
     /**
-     * Dibuja el tablero.
-     */
-    public void dibujar(){
-        tablero.dibujar();
-    }
-
-    /**
-     * Ejecuta el juego y mientras el jugador(es) quiera(n) se ejecutará una nueva partida.
+     * Ejecuta el juego y mientras el jugador(es) quiera(n) se ejecutará.
      */
     public void jugar(){
-        boolean finJuego=false;
         boolean finAplicacion;
         do {
-
+            System.out.println(BIENVENIDA);
             finAplicacion=this.fin();
             if(finAplicacion){
-                nuevaPartida();
-                finJuego=false;
+
             }
         }while (finAplicacion);
     }
 
-    /**
-     * Carga una nueva partida.
-     */
-    private void nuevaPartida(){
-        this.tablero=new Tablero(NUM_FILAS,NUM_COLUMNAS);
-        actualizaTableroEnJugadores(tablero);
-        System.out.println("\n\n----- NUEVA PARTIDA ------\n");
+    private char seleccionModo(){
+        System.out.println("ELIJA UN MODO PARA JUGAR:"+
+                            "\n\t1. MODO ENFRENTAMIENTO."+
+                            "\n\t2. MODO ENTRENAMIENTO."+
+                            "\n\t3. MODO DEMO."+
+                            "\n\t0. S.");
+        return '0';
     }
 
     /**
@@ -86,77 +73,6 @@ public class Conecta4 {
         System.out.println("¿DESEA SALIR DE LA APLICACIÓN?(S/N)");
         char respuesta= input.nextLine().toUpperCase().charAt(0);
         return respuesta=='S';
-    }
-
-    /**
-     * Da la bienvenida a los jugadores y almacena los jugadores.
-     * @return Se devuelve el array de jugadores con toda la información.
-     */
-    private Jugador[] menuJugadores(){
-        Jugador[] jugadors = new Jugador[NUMERO_JUGADORES];
-        System.out.println(BIENVENIDA);
-        for (int i = INICIO_BUCLE; i <NUMERO_JUGADORES; i++) {
-            int pos=i+1;
-            System.out.println("---JUGADOR "+pos+"---");
-            if(i==0){
-                jugadors[i]=new Jugador(infoJugador(),fichaAzul);
-                System.out.println("Se le ha asignado la ficha azul");
-            }else{
-                jugadors[i]=new Jugador(infoJugador(), fichaRoja);
-                System.out.println("Se le ha asignado la ficha roja");
-            }
-        }
-        return jugadors;
-    }
-
-    /**
-     * Pregunta la información al jugador.
-     * @return Se devuelve un String con la información del juegador.
-     */
-    private String infoJugador(){
-        Scanner input= new Scanner(System.in);
-        System.out.print("Introduzca su nombre: ");
-        String nombre= input.nextLine();
-        System.out.println();
-        return nombre;
-    }
-
-    /**
-     * Se recorre el array de jugadores actualizando el tablero.
-     * @param tablero Se pasa el tablero que se quiere actualizar.
-     */
-    public void actualizaTableroEnJugadores(Tablero tablero){
-        for(int i=INICIO_BUCLE;i<NUMERO_JUGADORES;i++) {
-            jugadores[i].setTablero(tablero);
-        }
-    }
-
-    /**
-     * Llama al método hayGanador de tablero para saber si hay ganador.
-     * @return Devolverá "true" si hay ganador, si no "false".
-     */
-    public boolean hayGanador(Coordenadas posicion){
-        return reglas.hayGanador(turno.tieneTurno().getFicha(), posicion);
-    }
-
-    /**
-     * Cambia el turno.
-     */
-    public void cambiarTurno(){
-        turno.cambiaTurno();
-    }
-
-    /**
-     * Presenta los resultados
-     */
-    public void resultados(){
-        if(ganador!=null){
-            System.out.println(GANADOR+ganador.getNombre()+" ¡ENHORABUENA!");
-        }else{
-            System.out.println(EMPATE);
-        }
-        System.out.println("Tablero resultante ");
-        dibujar();
     }
 
     public static void main(String[] args) {

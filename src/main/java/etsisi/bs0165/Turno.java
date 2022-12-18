@@ -6,7 +6,7 @@ package etsisi.bs0165;
  */
 public class Turno {
     // ATRIBUTOS
-    private int jugadorEnCurso;
+    protected int jugadorEnCurso;
     private final int JUGADOR_INICIAL = 0;
     private Jugador[] jugadores;
 

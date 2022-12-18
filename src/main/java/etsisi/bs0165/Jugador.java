@@ -20,14 +20,15 @@ public class Jugador {
         this.nombre=nombre;
         this.ficha=ficha;
         this.fichasRestantes=MAX_FICHAS;
+        this.tablero=new Tablero(0,0); // El tablero por defecto será un tablero de 0x0
     }
 
-    /*public Jugador (String nombre, Ficha ficha, Tablero tablero){
+    public Jugador (String nombre, Ficha ficha, Tablero tablero){
         this.nombre=nombre;
         this.ficha=ficha;
         this.tablero=tablero;
         this.fichasRestantes=MAX_FICHAS;
-    }*/
+    }
 
     //SETTERS Y GETTERS
     public void setTablero(Tablero tablero) {
@@ -58,7 +59,7 @@ public class Jugador {
     /**
      * Método del jugador para poner su ficha.
      */
-    public Coordenadas poner ()throws SinFichasException {
+    public Coordenadas poner () throws SinFichasException {
         if(!this.tablero.tableroLleno()){
             this.fichasRestantes--;
             return tablero.ponerFicha(ficha);

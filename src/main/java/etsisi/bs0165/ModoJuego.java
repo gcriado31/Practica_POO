@@ -4,14 +4,16 @@ import java.awt.*;
 import java.util.Scanner;
 
 /**
- * Esta interfaz contiene los métodos comunes (y mínimos) de los cuatro modos de juego: Demo, Enfrentamiento y Entrenamiento.
+ * Esta clase abstracta contiene los métodos comunes (y mínimos) de los cuatro modos de juego: Demo, Enfrentamiento y Entrenamiento.
  */
 public abstract class ModoJuego {
 
     // ATRIBUTOS
+    protected Turno turno;
+    protected Jugador [] jugadores;
     protected Validaciones reglas;
     protected Tablero tablero;
-    protected final String BIENVENIDA="Bienvenido a Conecta 4\nConsigue conectar 4 fichas en linea o en diagonal para ganar";
+
     protected final String EMPATE="¡¡¡EMPATE!!!";
     protected final String GANADOR="EL GANADOR ES ";
     protected final int NUMERO_JUGADORES=2;
@@ -21,12 +23,15 @@ public abstract class ModoJuego {
     // ATRIBUTOS PRIVADOS
     private final int NUM_FILAS=6;
     private final int NUM_COLUMNAS=7;
+    private final int INICIO_BUCLE=0;
 
     // CONSTRUCTOR
 
-    public ModoJuego(Tablero tablero) {
+    protected ModoJuego(Tablero tablero) {
         this.tablero = tablero;
         this.reglas=new Validaciones(tablero);
+        this.jugadores=this.menuJugadores(this.tablero);
+        this.turno=new Turno(this.jugadores);
     }
 
 
@@ -37,34 +42,16 @@ public abstract class ModoJuego {
     protected abstract void jugar();
 
     /**
-     * Cambia el turno.
-     */
-    protected abstract void cambiaTurno();
-
-    /**
      * Presenta los resultados
      */
     protected abstract void resultados();
 
     /**
-     * Se actualiza el tablero en los jugadores.
-     * @param tablero Se pasa el tablero que se quiere actualizar.
-     */
-    protected abstract void actualizaTablero(Tablero tablero);
-
-    /**
      * Da la bienvenida a los jugadores y almacena los jugadores.
+     * @param tablero Se pasa un Tablero para que los jugadores ya tengan el tablero cuando se crean
      * @return Se devuelve el array de jugadores con toda la información.
      */
-    protected abstract Jugador[] menuJugadores();
-
-    /**
-     * Llama al método hayGanador de tablero para saber si hay ganador.
-     * @return Devolverá "true" si hay ganador, si no "false".
-     */
-    protected abstract boolean hayGanador(Coordenadas coordenadas);
-
-
+    protected abstract Jugador[] menuJugadores(Tablero tablero);
 
     // MÉTODOS DE LA CLASE
     /**
@@ -103,6 +90,29 @@ public abstract class ModoJuego {
         String nombre= input.nextLine();
         System.out.println();
         return nombre;
+    }
+
+    /**
+     * Se actualiza el tablero en los jugadores.
+     * @param tablero Se pasa el tablero que se quiere actualizar.
+     */
+    protected void actualizaTablero(Tablero tablero) {
+        for(int i=INICIO_BUCLE;i<NUMERO_JUGADORES;i++) {
+            this.jugadores[i].setTablero(tablero);
+        }
+    }
+
+    /**
+     * Cambia el turno.
+     */
+    protected void cambiaTurno() {this.turno.cambiaTurno();}
+
+    /**
+     * Llama al método hayGanador de tablero para saber si hay ganador.
+     * @return Devolverá "true" si hay ganador, si no "false".
+     */
+    protected boolean hayGanador(Coordenadas coordenadas) {
+        return reglas.hayGanador(turno.tieneTurno().getFicha(), coordenadas);
     }
 
 }
