@@ -20,7 +20,6 @@ public class Jugador {
         this.nombre=nombre;
         this.ficha=ficha;
         this.fichasRestantes=MAX_FICHAS;
-        this.tablero=new Tablero(0,0); // El tablero por defecto será un tablero de 0x0
     }
 
     public Jugador (String nombre, Ficha ficha, Tablero tablero){
@@ -70,5 +69,4 @@ public class Jugador {
             return null;
         }
     }
-
 }

@@ -64,6 +64,8 @@ public class Validaciones {
                 }else{
                     contadorCasillas=0;
                 }
+            }else{
+                contadorCasillas=0;
             }
             if(contadorCasillas>=NUM_FICHAS_GANADOR){
                 hayGanador=true;
@@ -91,6 +93,8 @@ public class Validaciones {
                 }else{
                     contadorCasillas=0;
                 }
+            }else{
+                contadorCasillas=0;
             }
             if(contadorCasillas>=NUM_FICHAS_GANADOR){
                 hayGanador=true;
@@ -132,6 +136,8 @@ public class Validaciones {
         while(isInArray(fila,columna) && !hayGanador){
             if(tablero.getFichaPos(fila,columna).equals(ficha)){
                 contadorFichas++;
+            }else{
+                contadorFichas=0;
             }
             if(contadorFichas==NUM_FICHAS_GANADOR){
                 hayGanador=true;
@@ -152,6 +158,8 @@ public class Validaciones {
         while(isInArray(fila,columna) && !hayGanador){
             if(tablero.getFichaPos(fila,columna).equals(ficha)){
                 contadorFichas++;
+            }else{
+                contadorFichas=0;
             }
             if(contadorFichas==NUM_FICHAS_GANADOR){
                 hayGanador=true;
@@ -172,6 +180,8 @@ public class Validaciones {
         while(isInArray(fila,columna) && !hayGanador){
             if(tablero.getFichaPos(fila,columna).equals(ficha)){
                 contadorFichas++;
+            }else{
+                contadorFichas=0;
             }
             if(contadorFichas==NUM_FICHAS_GANADOR){
                 hayGanador=true;
@@ -192,6 +202,8 @@ public class Validaciones {
         while(isInArray(fila,columna) && !hayGanador){
             if(tablero.getFichaPos(fila,columna).equals(ficha)){
                 contadorFichas++;
+            }else{
+                contadorFichas=0;
             }
             if(contadorFichas==NUM_FICHAS_GANADOR){
                 hayGanador=true;

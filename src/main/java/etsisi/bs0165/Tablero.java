@@ -10,9 +10,9 @@ import java.util.Scanner;
 public class Tablero {
 
     //ATRIBUTOS
-    private final int numColumnas;
-    private final int numFilas;
-    private Casilla [][] casillas;
+    protected final int numColumnas;
+    protected final int numFilas;
+    protected Casilla [][] casillas;
     private final String INTRODUCIR_COLUMNA="INTRODUZCA UNA COLUMNA: ";
     private final int INICIO_BUCLE=0;
 
@@ -35,6 +35,14 @@ public class Tablero {
 
     public Ficha getFichaPos(int fila, int columna){
         return casillas[fila][columna].getFicha();
+    }
+
+    public Casilla[][] getCasillas() {
+        return casillas;
+    }
+
+    public void setCasillas(Casilla[][] casillas) {
+        this.casillas = casillas;
     }
 
     //MÉTODOS
@@ -79,23 +87,6 @@ public class Tablero {
         }
         return new Coordenadas(fila,columna);
     }
-
-    /**
-     * Este método sirve para que la ficha de la IA caiga por la columna seleccionada.
-     * @param columna Número de columna por donde tiene que caer la ficha.
-     * @return Devuelve la fila donde se queda la ficha.
-     * @throws ColumnaLlenaException Si la columna está llena se lanzará esta excepcion.
-     */
-    public int caeFichaIA(int columna) throws ColumnaLlenaException {
-        return this.caeFichaFila(columna);
-    }
-
-    public Coordenadas ponerFichaIA(int fila,int columna, Ficha ficha){
-        casillas[fila][columna].setFicha(ficha);
-        return new Coordenadas(fila,columna);
-    }
-
-
     /**
      * Desliza la ficha por la columna.
      *
@@ -103,7 +94,7 @@ public class Tablero {
      * @return  Devuelve la posición fila mas baja que está vacía. En caso de que esté llena la columna devolverá -1.
      * @throws ColumnaLlenaException Si la columna seleccionada por el usuario está llena.
      */
-    private int caeFichaFila(int columna) throws ColumnaLlenaException {
+    protected int caeFichaFila(int columna) throws ColumnaLlenaException {
         boolean casillaLlena=false;
         int indicadorFila=0;
         do{
@@ -121,6 +112,21 @@ public class Tablero {
             throw new ColumnaLlenaException();
         }
         return indicadorFila;
+    }
+
+    /**
+     * Este método sirve para que la ficha de la IA caiga por la columna seleccionada.
+     * @param columna Número de columna por donde tiene que caer la ficha.
+     * @return Devuelve la fila donde se queda la ficha.
+     * @throws ColumnaLlenaException Si la columna está llena se lanzará esta excepcion.
+     */
+    public int caeFichaIA(int columna) throws ColumnaLlenaException {
+        return this.caeFichaFila(columna);
+    }
+
+    public Coordenadas ponerFichaIA(int fila,int columna, Ficha ficha){
+        this.casillas[fila][columna].setFicha(ficha);
+        return new Coordenadas(fila,columna);
     }
 
     public void dibujar(){

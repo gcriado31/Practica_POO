@@ -11,14 +11,14 @@ import java.util.Random;
 public class JugadorIA extends Jugador{
     // ATRIBUTOS
     ArrayList<Integer> columnasDisponibles;
-
     // CONSTRUCTOR
     public JugadorIA(Ficha ficha, Tablero tablero) {
         super("IA", ficha,tablero);
-        this.columnasDisponibles= Inicios.inicializarArrayList(super.tablero.getNumColumnas());
+        this.columnasDisponibles= Inicios.inicializarArrayList(tablero.getNumColumnas());
+
     }
 
-     // MÉTODOS
+    // MÉTODOS
      @Override
     public Coordenadas poner() throws SinFichasException {
         Random random=new Random();
@@ -62,5 +62,7 @@ public class JugadorIA extends Jugador{
         }
         System.out.println();
     }
+
+
 
 }

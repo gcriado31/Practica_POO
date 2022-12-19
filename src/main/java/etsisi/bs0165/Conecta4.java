@@ -47,15 +47,18 @@ public class Conecta4 {
             switch (this.seleccionModo()){
                 case '1':
                     System.out.println("--- MODO ENFRENTAMIENTO ---");
+                    this.tablero=new Tablero(NUM_FILAS,NUM_COLUMNAS);
                     this.enfrentamiento=new ModoEnfrentamiento(this.tablero);
                     this.enfrentamiento.jugar();
                     break;
                 case '2':
                     System.out.println("--- MODO ENTRENAMIENTO ---");
+                    this.tablero=new Tablero(NUM_FILAS,NUM_COLUMNAS);
                     this.entrenamiento=new ModoEntrenamiento(this.tablero);
                     this.entrenamiento.jugar();
                     break;
                 case '3':
+                    this.tablero=new Tablero(NUM_FILAS,NUM_COLUMNAS);
                     this.demo=new ModoDemo(this.tablero);
                     this.demo.jugar();
                     break;
