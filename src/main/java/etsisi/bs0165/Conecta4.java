@@ -2,16 +2,7 @@ package etsisi.bs0165;
 import java.awt.*;
 import java.util.Scanner;
 
-/*
-    TODO
-        HACER MAS EXCEPCIONES
-        IMPLEMENTAR INTERFAZ/SUPERCLASE JUGADOR PARA JUGADORIA (TIENE QUE IMPLEMENTAR MÉTODO ELEGIR MEJOR COLUMNA)
-        MODOS DE JUEGO ENTRENAMIENTO Y DEMO
-        MODIFICAR MÉTODO JUEGO PARA LOS MODOS
-        INTENTAR CLASE MENÚS (como superclase/interfaz que luego va a cada tipo de juego normal,demo,entrenamiento)
 
-
- */
 
 /**
  * Esta clase se encarga del juego

@@ -1,0 +1,16 @@
+
+q	java:S116	"WRename this field "INICIO_BUCLE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š±º¿üÿÿÿÿ
+<
+java:S1170	"!Make this final field static too.(š±º¿üÿÿÿÿ
+
+java:S1845"‚Rename field "ganador" to prevent any misunderstanding/clash with field "GANADOR" defined in superclass "etsisi.bs0165.ModoJuego".(ÏõŞ„úÿÿÿÿ
+m
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(¥îâÂûÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(‡ßü¢ıÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ı™øøÿÿÿÿ
+N	java:S106>"9Replace this use of System.out or System.err by a logger.(…£Ä
+S	java:S106@"9Replace this use of System.out or System.err by a logger.(€à­ˆøÿÿÿÿ
+S	java:S106B"9Replace this use of System.out or System.err by a logger.(¾äŠùÿÿÿÿ
+M	java:S106K"9Replace this use of System.out or System.err by a logger.(®‚ñu
+S	java:S106N"9Replace this use of System.out or System.err by a logger.(‹”¦Ñÿÿÿÿÿ
+Z	java:S106Q"9Replace this use of System.out or System.err by a logger.(÷û–†úÿÿÿÿ8–Ï³©Ò0

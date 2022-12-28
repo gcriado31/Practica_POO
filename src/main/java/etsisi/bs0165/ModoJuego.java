@@ -3,6 +3,13 @@ package etsisi.bs0165;
 import java.awt.*;
 import java.util.Scanner;
 
+/*
+    TODO LISTA DE MOVIMIENTOS PARA HACER "UNDO-REDO".
+         MÉTODO PARA UNDO
+         METODO PARA REDO
+
+ */
+
 /**
  * Esta clase abstracta contiene los métodos comunes (y mínimos) de los cuatro modos de juego: Demo, Enfrentamiento y Entrenamiento.
  */
