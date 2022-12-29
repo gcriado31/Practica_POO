@@ -1,0 +1,28 @@
+
+p	java:S116"TRename this field "NUM_FILAS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ¿åŞ8¬§éÎÕ0
+x	java:S116"WRename this field "NUM_COLUMNAS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·Û¶“øÿÿÿÿ8Ü¹êÎÕ0
+v	java:S116"URename this field "BIENVENIDA" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸°ÊÁÿÿÿÿÿ8¬§éÎÕ0
+p	java:S116"TRename this field "DESPEDIDA" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ºÉßÁ8İ¹êÎÕ0
+>
+java:S1170"!Make this final field static too.(æ¿åŞ8­§éÎÕ0
+C
+java:S1170"!Make this final field static too.(·Û¶“øÿÿÿÿ8İ¹êÎÕ0
+C
+java:S1170"!Make this final field static too.(¸°ÊÁÿÿÿÿÿ8­§éÎÕ0
+>
+java:S1170"!Make this final field static too.(ºÉßÁ8Ş¹êÎÕ0
+p
+java:S1450"SRemove the "demo" field and declare it as a local variable in the relevant methods.(¬ó”Ø8ß¹êÎÕ0
+
+java:S1450"]Remove the "enfrentamiento" field and declare it as a local variable in the relevant methods.(ˆ÷çİúÿÿÿÿ8³¯û´Ò0
+y
+java:S1450"\Remove the "entrenamiento" field and declare it as a local variable in the relevant methods.(ä¿ò8¯§éÎÕ0
+U	java:S106$"9Replace this use of System.out or System.err by a logger.(¬½÷Û8å¹êÎÕ0
+Z	java:S106("9Replace this use of System.out or System.err by a logger.(†ùãÿÿÿÿÿ8æ¹êÎÕ0
+Z	java:S106."9Replace this use of System.out or System.err by a logger.(¨Ê€‘ÿÿÿÿÿ8ç¹êÎÕ0
+U	java:S106:"9Replace this use of System.out or System.err by a logger.(¦ÛÈ8é¹êÎÕ0
+T	java:S106="9Replace this use of System.out or System.err by a logger.(¢¨’>8é¹êÎÕ0
+T	java:S106D"9Replace this use of System.out or System.err by a logger.(ØŞÂ<8ê¹êÎÕ0
+U	java:S106T"9Replace this use of System.out or System.err by a logger.(Êà‚¡8î¹êÎÕ0
+B
+java:S1128"%Remove this unused import 'java.awt'.(ï´µ©8ˆ¬î´Ò0

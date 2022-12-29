@@ -1,8 +1,6 @@
 
 X
 (src/test/java/etsisi/bs0165/AppTest.java,9\e\9e115dbbd63e4e8364ebdc54cb776b9ada0b95bd
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 f
 6src/main/java/etsisi/bs0165/ColumnaLlenaException.java,a\6\a69f31f8b9210e907520340e9469fb5535728d83
 c
@@ -21,8 +19,6 @@ w
 G.idea/sonarlint/issuestore/0/9/09285816cf6997233b39d48290857a78441c740e,7\6\768ec09a9e7b55d834a5b93299634f0adbf34ff6
 w
 G.idea/sonarlint/issuestore/c/5/c5fb155cb2b13d7381087efb33825b17470dc138,4\7\4743ecfc326c40b613d05cfb8912bf8224c4d7e6
-w
-G.idea/sonarlint/issuestore/a/9/a99075dc0ac8ab8e0134ee9a970b5626293efe76,0\6\06c48441d10aa224ecf536f240c51e763ea54c6c
 w
 G.idea/sonarlint/issuestore/f/a/faa7c53d26a96f83eefb8b4ceb2d8ae40920f2cb,b\f\bf7b93be2e4bbb5a683047782aead5727671921f
 c
@@ -43,3 +39,29 @@ w
 G.idea/sonarlint/issuestore/4/7/4743ecfc326c40b613d05cfb8912bf8224c4d7e6,1\c\1c0157bfa8cd9f74870a9c5accb6e2654c1146d7
 w
 G.idea/sonarlint/issuestore/0/6/06c48441d10aa224ecf536f240c51e763ea54c6c,7\1\710478834ac3259223faf8f3a0a4364fcabefb8f
+X
+(src/main/java/etsisi/bs0165/Jugador.java,c\c\cc8c0fad3c98b37726312299c22dd346c53e2c66
+b
+2src/main/java/etsisi/bs0165/ModoEntrenamiento.java,3\b\3b633380802da2ea633076c5a0d2eb0171b4041a
+X
+(src/main/java/etsisi/bs0165/Tablero.java,3\2\32197acb877655f05de35f7a0252c1de96968f4e
+Y
+)src/main/java/etsisi/bs0165/ModoDemo.java,0\f\0fabe53a6d99fa3f1aeed8b795d80d88747233a6
+Z
+*src/main/java/etsisi/bs0165/JugadorIA.java,8\f\8f745b94fd6ec93e4941228de092db9a3ac1b9e3
+\
+,src/main/java/etsisi/bs0165/Coordenadas.java,a\9\a99075dc0ac8ab8e0134ee9a970b5626293efe76
+]
+-src/main/java/etsisi/bs0165/Validaciones.java,6\5\653693cec0a5824134e4492b1619a04e39d598c0
+w
+G.idea/sonarlint/issuestore/1/c/1c0157bfa8cd9f74870a9c5accb6e2654c1146d7,7\1\71c69623663bd590f83fd5ed032ad3a9a596bf2d
+w
+G.idea/sonarlint/issuestore/9/a/9a505a6dbf0a6709e019aa82df2315195c87f5a3,8\e\8e132af7fe7457ce0ed2f4df59ba897886f6f423
+w
+G.idea/sonarlint/issuestore/7/1/710478834ac3259223faf8f3a0a4364fcabefb8f,f\2\f2be1497491e7e76c0e3efb82d8fc6dbc9f719f8
+w
+G.idea/sonarlint/issuestore/8/0/803763af04a49b339485e1bd1c03bbcb448fe660,5\d\5d1b26a665dc8f095b2872f4a7e94da88325a0f0
+Y
+)src/main/java/etsisi/bs0165/Conecta4.java,4\8\4837f0694dc418c869bef4275a11987a8034017a
+Z
+*src/main/java/etsisi/bs0165/ModoJuego.java,6\a\6a6233e2c1caaeb65139ba7bc96d507d848eb6e0

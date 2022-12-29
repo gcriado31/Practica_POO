@@ -1,0 +1,13 @@
+
+m	java:S127N"XRefactor the code in order to not assign to this loop counter from within the loop body.(ˆÔ´¯
+
+java:S1845"‚Rename field "ganador" to prevent any misunderstanding/clash with field "GANADOR" defined in superclass "etsisi.bs0165.ModoJuego".(ÏõŞ„úÿÿÿÿ
+m
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(¥îâÂûÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(‡ßü¢ıÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ı™øøÿÿÿÿ
+S	java:S106<"9Replace this use of System.out or System.err by a logger.(šÏàôúÿÿÿÿ
+N	java:S106>"9Replace this use of System.out or System.err by a logger.(…£Ä
+S	java:S106A"9Replace this use of System.out or System.err by a logger.(€à­ˆøÿÿÿÿ
+S	java:S106C"9Replace this use of System.out or System.err by a logger.(¾äŠùÿÿÿÿ
+M	java:S106L"9Replace this use of System.out or System.err by a logger.(®‚ñu

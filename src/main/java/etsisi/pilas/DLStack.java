@@ -2,10 +2,31 @@ package etsisi.pilas;
 
 public class DLStack <E> implements Stack<E> {
 
+    // ATRIBUTOS
+    private int size;
+    private DLNode <E> top;
+    private DLNode <E> tail;
 
+    //CONSTRUCTOR
+    public DLStack (){
+        this.top=new DLNode<E>();
+        this.tail=new DLNode<E>();
+        this.top.setNext(tail);
+        this.tail.setPrev(top);
+        this.size=0;
+    }
 
+    // GETTERS
 
-   //METODOS DE LA INTERFAZ
+    public DLNode<E> getTop() {
+        return top;
+    }
+
+    public DLNode<E> getTail() {
+        return tail;
+    }
+
+    //METODOS DE LA INTERFAZ
     /**
      * Comprueba que la pila esté vacía.
      *
@@ -13,7 +34,7 @@ public class DLStack <E> implements Stack<E> {
      */
     @Override
     public boolean isEmpty() {
-        return false;
+        return this.size==0;
     }
 
     /**
@@ -23,7 +44,7 @@ public class DLStack <E> implements Stack<E> {
      */
     @Override
     public int size() {
-        return 0;
+        return this.size;
     }
 
     /**
@@ -34,7 +55,11 @@ public class DLStack <E> implements Stack<E> {
      */
     @Override
     public E top() throws StackEmptyException {
-        return null;
+        if(this.size==0){
+            throw new StackEmptyException();
+        }else{
+            return this.top.getInfo();
+        }
     }
 
     /**
@@ -44,7 +69,17 @@ public class DLStack <E> implements Stack<E> {
      */
     @Override
     public void push(E info) {
+        DLNode<E> newNode;
+        if(size==0){
+            newNode = new DLNode<E>(info, null, this.tail);
+            this.tail.setPrev(newNode);
+        }else {
+            newNode = new DLNode<E>(info, null, this.top);
+            this.top.setPrev(newNode);
 
+        }
+        this.top = newNode;
+        this.size++;
     }
 
     /**
@@ -55,6 +90,15 @@ public class DLStack <E> implements Stack<E> {
      */
     @Override
     public E pop() throws StackEmptyException {
-        return null;
+        if (size==0){
+            throw new StackEmptyException();
+        }else{
+            DLNode <E> popNode =top; // Al ser una pila cogemos siempre la primera posición.
+            this.top= popNode.getNext(); // Cambiamos el nodo top al siguiente al top (el segundo).
+            this.top.setPrev(null); // Quitamos la referencia al anterior nodo top.
+            popNode.setNext(null);  // Quitamos la referencia al nuevo top del nodo que quitamos.
+            size--;
+            return popNode.getInfo();
+        }
     }
 }

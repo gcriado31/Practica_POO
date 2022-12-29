@@ -1,0 +1,8 @@
+
+s	java:S116"^Rename this field "ERROR_TABLERO_LLENO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÇÄœÛ
+o	java:S116"URename this field "MAX_FICHAS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ô×÷Šùÿÿÿÿ
+7
+java:S1170"!Make this final field static too.(ÇÄœÛ
+<
+java:S1170"!Make this final field static too.(ô×÷Šùÿÿÿÿ
+N	java:S106D"9Replace this use of System.out or System.err by a logger.(¢çˆé
