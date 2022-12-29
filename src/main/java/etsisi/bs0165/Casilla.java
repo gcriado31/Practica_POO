@@ -15,6 +15,11 @@ public class Casilla {
         this.ficha=new Ficha();
     }
 
+    public Casilla(Coordenadas coordenadas){
+        this.coordenadas=coordenadas;
+        this.ficha=new Ficha();
+    }
+
     //SETTERS Y GETTERS
     public Ficha getFicha() {
         return ficha;

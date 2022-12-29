@@ -1,9 +1,10 @@
 package etsisi.bs0165;
+import etsisi.pilas.*;
 
 /**
  * En esta clase se desarrollará en modo de juego Entrenamiento.
  */
-public class ModoEntrenamiento extends ModoJuego{
+public class ModoEntrenamiento extends ModoJuegoIA{
     //ATRIBUTOS
     private Jugador ganador;
 
@@ -11,6 +12,7 @@ public class ModoEntrenamiento extends ModoJuego{
     public ModoEntrenamiento(Tablero tablero) {
         super(tablero);
     }
+
 
     // METODOS IMPLEMENTADOS
     @Override
@@ -82,6 +84,15 @@ public class ModoEntrenamiento extends ModoJuego{
         }
 
         return jugadors;
+    }
+    @Override
+    protected void undo() {
+
+    }
+
+    @Override
+    protected void redo() {
+
     }
 
     public static void main(String[] args) {

@@ -155,6 +155,7 @@ public class Tablero {
         return pos;
     }
 
+
     public static void main(String[] args) {
         Tablero t1= new Tablero(6,7);
         t1.dibujar();

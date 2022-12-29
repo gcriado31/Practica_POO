@@ -5,7 +5,7 @@ import java.awt.*;
 /**
  * En esta clase se desarrollará en modo de juego Enfrentamiento.
  */
-public class ModoDemo extends ModoJuego{
+public class ModoDemo extends ModoJuegoIA{
     // ATRIBUTOS
     private Jugador ganador;
 
@@ -13,6 +13,8 @@ public class ModoDemo extends ModoJuego{
     public ModoDemo (Tablero tablero){
         super(tablero);
     }
+
+
 
     // MÉTODOS
     @Override
@@ -91,5 +93,14 @@ public class ModoDemo extends ModoJuego{
         return jugadors;
     }
 
+    @Override
+    protected void undo() {
+
+    }
+
+    @Override
+    protected void redo() {
+
+    }
 
 }

@@ -21,16 +21,8 @@ w
 G.idea/sonarlint/issuestore/c/5/c5fb155cb2b13d7381087efb33825b17470dc138,4\7\4743ecfc326c40b613d05cfb8912bf8224c4d7e6
 w
 G.idea/sonarlint/issuestore/f/a/faa7c53d26a96f83eefb8b4ceb2d8ae40920f2cb,b\f\bf7b93be2e4bbb5a683047782aead5727671921f
-c
-3src/main/java/etsisi/bs0165/ModoEnfrentamiento.java,7\5\75dd985004d5bf1274e2a9cc770f5b8b06e4c55c
-X
-(src/main/java/etsisi/bs0165/Inicios.java,c\2\c29332833358c2df5711e880ad58a131c6ab45c1
 V
 &src/main/java/etsisi/bs0165/Turno.java,f\5\f5cbbb9165a81270c572a3101f33a8f3664d9da5
-V
-&src/main/java/etsisi/bs0165/Ficha.java,6\d\6dad5c2e1de86caacfe2640f333eb1ee51f1a2e7
-X
-(src/main/java/etsisi/bs0165/Casilla.java,5\0\50ae4bd7a25c154918c2a6769ae0465a08e9b64c
 w
 G.idea/sonarlint/issuestore/7/6/768ec09a9e7b55d834a5b93299634f0adbf34ff6,8\0\803763af04a49b339485e1bd1c03bbcb448fe660
 w
@@ -41,12 +33,6 @@ w
 G.idea/sonarlint/issuestore/0/6/06c48441d10aa224ecf536f240c51e763ea54c6c,7\1\710478834ac3259223faf8f3a0a4364fcabefb8f
 X
 (src/main/java/etsisi/bs0165/Jugador.java,c\c\cc8c0fad3c98b37726312299c22dd346c53e2c66
-b
-2src/main/java/etsisi/bs0165/ModoEntrenamiento.java,3\b\3b633380802da2ea633076c5a0d2eb0171b4041a
-X
-(src/main/java/etsisi/bs0165/Tablero.java,3\2\32197acb877655f05de35f7a0252c1de96968f4e
-Y
-)src/main/java/etsisi/bs0165/ModoDemo.java,0\f\0fabe53a6d99fa3f1aeed8b795d80d88747233a6
 Z
 *src/main/java/etsisi/bs0165/JugadorIA.java,8\f\8f745b94fd6ec93e4941228de092db9a3ac1b9e3
 \
@@ -63,5 +49,3 @@ w
 G.idea/sonarlint/issuestore/8/0/803763af04a49b339485e1bd1c03bbcb448fe660,5\d\5d1b26a665dc8f095b2872f4a7e94da88325a0f0
 Y
 )src/main/java/etsisi/bs0165/Conecta4.java,4\8\4837f0694dc418c869bef4275a11987a8034017a
-Z
-*src/main/java/etsisi/bs0165/ModoJuego.java,6\a\6a6233e2c1caaeb65139ba7bc96d507d848eb6e0
