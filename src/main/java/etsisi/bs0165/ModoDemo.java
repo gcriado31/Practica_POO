@@ -95,12 +95,12 @@ public class ModoDemo extends ModoJuegoIA{
 
     @Override
     protected void undo() {
-
+        // TODO hacer patron undo
     }
 
     @Override
     protected void redo() {
-
+        // TODO hacer patron redo
     }
 
 }

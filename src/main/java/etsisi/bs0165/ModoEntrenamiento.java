@@ -85,14 +85,39 @@ public class ModoEntrenamiento extends ModoJuegoIA{
 
         return jugadors;
     }
-    @Override
-    protected void undo() {
+
+    private void opciones(){
 
     }
 
+    /**
+     * Método que tiene el patrón undo del modo de juego entrenamiento.
+     */
+    @Override
+    protected void undo() {
+        // Deshacemos el movimiento de la IA y el del jugador.
+        try {
+            this.movimientosSacados.push(this.movimientos.pop()); // El de la IA.
+            this.movimientosSacados.push(this.movimientos.pop()); // El del jugador.
+            super.actualizaTablero(this.movimientos.top().getTablero()); // Actualizamos el tablero al tablero anterior al movimiento del jugador
+        } catch (StackEmptyException e) {
+            System.out.println("No se puede retroceder más");
+        }
+    }
+
+    /**
+     * Método que tiene el patrón redo del modo de juego entrenamiento.
+     */
     @Override
     protected void redo() {
-
+        // Rehacemos el movimiento de la IA y el del jugador.
+        try {
+            this.movimientos.push(this.movimientosSacados.pop()); // El del jugador.
+            this.movimientos.push(this.movimientosSacados.pop()); // El de la IA.
+            super.actualizaTablero(this.movimientos.top().getTablero()); // Actualizamos el tablero al tablero.
+        } catch (StackEmptyException e) {
+            System.out.println("No se puede rehacer más movimientos");
+        }
     }
 
     public static void main(String[] args) {

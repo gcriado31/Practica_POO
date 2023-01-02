@@ -1,4 +1,5 @@
 package etsisi.bs0165;
+import etsisi.pilas.*;
 
 /**
  * Esta clase controla los turnos de la partida.
@@ -8,7 +9,7 @@ public class Turno {
     // ATRIBUTOS
     protected int jugadorEnCurso;
     private final int JUGADOR_INICIAL = 0;
-    private Jugador[] jugadores;
+    private Jugador[]jugadores;
 
     // CONSTRUCTORES
     public Turno (Jugador []  jugadores){

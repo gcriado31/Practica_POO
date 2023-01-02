@@ -1,36 +1,41 @@
 package etsisi.pilas;
 
 /**
- *
+ * Esta pila es una pila circular doblemente enlazada es decir el primer nodo está conectado al último
  * @param <E> Será el tipo de información que queramos guardar.
  */
-public class DLStack <E> implements Stack<E> {
+public class DLCircularStack <E> implements Stack<E> {
 
     // ATRIBUTOS
     private int size;
     private DLNode <E> top;
     private DLNode <E> tail;
 
-    //CONSTRUCTOR
-    public DLStack (){
+    // CONSTRUCTOR
+    public DLCircularStack (){
         this.top=new DLNode<E>();
         this.tail=new DLNode<E>();
         this.top.setNext(tail);
+        this.top.setPrev(tail); //PARA QUE ASÍ DESDE EL INICIO SEA CIRCULAR.
         this.tail.setPrev(top);
+        this.tail.setNext(top);
         this.size=0;
     }
 
-    // GETTERS
+    // SETTERS Y GETTERS
+
+    public int getSize() {
+        return this.size;
+    }
 
     public DLNode<E> getTop() {
-        return top;
+        return this.top;
     }
 
     public DLNode<E> getTail() {
-        return tail;
+        return this.tail;
     }
-
-    //METODOS DE LA INTERFAZ
+    // MÉTODOS DE LA INTERFAZ.
     /**
      * Comprueba que la pila esté vacía.
      *
@@ -67,22 +72,23 @@ public class DLStack <E> implements Stack<E> {
     }
 
     /**
-     * Mete la información en un nodo y lo conecta al primer nodo
+     * Mete la información en un nodo y lo conecta (siendo el primero) de manera que siga siendo circular la pila, es decir conectado atrás con el último.
      *
      * @param info La información que queremos meter.
      */
     @Override
     public void push(E info) {
         DLNode<E> newNode;
-        if(size==0){
-            newNode = new DLNode<E>(info, null, this.tail);
+        if(this.size==0){
+            newNode=new DLNode<>(info,tail,tail);
             this.tail.setPrev(newNode);
-        }else {
-            newNode = new DLNode<E>(info, null, this.top);
+            this.tail.setNext(newNode);
+        }else{
+            newNode=new DLNode<>(info,tail,top);
+            this.tail.setNext(newNode);
             this.top.setPrev(newNode);
-
         }
-        this.top = newNode;
+        this.top=newNode;
         this.size++;
     }
 
@@ -94,15 +100,19 @@ public class DLStack <E> implements Stack<E> {
      */
     @Override
     public E pop() throws StackEmptyException {
-        if (size==0){
-            throw new StackEmptyException();
+        if(this.size==0){
+           throw new StackEmptyException();
         }else{
-            DLNode <E> popNode =top; // Al ser una pila cogemos siempre la primera posición.
-            this.top= popNode.getNext(); // Cambiamos el nodo top al siguiente al top (el segundo).
-            this.top.setPrev(null); // Quitamos la referencia al anterior nodo top.
-            popNode.setNext(null);  // Quitamos la referencia al nuevo top del nodo que quitamos.
-            size--;
-            return popNode.getInfo();
+          DLNode<E> popNode=this.top;
+          this.top=popNode.getNext();
+          // Desconesctamos el nodo de tail y de top para que no tenga ninguna relación con ellos.
+          this.top.setPrev(tail);
+          this.tail.setNext(tail);
+          popNode.setNext(null);
+          popNode.setPrev(null);
+          // Decrementamos el tamaño.
+          size--;
+          return popNode.getInfo();
         }
     }
 }

@@ -1,7 +1,7 @@
 package etsisi.pilas;
 
 /**
- * La interfaz de diseño de nuestra pila.
+ * La interfaz de diseño de nuestras pilas.
  * @param <E> Será el tipo de información que queramos guardar.
  */
 public interface Stack<E> {
