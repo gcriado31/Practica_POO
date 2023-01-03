@@ -20,7 +20,7 @@ public interface Stack<E> {
     /**
      * Mira el primer nodo y devuelve su información.
      * @return Devuelve la información del primer nodo.
-     * @throws StackEmptyException Si la cola está vacía salta la excepción.
+     * @throws StackEmptyException Si la pila está vacía salta la excepción.
      */
     E top() throws StackEmptyException;
 
@@ -33,7 +33,7 @@ public interface Stack<E> {
     /**
      * Saca el primer nodo de la pila y reconecta.
      * @return Devuelve la información almacenada.
-     * @throws StackEmptyException Si la cola está vacía salta la excepción.
+     * @throws StackEmptyException Si la pila está vacía salta la excepción.
      */
     E pop() throws StackEmptyException;
 }

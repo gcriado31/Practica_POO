@@ -24,8 +24,18 @@ public class DLNode <E>{
        this(info,null,null);
     }
     //SETTERS Y GETTERS
-    public E getInfo() {
-        return info;
+
+    /**
+     * Nos devuelve la información.
+     * @return La información almacenada en el nodo
+     * @throws NullInfoException Si la información es null saltará esta excepción.
+     */
+    public E getInfo() throws NullInfoException {
+        if(this.info==null){
+            throw new NullInfoException();
+        }else {
+            return this.info;
+        }
     }
 
     public void setInfo(E info) {

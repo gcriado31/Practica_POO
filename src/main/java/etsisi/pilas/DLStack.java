@@ -62,7 +62,12 @@ public class DLStack <E> implements Stack<E> {
         if(this.size==0){
             throw new StackEmptyException();
         }else{
-            return this.top.getInfo();
+            try {
+                return this.top.getInfo();
+            }catch (NullInfoException ex){
+                System.out.println(ex.getMessage());
+                return null;
+            }
         }
     }
 
@@ -97,12 +102,22 @@ public class DLStack <E> implements Stack<E> {
         if (size==0){
             throw new StackEmptyException();
         }else{
-            DLNode <E> popNode =top; // Al ser una pila cogemos siempre la primera posición.
+            DLNode <E> popNode =this.top; // Al ser una pila cogemos siempre la primera posición.
             this.top= popNode.getNext(); // Cambiamos el nodo top al siguiente al top (el segundo).
             this.top.setPrev(null); // Quitamos la referencia al anterior nodo top.
             popNode.setNext(null);  // Quitamos la referencia al nuevo top del nodo que quitamos.
-            size--;
-            return popNode.getInfo();
+            this.size--;
+            try {
+                return popNode.getInfo();
+            }catch (NullInfoException ex){
+                System.out.println(ex.getMessage());
+                return null;
+            }
         }
+    }
+
+    // MÉTODOS DE LA CLASE
+    public IteratorDLStack<E> generateIterator(){
+        return new IteratorDLStack<E>(this.top);
     }
 }

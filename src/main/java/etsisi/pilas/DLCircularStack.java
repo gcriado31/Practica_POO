@@ -67,7 +67,12 @@ public class DLCircularStack <E> implements Stack<E> {
         if(this.size==0){
             throw new StackEmptyException();
         }else{
-            return this.top.getInfo();
+            try {
+                return this.top.getInfo();
+            }catch (NullInfoException ex){
+                System.out.println(ex.getMessage());
+                return null;
+            }
         }
     }
 
@@ -112,7 +117,17 @@ public class DLCircularStack <E> implements Stack<E> {
           popNode.setPrev(null);
           // Decrementamos el tamaño.
           size--;
-          return popNode.getInfo();
+          try {
+              return popNode.getInfo();
+          }catch (NullInfoException ex){
+              System.out.println(ex.getMessage());
+              return null;
+          }
         }
+    }
+
+    // MÉTODOS DE LA CLASE
+    public IteratorDLCircularStack<E> generateIterator(){
+        return new IteratorDLCircularStack<E>(this.top);
     }
 }
