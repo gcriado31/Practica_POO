@@ -71,22 +71,25 @@ public class ModoEntrenamiento extends ModoJuegoIA{
 
     }
     @Override
-    protected Jugador[] menuJugadores(Tablero tablero) {
-        Jugador[] jugadors= new Jugador[super.NUMERO_JUGADORES];
-        for (int i = 0; i < jugadors.length; i++) {
+    protected DLCircularStack<Jugador> menuJugadores(Tablero tablero) {
+        DLCircularStack<Jugador> jugadors= new DLCircularStack<Jugador>();
+        for (int i = 0; i < super.NUMERO_JUGADORES; i++) {
             int pos=i+1;
             System.out.println("---JUGADOR "+pos+"---");
-            jugadors[i]=new Jugador(super.infoJugador(),super.fichaAzul,tablero);
+            jugadors.push(new Jugador(super.infoJugador(),super.fichaAzul,tablero));
             i++; // Aquí sumamos uno para poder altenar en un ciclo del bucle.
-            if(i<jugadors.length) {
-                jugadors[i] = new JugadorIA(super.fichaRoja, tablero);
+            if(i<super.NUMERO_JUGADORES) {
+                jugadors.push(new JugadorIA(super.fichaRoja, tablero));
             }
         }
 
         return jugadors;
     }
 
-    private void opciones(){
+    /**
+     *
+     */
+    protected void opciones(){
 
     }
 

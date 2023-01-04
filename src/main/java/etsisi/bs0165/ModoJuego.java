@@ -1,5 +1,7 @@
 package etsisi.bs0165;
 
+import etsisi.pilas.*;
+
 import java.awt.*;
 import java.util.Scanner;
 
@@ -15,7 +17,8 @@ public abstract class ModoJuego {
 
     // ATRIBUTOS
     protected Turno turno;
-    protected Jugador [] jugadores;
+    protected DLCircularStack<Jugador> jugadores;
+    private IteratorDLCircularStack<Jugador> iteradorJugadores;
     protected Validaciones reglas;
     protected Tablero tablero;
 
@@ -36,6 +39,7 @@ public abstract class ModoJuego {
         this.tablero = tablero;
         this.reglas=new Validaciones(tablero);
         this.jugadores=this.menuJugadores(this.tablero);
+        this.iteradorJugadores=new IteratorDLCircularStack<>(this.jugadores);
         this.turno=new Turno(this.jugadores);
     }
 
@@ -56,7 +60,7 @@ public abstract class ModoJuego {
      * @param tablero Se pasa un Tablero para que los jugadores ya tengan el tablero cuando se crean
      * @return Se devuelve el array de jugadores con toda la información.
      */
-    protected abstract Jugador[] menuJugadores(Tablero tablero);
+    protected abstract DLCircularStack<Jugador> menuJugadores(Tablero tablero);
 
     // MÉTODOS DE LA CLASE
     /**
@@ -103,8 +107,13 @@ public abstract class ModoJuego {
      */
     protected void actualizaTablero(Tablero tablero) {
         for(int i=INICIO_BUCLE;i<NUMERO_JUGADORES;i++) {
-            this.jugadores[i].setTablero(tablero);
+            try {
+                this.iteradorJugadores.getInfo().setTablero(tablero);
+            } catch (StackEmptyException e) {
+                System.out.println(e.getMessage());
+            }
         }
+        this.iteradorJugadores.backToFrist();
         this.tablero=tablero;
     }
 

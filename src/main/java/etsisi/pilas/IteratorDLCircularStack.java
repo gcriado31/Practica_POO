@@ -51,6 +51,18 @@ public class IteratorDLCircularStack<E> implements Iterator<E>{
 
     }
 
+    /**
+     * Este método lo utilizaremos para volver al principio después de un bucle.
+     * Solo se podrá utilizar tenemos una pila almacenada.
+     */
+    @Override
+    public void backToFrist() {
+        if(this.stack!=null){
+            this.actualNode=this.stack.getTop();
+        }
+    }
+
+
     // MÉTODOS DE LA CLASE
     /**
      * Este método nos sirve para pasar del nodo actual al siguiente y manejar en caso de que se salga fuera de la pila.

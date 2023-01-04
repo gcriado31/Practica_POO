@@ -9,12 +9,14 @@ public class Turno {
     // ATRIBUTOS
     protected int jugadorEnCurso;
     private final int JUGADOR_INICIAL = 0;
-    private Jugador[]jugadores;
+    private DLCircularStack<Jugador> jugadores;
+    private IteratorDLCircularStack<Jugador> iteradorJugadores;
 
     // CONSTRUCTORES
-    public Turno (Jugador []  jugadores){
+    public Turno (DLCircularStack<Jugador>  jugadores){
         this.jugadores=jugadores;
         this.jugadorEnCurso=JUGADOR_INICIAL;
+        this.iteradorJugadores=new IteratorDLCircularStack<>(jugadores);
     }
 
     // MÉTODOS
@@ -25,7 +27,7 @@ public class Turno {
      */
     private int calculaSiguienteJugador(){
         jugadorEnCurso++;
-        if(jugadorEnCurso>=jugadores.length){   // COMPROBAMOS QUE jugadorEnCurso LLEGA AL FINAL PARA VOLVER AL JUGADOR INICIAL Y ESTABLECER UNA NUEVA RONDA
+        if(jugadorEnCurso>=jugadores.size()){   // COMPROBAMOS QUE jugadorEnCurso LLEGA AL FINAL PARA VOLVER AL JUGADOR INICIAL Y ESTABLECER UNA NUEVA RONDA
              return JUGADOR_INICIAL;
         }else{
             return jugadorEnCurso;
@@ -36,19 +38,32 @@ public class Turno {
      * Cambia el turno de los jugadores.
      */
     public void cambiaTurno(){
-        jugadorEnCurso=calculaSiguienteJugador();
+        try {
+            this.iteradorJugadores.next();
+            this.jugadorEnCurso=calculaSiguienteJugador();
+        }catch (StackEmptyException ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     public String nombreJugadorConTurno(){
-        return jugadores[jugadorEnCurso].getNombre();
+        try {
+            return this.iteradorJugadores.getInfo().getNombre();
+        } catch (StackEmptyException e) {
+            System.out.println(e.getMessage());
+            return "NO NAME";
+        }
     }
 
-    public char fichaJugadorConTurno(){
-        return jugadores[jugadorEnCurso].getFicha().getContenido();
-    }
+
 
     public Jugador tieneTurno(){
-        return jugadores[jugadorEnCurso];
+        try {
+            return iteradorJugadores.getInfo();
+        } catch (StackEmptyException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
 }

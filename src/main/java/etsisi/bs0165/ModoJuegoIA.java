@@ -42,4 +42,14 @@ public abstract class ModoJuegoIA extends ModoJuego{
         return input.next().charAt(0);
     }
 
+    protected void opciones(){
+        switch (eleccionMovimiento()){
+            case'1':
+            case '2':
+                undo();
+            case'3':
+                redo();
+        }
+    }
+
 }

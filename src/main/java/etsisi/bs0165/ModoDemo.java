@@ -1,7 +1,7 @@
 package etsisi.bs0165;
 
 import java.awt.*;
-
+import etsisi.pilas.*;
 /**
  * En esta clase se desarrollará en modo de juego Enfrentamiento.
  */
@@ -80,13 +80,13 @@ public class ModoDemo extends ModoJuegoIA{
     }
 
     @Override
-    protected Jugador[] menuJugadores(Tablero tablero) {
-        Jugador[] jugadors= new Jugador[super.NUMERO_JUGADORES];
-        for (int i = 0; i < jugadors.length; i++) {
-            jugadors[i]=new JugadorIA(super.fichaAzul,tablero);
+    protected DLCircularStack<Jugador> menuJugadores(Tablero tablero) {
+        DLCircularStack<Jugador> jugadors= new DLCircularStack<Jugador>();
+        for (int i = 0; i < super.NUMERO_JUGADORES; i++) {
+            jugadors.push(new JugadorIA(super.fichaAzul,tablero));
             i++;
-            if(i<jugadors.length) {
-                jugadors[i] = new JugadorIA(super.fichaRoja, tablero);
+            if(i<super.NUMERO_JUGADORES) {
+                jugadors.push(new JugadorIA(super.fichaRoja, tablero));
             }
         }
 

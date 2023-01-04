@@ -1,5 +1,7 @@
 package etsisi.bs0165;
 
+import etsisi.pilas.DLCircularStack;
+
 /**
  * En esta clase se desarrollará en modo de juego Demo.
  */
@@ -68,16 +70,16 @@ public class ModoEnfrentamiento extends ModoJuego{
     }
 
     @Override
-    protected Jugador[] menuJugadores(Tablero tablero) {
-        Jugador[] jugadors = new Jugador[super.NUMERO_JUGADORES];
+    protected DLCircularStack<Jugador> menuJugadores(Tablero tablero) {
+        DLCircularStack<Jugador> jugadors = new DLCircularStack<>();
         for (int i = this.INICIO_BUCLE; i <super.NUMERO_JUGADORES; i++) {
             int pos=i+1;
             System.out.println("---JUGADOR "+pos+"---");
             if(i==0){
-                jugadors[i]=new Jugador(super.infoJugador(),super.fichaAzul,tablero);
+                jugadors.push(new Jugador(super.infoJugador(),super.fichaAzul,tablero));
                 System.out.println("Se le ha asignado la ficha azul");
             }else{
-                jugadors[i]=new Jugador(super.infoJugador(),super.fichaRoja,tablero);
+                jugadors.push(new Jugador(super.infoJugador(),super.fichaRoja,tablero));
                 System.out.println("Se le ha asignado la ficha roja");
             }
         }

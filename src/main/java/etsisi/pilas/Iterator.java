@@ -18,7 +18,11 @@ public interface Iterator<E> {
      */
     void next() throws StackEmptyException;
 
-
+    /**
+     * Este método lo utilizaremos para volver al principio después de un bucle.
+     * Solo se podrá utilizar tenemos una pila almacenada.
+     */
+    void backToFrist();
 
 
 
