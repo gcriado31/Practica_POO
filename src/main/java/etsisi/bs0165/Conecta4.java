@@ -7,7 +7,7 @@ import java.util.Scanner;
 /**
  * Esta clase se encarga del juego
  * @author Guillermo Criado
- * @version 3.0
+ * @version 4.2
  */
 public class Conecta4 {
     // ATRIBUTOS

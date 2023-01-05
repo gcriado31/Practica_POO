@@ -9,7 +9,7 @@ public class IteratorDLStack <E> implements Iterator<E>{
     // CONSTRUCTORES
     public IteratorDLStack(DLStack<E> pila){
         this.stack=pila;
-        this.actualNode=this.stack.getTop();
+        this.actualNode=this.stack.getTop().getNext(); //Para situarnos en el primer nodo con información
     }
 
     public IteratorDLStack(DLNode<E> top){
@@ -55,7 +55,7 @@ public class IteratorDLStack <E> implements Iterator<E>{
     @Override
     public void backToFrist() {
         if(this.stack!=null){
-            this.actualNode=this.stack.getTop();
+            this.actualNode=this.stack.getTop().getNext(); //Para situarnos en el primer nodo con información
         }
     }
 
@@ -67,7 +67,7 @@ public class IteratorDLStack <E> implements Iterator<E>{
      */
     public void setStack(DLStack<E> stack) {
         this.stack=stack;
-        this.actualNode=this.stack.getTop();
+        this.actualNode=this.stack.getTop().getNext(); //Para situarnos en el primer nodo con información
     }
 
     /**
@@ -75,7 +75,9 @@ public class IteratorDLStack <E> implements Iterator<E>{
      * @throws IteratorOutOfStackException Si estamos en el último nodo y queremos pasar al siguiente saldrá esta excepción.
      */
     private void isInStack() throws IteratorOutOfStackException {
-        if (this.actualNode.getNext()==null){
+        try {
+           this.actualNode.getNext().getInfo();
+        } catch (NullInfoException e) {
             throw new IteratorOutOfStackException();
         }
     }

@@ -36,4 +36,9 @@ public interface Stack<E> {
      * @throws StackEmptyException Si la pila está vacía salta la excepción.
      */
     E pop() throws StackEmptyException;
+
+    /**
+     * Vacía la pila.
+     */
+    void vacuum()throws StackEmptyException;
 }

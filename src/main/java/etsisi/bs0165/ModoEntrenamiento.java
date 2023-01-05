@@ -20,31 +20,13 @@ public class ModoEntrenamiento extends ModoJuegoIA{
         boolean finJuego=false;
         boolean finModo;
         do{
+            super.dibujar();
             while(!finJuego) {
-                super.dibujar();
-                System.out.println("Turno de: " + super.turno.nombreJugadorConTurno());
-                Coordenadas posicion = null;
-                try {
-                    posicion = super.turno.tieneTurno().poner();
-                } catch (SinFichasException ex) {
-                    System.out.println(ex.getMessage());
-                    finJuego = true;
-                }finally {
-                    if (posicion!=null) {
-                        super.reglas.setTablero(tablero);
-                        if (super.hayGanador(posicion)) {
-                            finJuego = true;
-                            this.ganador = super.turno.tieneTurno();
-                            this.resultados();
-                        } else if (super.tablero.tableroLleno()) {
-                            finJuego = true;
-                            this.ganador = null;
-                            this.resultados();
-                        } else {
-                            super.actualizaTablero(super.turno.tieneTurno().getTablero());
-                            super.cambiaTurno();
-                        }
-                    }
+                System.out.println("Turno de: " +super.turno.nombreJugadorConTurno());
+                if(super.turno.tieneTurno().getClass().equals(JugadorIA.class)){ //Si el jugador es una IA pondrá la ficha directamente.
+                    finJuego=super.ponerFicha();
+                }else { // Si el jugador es humano se le preguntará qué quiere hacer.
+                    finJuego = super.opciones();
                 }
             }
             finModo=super.fin();
@@ -86,12 +68,7 @@ public class ModoEntrenamiento extends ModoJuegoIA{
         return jugadors;
     }
 
-    /**
-     *
-     */
-    protected void opciones(){
 
-    }
 
     /**
      * Método que tiene el patrón undo del modo de juego entrenamiento.
@@ -100,9 +77,13 @@ public class ModoEntrenamiento extends ModoJuegoIA{
     protected void undo() {
         // Deshacemos el movimiento de la IA y el del jugador.
         try {
-            this.movimientosSacados.push(this.movimientos.pop()); // El de la IA.
-            this.movimientosSacados.push(this.movimientos.pop()); // El del jugador.
-            super.actualizaTablero(this.movimientos.top().getTablero()); // Actualizamos el tablero al tablero anterior al movimiento del jugador
+            this.dibujarTableros();
+            super.movimientosSacados.push(super.movimientos.pop()); // El del jugador.
+            super.movimientosSacados.push(super.movimientos.pop()); // El de la IA.
+            System.out.println("Se ha retrocedido un movimiento\n\tQuedan :"+super.movimientos.size()+" movimientos");
+            Tablero tablero=super.movimientos.top();
+            tablero.dibujar();
+            super.actualizaTablero(tablero); // Actualizamos el tablero al tablero anterior al movimiento del jugador
         } catch (StackEmptyException e) {
             System.out.println("No se puede retroceder más");
         }
@@ -115,11 +96,26 @@ public class ModoEntrenamiento extends ModoJuegoIA{
     protected void redo() {
         // Rehacemos el movimiento de la IA y el del jugador.
         try {
-            this.movimientos.push(this.movimientosSacados.pop()); // El del jugador.
-            this.movimientos.push(this.movimientosSacados.pop()); // El de la IA.
-            super.actualizaTablero(this.movimientos.top().getTablero()); // Actualizamos el tablero al tablero.
+            super.movimientos.push(super.movimientosSacados.pop()); // El del jugador.
+            super.movimientos.push(super.movimientosSacados.pop()); // El de la IA.
+            System.out.println("Se ha avanzado un movimiento.\n\tQuedan :"+super.movimientosSacados.size()+" movimientos por rehacer");
+            Tablero tablero=super.movimientos.top();
+            tablero.dibujar();
+            super.actualizaTablero(super.movimientos.top()); // Actualizamos el tablero al tablero.
         } catch (StackEmptyException e) {
-            System.out.println("No se puede rehacer más movimientos");
+            System.out.println("No se pueden rehacer más movimientos");
+        }
+    }
+
+    public void dibujarTableros(){
+        IteratorDLStack<Tablero> it=new IteratorDLStack<Tablero>(super.movimientos);
+        for (int i = 0; i < super.movimientos.size(); i++) {
+            try {
+                System.out.println("Tablero numero"+(i+1));
+                it.getInfo().dibujar();
+            } catch (NullInfoException e) {
+                System.out.println("No hay tablero");
+            }
         }
     }
 

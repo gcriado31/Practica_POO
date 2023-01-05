@@ -58,7 +58,7 @@ public class IteratorDLCircularStack<E> implements Iterator<E>{
     @Override
     public void backToFrist() {
         if(this.stack!=null){
-            this.actualNode=this.stack.getTop();
+            this.actualNode=this.stack.getTop().getNext();
         }
     }
 
@@ -78,7 +78,7 @@ public class IteratorDLCircularStack<E> implements Iterator<E>{
      */
     public void setStack(DLCircularStack<E> stack) {
         this.stack=stack;
-        this.actualNode=this.stack.getTop();
+        this.actualNode=this.stack.getTop().getNext();
     }
 
 }

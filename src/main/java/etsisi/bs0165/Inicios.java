@@ -30,6 +30,22 @@ public class Inicios {
         return devuelto;
     }
 
+    public static Tablero copiaTablero(Tablero tablero){
+        Tablero devuelto = new Tablero(tablero.getNumFilas(), tablero.getNumColumnas());
+        devuelto.setCasillas(copiaCasillas(tablero.getCasillas()));
+        return devuelto;
+    }
+
+    private static Casilla[][] copiaCasillas(Casilla[][]casillas){
+        Casilla[][] devuelto= new Casilla[casillas.length][casillas[0].length];
+        for (int i = 0; i < devuelto.length; i++) {
+            for (int j = 0; j < devuelto[i].length; j++) {
+                devuelto[i][j]=casillas[i][j];
+            }
+        }
+        return devuelto;
+    }
+
     public static void main(String[] args) {
         ArrayList<Integer> prueba= inicializarArrayList(20);
         int columna=0;

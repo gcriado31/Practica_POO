@@ -44,7 +44,7 @@ public class DLStackTest{
     void testPush3() throws StackEmptyException {
         DLStack<Integer> pila= new DLStack<Integer>();
         pila.push(new Integer(5));
-        assertSame(pila.getTail(),pila.getTop().getNext());
+        assertSame(pila.getTail(),pila.getTop().getNext().getNext());
     }
 
 
@@ -68,8 +68,38 @@ public class DLStackTest{
         pila.push(new Integer(5));
         pila.push(new Integer(8));
         pila.push(new Integer(9));
-        pila.pop();
-        assertNull(pila.getTop().getPrev());
+        Integer prueba=pila.pop();
+        try {
+            assertNotEquals(pila.getTop().getNext().getInfo(),prueba);
+        } catch (NullInfoException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Test para el metodo vacuum.
+     */
+    @Test
+    void testVacuum(){
+        DLStack<Integer> pila= new DLStack<>();
+        pila.push(new Integer(5));
+        pila.push(new Integer(8));
+        pila.vacuum();
+        assertEquals(pila.getTail(),pila.getTop().getNext());
+
+    }
+
+    /**
+     * Test para el metodo vacuum.
+     */
+    @Test
+    void testVacuum2(){
+        DLStack<Integer> pila= new DLStack<>();
+        pila.push(new Integer(5));
+        pila.push(new Integer(8));
+        pila.vacuum();
+        assertEquals(pila.getTop(),pila.getTail().getPrev());
+
     }
 
 }

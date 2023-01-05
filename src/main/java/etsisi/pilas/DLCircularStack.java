@@ -17,7 +17,7 @@ public class DLCircularStack <E> implements Stack<E> {
         this.tail=new DLNode<E>();
         this.top.setNext(tail);
         this.top.setPrev(tail); //PARA QUE ASÍ DESDE EL INICIO SEA CIRCULAR.
-        this.tail.setPrev(top);
+        this.tail.setPrev(top); //PARA QUE ASÍ DESDE EL INICIO SEA CIRCULAR.
         this.tail.setNext(top);
         this.size=0;
     }
@@ -123,6 +123,27 @@ public class DLCircularStack <E> implements Stack<E> {
               System.out.println(ex.getMessage());
               return null;
           }
+        }
+    }
+
+    @Override
+    public void vacuum() throws StackEmptyException {
+        if(!this.isEmpty()) {
+            if(this.size>1) {
+                this.top.getNext().setPrev(null);  // Quitamos la referencia del segundo nodo al top.
+                this.tail.getPrev().setNext(null); // Quitamos la referencia del penúltimo nodo al tail.
+            }
+            // Quitamos la información que haya en top.
+            this.top.setInfo(null);
+            // Volvemos a conectar top con tail para que siga siendo circular.
+            this.top.setNext(tail);
+            this.top.setPrev(tail); // Este no sería necesario, pero por seguridad lo ponemos
+            // Volvemos a conectar tail con top para que siga siendo circular.
+            this.tail.setNext(top); // Este no sería necesario, pero por seguridad lo ponemos
+            this.tail.setPrev(top);
+
+        }else{
+            throw new StackEmptyException();
         }
     }
 

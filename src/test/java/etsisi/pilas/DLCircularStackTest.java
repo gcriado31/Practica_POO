@@ -51,4 +51,36 @@ public class DLCircularStackTest {
         pila.push(new Integer(5));
         assertEquals(1,pila.size());
     }
+
+    /**
+     * Test para el metodo vacuum.
+     */
+    @Test
+    void testVacuum(){
+        DLCircularStack<Integer> pila= new DLCircularStack<>();
+        pila.push(new Integer(5));
+        pila.push(new Integer(8));
+        try {
+            pila.vacuum();
+            assertEquals(pila.getTail(),pila.getTop().getPrev());
+        }catch (StackEmptyException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Test para el metodo vacuum.
+     */
+    @Test
+    void testVacuum2(){
+        DLCircularStack<Integer> pila= new DLCircularStack<>();
+        pila.push(new Integer(5));
+        pila.push(new Integer(8));
+        try {
+            pila.vacuum();
+            assertEquals(pila.getTop(),pila.getTail().getNext());
+        }catch (StackEmptyException e){
+            System.out.println(e.getMessage());
+        }
+    }
 }

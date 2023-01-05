@@ -63,7 +63,7 @@ public class DLStack <E> implements Stack<E> {
             throw new StackEmptyException();
         }else{
             try {
-                return this.top.getInfo();
+                return this.top.getNext().getInfo();
             }catch (NullInfoException ex){
                 System.out.println(ex.getMessage());
                 return null;
@@ -78,17 +78,13 @@ public class DLStack <E> implements Stack<E> {
      */
     @Override
     public void push(E info) {
-        DLNode<E> newNode;
-        if(size==0){
-            newNode = new DLNode<E>(info, null, this.tail);
-            this.tail.setPrev(newNode);
-        }else {
-            newNode = new DLNode<E>(info, null, this.top);
-            this.top.setPrev(newNode);
-
-        }
-        this.top = newNode;
-        this.size++;
+        // Creamos un nodo con conexiones a top y al siguiente a top.
+        DLNode<E> newNode=new DLNode<>(info,top,top.getNext());
+        // Conectamos el segundo nodo al nuevo
+        top.getNext().setPrev(newNode);
+        // Conectamos top al nuevo nodo
+        top.setNext(newNode);
+        size++;
     }
 
     /**
@@ -102,16 +98,43 @@ public class DLStack <E> implements Stack<E> {
         if (size==0){
             throw new StackEmptyException();
         }else{
-            DLNode <E> popNode =this.top; // Al ser una pila cogemos siempre la primera posición.
-            this.top= popNode.getNext(); // Cambiamos el nodo top al siguiente al top (el segundo).
-            this.top.setPrev(null); // Quitamos la referencia al anterior nodo top.
-            popNode.setNext(null);  // Quitamos la referencia al nuevo top del nodo que quitamos.
+            DLNode <E> popNode =this.top.getNext(); // Al ser una pila cogemos siempre la primera posición.
+            // El segundo nodo pasa a conectarse con top
+            popNode.getNext().setPrev(top);
+            top.setNext(popNode.getNext());
+            // Quitamos las conexiones del nodo que vamos a expulsar
+            popNode.setNext(null);
+            popNode.setPrev(null);
             this.size--;
             try {
                 return popNode.getInfo();
             }catch (NullInfoException ex){
                 System.out.println(ex.getMessage());
                 return null;
+            }
+        }
+    }
+
+    @Override
+    public void vacuum() {
+        if(!this.isEmpty()) {
+            if(this.size>1) {
+                this.top.getNext().setPrev(null);  // Quitamos la referencia del segundo nodo al top.
+                this.tail.getPrev().setNext(null); // Quitamos la referencia del penúltimo nodo al tail.
+            }
+            // Quitamos la información que haya en top.
+            this.top.setInfo(null);
+            // Volvemos a conectar top con tail.
+            this.top.setNext(tail);
+            // Volvemos a conectar tail con top.
+            this.tail.setPrev(top);
+            this.size=0;
+
+        }else{
+            try {
+                throw new StackEmptyException();
+            } catch (StackEmptyException e) {
+                System.out.println(e.getMessage());
             }
         }
     }

@@ -75,17 +75,20 @@ public class Tablero {
         int columna=0;
         int fila=0;
         boolean repetir=false;
+        Coordenadas posicion=new Coordenadas(fila,columna);
         while (!repetir) {
             try {
                 columna=pedirColumna();
                 fila=this.caeFichaFila(columna);
                 casillas[fila][columna].setFicha(ficha);
+                posicion.setFila(fila);
+                posicion.setColumna(columna);
                 repetir=true;
             }catch (ColumnaLlenaException | ColumnaIncorrectaException ex){
                 System.out.println(ex.getMessage());
             }
         }
-        return new Coordenadas(fila,columna);
+        return posicion;
     }
     /**
      * Desliza la ficha por la columna.

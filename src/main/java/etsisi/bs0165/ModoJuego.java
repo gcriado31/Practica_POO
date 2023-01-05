@@ -19,6 +19,7 @@ public abstract class ModoJuego {
     protected Turno turno;
     protected DLCircularStack<Jugador> jugadores;
     private IteratorDLCircularStack<Jugador> iteradorJugadores;
+    protected Jugador ganador;
     protected Validaciones reglas;
     protected Tablero tablero;
 
@@ -29,8 +30,8 @@ public abstract class ModoJuego {
     protected final Ficha fichaRoja= new Ficha('R',Color.RED);
 
     // ATRIBUTOS PRIVADOS
-    private final int NUM_FILAS=6;
-    private final int NUM_COLUMNAS=7;
+    protected final int NUM_FILAS=6;
+    protected final int NUM_COLUMNAS=7;
     private final int INICIO_BUCLE=0;
 
     // CONSTRUCTOR
@@ -87,7 +88,7 @@ public abstract class ModoJuego {
     /**
      * Dibuja el tablero.
      */
-    protected void dibujar(){tablero.dibujar();}
+    protected void dibujar(){this.tablero.dibujar();}
 
     /**
      * Pregunta la información al jugador.
@@ -106,6 +107,7 @@ public abstract class ModoJuego {
      * @param tablero Se pasa el tablero que se quiere actualizar.
      */
     protected void actualizaTablero(Tablero tablero) {
+        this.tablero=tablero;
         for(int i=INICIO_BUCLE;i<NUMERO_JUGADORES;i++) {
             try {
                 this.iteradorJugadores.getInfo().setTablero(tablero);
@@ -114,7 +116,6 @@ public abstract class ModoJuego {
             }
         }
         this.iteradorJugadores.backToFrist();
-        this.tablero=tablero;
     }
 
     /**
@@ -128,6 +129,40 @@ public abstract class ModoJuego {
      */
     protected boolean hayGanador(Coordenadas coordenadas) {
         return reglas.hayGanador(turno.tieneTurno().getFicha(), coordenadas);
+    }
+
+    /**
+     * El jugador pone la ficha y se comprueba si gana o empata y si no, se cambia el turno.
+     * @return Devuelve si la partida termina.
+     */
+    protected boolean ponerFicha(){
+        boolean finJuego=false;
+        this.dibujar();
+        System.out.println("Turno de: " +this.turno.nombreJugadorConTurno());
+        Coordenadas posicion = null ;
+        try {
+            posicion=this.turno.tieneTurno().poner();
+        }catch (SinFichasException ex) {
+            System.out.println(ex.getMessage());
+            finJuego = true;
+        }finally {
+            if (posicion!=null) {
+                this.reglas.setTablero(tablero);
+                if (this.hayGanador(posicion)) {
+                    finJuego = true;
+                    this.ganador = this.turno.tieneTurno();
+                    this.resultados();
+                } else if (this.tablero.tableroLleno()) {
+                    finJuego = true;
+                    this.ganador = null;
+                    this.resultados();
+                } else {
+                    this.actualizaTablero(this.turno.tieneTurno().getTablero());
+                    this.cambiaTurno();
+                }
+            }
+        }
+        return finJuego;
     }
 
 }

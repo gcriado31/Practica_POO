@@ -30,4 +30,10 @@ public class Coordenadas {
     public void setColumna(int columna) {
         this.columna = columna;
     }
+
+    // MÉTODOS DE LA CLASE
+    public void dibujar(){
+        System.out.println("\tX: "+this.fila+
+                           "\n\tY: "+this.columna);
+    }
 }
