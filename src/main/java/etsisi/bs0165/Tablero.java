@@ -1,5 +1,6 @@
 package etsisi.bs0165;
 import java.awt.*;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -86,6 +87,8 @@ public class Tablero {
                 repetir=true;
             }catch (ColumnaLlenaException | ColumnaIncorrectaException ex){
                 System.out.println(ex.getMessage());
+            }catch (InputMismatchException ex){
+                System.out.println("Formato de número incorrecto [0-5]");
             }
         }
         return posicion;

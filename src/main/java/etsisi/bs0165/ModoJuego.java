@@ -69,7 +69,7 @@ public abstract class ModoJuego {
      */
     protected void nuevaPartida(){
         this.tablero=new Tablero(NUM_FILAS,NUM_COLUMNAS);
-        actualizaTablero(tablero);
+        this.actualizaTablero(tablero);
         System.out.println("\n\n----- NUEVA PARTIDA ------\n");
     }
 
@@ -111,6 +111,7 @@ public abstract class ModoJuego {
         for(int i=INICIO_BUCLE;i<NUMERO_JUGADORES;i++) {
             try {
                 this.iteradorJugadores.getInfo().setTablero(tablero);
+                this.iteradorJugadores.next();
             } catch (StackEmptyException e) {
                 System.out.println(e.getMessage());
             }

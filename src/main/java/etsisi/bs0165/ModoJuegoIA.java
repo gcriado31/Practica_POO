@@ -1,7 +1,6 @@
 package etsisi.bs0165;
 
 import etsisi.pilas.DLStack;
-import etsisi.pilas.IteratorDLCircularStack;
 import etsisi.pilas.StackEmptyException;
 
 import java.util.Scanner;
@@ -108,7 +107,9 @@ public abstract class ModoJuegoIA extends ModoJuego{
                     super.actualizaTablero(super.turno.tieneTurno().getTablero());
                     Tablero movimiento=Inicios.copiaTablero(super.tablero);
                     try {
+                        System.out.println("\nTablero de TOP antes de pushear");
                         this.movimientos.top().dibujar();
+                        System.out.println("\n");
                     } catch (StackEmptyException e) {
                         System.out.println("No hay tablero");
                     }
@@ -128,7 +129,7 @@ public abstract class ModoJuegoIA extends ModoJuego{
     }
 
     private void vaciarMovimientosSacados(){
-        if (this.movimientosSacados.isEmpty()){
+        if (!this.movimientosSacados.isEmpty()){
             this.movimientosSacados.vacuum();
         }
     }

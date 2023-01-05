@@ -12,7 +12,7 @@ public class IteratorDLCircularStack<E> implements Iterator<E>{
     }
     public IteratorDLCircularStack(DLCircularStack<E> pila){
         this.stack=pila;
-        this.actualNode=this.stack.getTop();
+        this.actualNode=this.stack.getTop().getNext(); //PARA ESTAR EN EL PRIMER NODO CON INFORMACIÓN
     }
 
     // MÉTODOS DE LA INTERFAZ

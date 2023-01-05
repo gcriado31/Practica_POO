@@ -17,8 +17,8 @@ public class DLCircularStack <E> implements Stack<E> {
         this.tail=new DLNode<E>();
         this.top.setNext(tail);
         this.top.setPrev(tail); //PARA QUE ASÍ DESDE EL INICIO SEA CIRCULAR.
-        this.tail.setPrev(top); //PARA QUE ASÍ DESDE EL INICIO SEA CIRCULAR.
-        this.tail.setNext(top);
+        this.tail.setPrev(top);
+        this.tail.setNext(top);  //PARA QUE ASÍ DESDE EL INICIO SEA CIRCULAR.
         this.size=0;
     }
 
@@ -68,7 +68,7 @@ public class DLCircularStack <E> implements Stack<E> {
             throw new StackEmptyException();
         }else{
             try {
-                return this.top.getInfo();
+                return this.top.getNext().getInfo();
             }catch (NullInfoException ex){
                 System.out.println(ex.getMessage());
                 return null;
@@ -85,15 +85,14 @@ public class DLCircularStack <E> implements Stack<E> {
     public void push(E info) {
         DLNode<E> newNode;
         if(this.size==0){
-            newNode=new DLNode<>(info,tail,tail);
+            newNode=new DLNode<>(info,top,tail);
             this.tail.setPrev(newNode);
-            this.tail.setNext(newNode);
+            this.top.setNext(newNode);
         }else{
-            newNode=new DLNode<>(info,tail,top);
-            this.tail.setNext(newNode);
-            this.top.setPrev(newNode);
+            newNode=new DLNode<>(info,top,top.getNext());
+            this.top.getNext().setPrev(newNode);
+            this.top.setNext(newNode);
         }
-        this.top=newNode;
         this.size++;
     }
 
@@ -108,11 +107,10 @@ public class DLCircularStack <E> implements Stack<E> {
         if(this.size==0){
            throw new StackEmptyException();
         }else{
-          DLNode<E> popNode=this.top;
-          this.top=popNode.getNext();
-          // Desconesctamos el nodo de tail y de top para que no tenga ninguna relación con ellos.
-          this.top.setPrev(tail);
-          this.tail.setNext(tail);
+          DLNode<E> popNode=this.top.getNext();
+          // Desconesctamos el nodo del segundo y de top para que no tenga ninguna relación con ellos
+          this.top.setNext(popNode.getNext());
+          popNode.getNext().setPrev(this.top); // Conectamos el segundo nodo a top.
           popNode.setNext(null);
           popNode.setPrev(null);
           // Decrementamos el tamaño.

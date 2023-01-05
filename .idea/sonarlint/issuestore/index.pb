@@ -9,8 +9,6 @@ w
 G.idea/sonarlint/issuestore/4/1/41fb1e1cb44b614d2c10a438171536fff88eec45,2\b\2b82ba73663314bb253bd169aaa3b097ae1c32b4
 w
 G.idea/sonarlint/issuestore/a/6/a69f31f8b9210e907520340e9469fb5535728d83,7\3\739c352416bc02cc73bb78ccfda1b8b861846a71
-k
-;src/main/java/etsisi/bs0165/ColumnaIncorrectaException.java,c\5\c5fb155cb2b13d7381087efb33825b17470dc138
 w
 G.idea/sonarlint/issuestore/7/3/739c352416bc02cc73bb78ccfda1b8b861846a71,f\a\faa7c53d26a96f83eefb8b4ceb2d8ae40920f2cb
 w
