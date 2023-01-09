@@ -274,7 +274,6 @@ ModoJuego1092129905[
 <HR/>
 <TR><TD ALIGN="LEFT" >#   EMPATE: String [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >#   GANADOR: String [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >-   INICIO_BUCLE: int [1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   INTRODUCIR_NOMBRE: String [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   NUEVA_PARTIDA: String [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >#   NUMERO_JUGADORES: int [1]</TD></TR>
@@ -539,7 +538,7 @@ IteratorDLCircularStack1086939726[
 <HR/>
 <TR><TD ALIGN="LEFT" >+ backToFrist()</TD></TR>
 <TR><TD ALIGN="LEFT" >+ next()</TD></TR>
-<TR><TD ALIGN="LEFT" >- passNode()</TD></TR>
+<TR><TD ALIGN="LEFT" ># passNode()</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -569,6 +568,7 @@ Stack1086939726[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
 <TR><TD ALIGN="LEFT" >(I)Stack&lt;E&gt;</TD></TR>
 <HR/>
+<TR><TD ALIGN="LEFT" >+ generateIterator(): Iterator&lt;E&gt;</TD></TR>
 <TR><TD ALIGN="LEFT" >+ isEmpty(): boolean</TD></TR>
 <TR><TD ALIGN="LEFT" >+ pop(): E</TD></TR>
 <TR><TD ALIGN="LEFT" >+ push(info: E)</TD></TR>

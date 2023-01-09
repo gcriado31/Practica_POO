@@ -22,6 +22,11 @@ public class Inicios {
         return devuelto;
     }
 
+    /**
+     * Inicializa un ArrayList.
+     * @param size tamaño del ArrayList a iniciar.
+     * @return ArrayList inicializado.
+     */
     public static ArrayList<Integer> inicializarArrayList(int size){
         ArrayList<Integer> devuelto=new ArrayList<Integer>(size);
         for (int i=0;i<size;i++) {
@@ -31,6 +36,12 @@ public class Inicios {
     }
 
 
+    /**
+     * Inicializa un Tablero.
+     * @param numFilas Nº de filas que tiene que tener.
+     * @param numColumnas Nº de columnas que tiene que tener.
+     * @return Tablero en blanco.
+     */
     public static Tablero nuevoTablero(int numFilas, int numColumnas){
         return new Tablero(numFilas, numColumnas);
     }

@@ -8,8 +8,6 @@ public class Coordenadas {
     private int fila;
     private int columna;
 
-    private final String dibujo="\tX: "+this.fila+
-            "\n\tY: "+this.columna;
 
     // CONSTRUCTOR
     public Coordenadas(int fila, int columna){
@@ -34,8 +32,4 @@ public class Coordenadas {
         this.columna = columna;
     }
 
-    // MÉTODOS DE LA CLASE
-    public void dibujar(){
-        Viewer.printString(this.dibujo);
-    }
 }

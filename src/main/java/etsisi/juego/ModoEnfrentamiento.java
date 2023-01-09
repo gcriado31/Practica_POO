@@ -66,9 +66,7 @@ public class ModoEnfrentamiento extends ModoJuegoHumano {
         return jugadors;
     }
 
-    /**
-     * Método para el patrón undo.
-     */
+
     @Override
     protected void undo() {
         Movimiento movimientoBorrar=this.sacarMovientoJugador(super.turno.tieneTurno().getFicha());
@@ -80,6 +78,11 @@ public class ModoEnfrentamiento extends ModoJuegoHumano {
         }
     }
 
+    /**
+     * Saca el primer movimiento en la pila que sea del jugador
+     * @param fichaJugador Ficha del jugador para identificar el movimiento.
+     * @return Movimiento del jugador.
+     */
     private Movimiento sacarMovientoJugador(Ficha fichaJugador){
         DLStack<Movimiento> movimientosOtroJugador=new DLStack<>();
         Movimiento devuelto=null;
@@ -103,6 +106,11 @@ public class ModoEnfrentamiento extends ModoJuegoHumano {
         return devuelto;
     }
 
+    /**
+     * Transfiere de una pila a otra el contenido.
+     * @param pilaOrigen Pila origen.
+     * @param pilaDestino Pila destino.
+     */
     private void trasnferirMovimientos(DLStack<Movimiento> pilaOrigen, DLStack<Movimiento> pilaDestino){
         boolean repetir=true;
         while(repetir){
@@ -114,9 +122,7 @@ public class ModoEnfrentamiento extends ModoJuegoHumano {
         }
     }
 
-    /**
-     * Método para el patrón redo.
-     */
+
     @Override
     protected void redo() {
         try {

@@ -145,7 +145,7 @@ public class DLCircularStack <E> implements Stack<E> {
         }
     }
 
-    // MÉTODOS DE LA CLASE
+    @Override
     public IteratorDLCircularStack<E> generateIterator(){
         return new IteratorDLCircularStack<E>(this.top);
     }

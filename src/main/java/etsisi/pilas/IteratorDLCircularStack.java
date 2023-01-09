@@ -67,7 +67,7 @@ public class IteratorDLCircularStack<E> implements Iterator<E>{
     /**
      * Este método nos sirve para pasar del nodo actual al siguiente y manejar en caso de que se salga fuera de la pila.
      */
-    private void passNode(){
+    protected void passNode(){
         this.actualNode = this.actualNode.getNext();
     }
 
@@ -76,6 +76,7 @@ public class IteratorDLCircularStack<E> implements Iterator<E>{
      *
      * @param stack Se pasa la pila que queremos que se actualice.
      */
+
     public void setStack(DLCircularStack<E> stack) {
         this.stack=stack;
         this.actualNode=this.stack.getTop().getNext();

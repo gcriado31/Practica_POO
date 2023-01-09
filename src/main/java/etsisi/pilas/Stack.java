@@ -41,4 +41,10 @@ public interface Stack<E> {
      * Vacía la pila.
      */
     void vacuum()throws StackEmptyException;
+
+    /**
+     * Genera un iterador para la pila.
+     * @return El iterador para la pila.
+     */
+    Iterator<E> generateIterator();
 }

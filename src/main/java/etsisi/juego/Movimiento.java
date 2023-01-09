@@ -15,21 +15,14 @@ public class Movimiento {
         this.coordenadasFichaIntroducida =fichaIntroducida;
     }
 
-    // GETTERS Y SETTERS
+    // GETTERS
     public Ficha getFichaJugador() {
         return fichaJugador;
-    }
-
-    public void setFichaJugador(Ficha fichaJugador) {
-        this.fichaJugador = fichaJugador;
     }
 
     public Coordenadas getCoordenadasFichaIntroducida() {
         return coordenadasFichaIntroducida;
     }
 
-    public void setCoordenadasFichaIntroducida(Coordenadas coordenadasFichaIntroducida) {
-        this.coordenadasFichaIntroducida = coordenadasFichaIntroducida;
-    }
 
 }

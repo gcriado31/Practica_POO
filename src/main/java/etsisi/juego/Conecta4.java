@@ -9,8 +9,6 @@ import java.util.Scanner;
  */
 public class Conecta4 {
     // ATRIBUTOS
-
-
     private final String BIENVENIDA="Bienvenido a Conecta 4\nConsigue conectar 4 fichas en horizontal, vertical o en diagonal para ganar";
     private final String DESPEDIDA="Hasta luego. Esperamos volver a verle de nuevo.";
     private final String MODO_ENFRENTAMIENTO="--- MODO ENFRENTAMIENTO ---";
@@ -44,18 +42,22 @@ public class Conecta4 {
                     Viewer.printString(MODO_ENFRENTAMIENTO);
                     this.enfrentamiento=new ModoEnfrentamiento();
                     this.enfrentamiento.jugar();
+                    Viewer.reset();
                     break;
                 case '2':
                     Viewer.printString(MODO_ENTRENAMIENTO);
                     this.entrenamiento=new ModoEntrenamiento();
                     this.entrenamiento.jugar();
+                    Viewer.reset();
                     break;
                 case '3':
                     this.demo=new ModoDemo();
                     this.demo.jugar();
+                    Viewer.reset();
                     break;
                 case'0':
                     finAplicacion=this.fin();
+                    Viewer.reset();
                     break;
                 default:
                     Viewer.printString(TECLA_INCOORECTA);

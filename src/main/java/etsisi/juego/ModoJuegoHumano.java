@@ -50,7 +50,7 @@ public abstract class ModoJuegoHumano extends ModoJuego{
     protected abstract void sumarFichasRestantes();
 
     /**
-     * Método para restar la(s) fichas que se añadan el redo.
+     * Método para restar la(s) ficha(s) que se añadan el redo.
      */
     protected abstract void restarFichasRestantes();
 

@@ -3,7 +3,6 @@ package etsisi.juego;
 import java.util.ArrayList;
 import java.util.Random;
 
-// TODO: Algoritmo para poner la ficha de modo que le interese para ganar.
 
 /**
  * Clase que hereda de Jugador que se destinará a hacer las veces de un jugador máquina.

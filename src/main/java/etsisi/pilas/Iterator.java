@@ -24,7 +24,4 @@ public interface Iterator<E> {
      */
     void backToFrist();
 
-
-
-
 }

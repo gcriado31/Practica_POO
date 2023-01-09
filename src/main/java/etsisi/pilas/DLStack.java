@@ -139,7 +139,7 @@ public class DLStack <E> implements Stack<E> {
         }
     }
 
-    // MÉTODOS DE LA CLASE
+    @Override
     public IteratorDLStack<E> generateIterator(){
         return new IteratorDLStack<E>(this.top);
     }

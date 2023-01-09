@@ -31,9 +31,6 @@ public class Jugador {
     public Ficha getFicha() {
         return this.ficha;
     }
-    public int getFichasRestantes() {
-        return fichasRestantes;
-    }
 
     public void setFichasRestantes(int fichasRestantes) {
         this.fichasRestantes = fichasRestantes;

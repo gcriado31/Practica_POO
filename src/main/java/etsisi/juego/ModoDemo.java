@@ -8,7 +8,6 @@ import etsisi.pilas.*;
  */
 public class ModoDemo extends ModoJuego {
     // ATRIBUTOS
-    private Jugador ganador;
     private final String BIENVENIDA_MODODEMO="--- BIENVENIDO AL MODO DE JUEGO DEMO ---\n En este modo verá un tutorial de cómo funciona el juego.";
 
 
@@ -16,8 +15,6 @@ public class ModoDemo extends ModoJuego {
     public ModoDemo (){
         super();
     }
-
-
 
     // MÉTODOS
     @Override

@@ -29,7 +29,6 @@ public abstract class ModoJuego {
     // ATRIBUTOS PRIVADOS
     protected static final int NUM_FILAS=6;
     protected static final int NUM_COLUMNAS=7;
-    private final int INICIO_BUCLE=0;
 
     // CONSTRUCTOR
 

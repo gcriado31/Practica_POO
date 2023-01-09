@@ -15,8 +15,6 @@ k
 ;src/test/java/etsisi/pilas/IteratorDLCircularStackTest.java,c\e\ceabeb2d9a352cae1389f71dbb54312e8f35cddc
 c
 3src/test/java/etsisi/pilas/IteratorDLStackTest.java,c\d\cdf4781059c59513461487aa1d64c733906c40c1
-k
-;src/main/java/etsisi/pilas/IteratorOutOfStackException.java,6\1\611d433c48c219f3d952491d15abd0d48f4169c9
 w
 G.idea/sonarlint/issuestore/8/6/863e0292fd7e9b3e74dafd6cc01f73ba76346482,3\0\30f9777ea696a18aa49d3e9967e93a4276065227
 w
@@ -27,8 +25,6 @@ w
 G.idea/sonarlint/issuestore/b/6/b6d9d7637b9a0d45b89607a4e5d54f3b02777bc8,9\e\9ecf21bf70a3e75a42ce1c4715a1aff5b9c89073
 w
 G.idea/sonarlint/issuestore/4/3/43fcbbb4255437888d39f67d1effe4a22a386f63,0\c\0c953003d85994a4f560cea9b163a281f272c8fc
-X
-(src/main/java/etsisi/pilas/Iterator.java,7\8\781976fb2cc4a41147cedcfe9da5f375c7647dcb
 w
 G.idea/sonarlint/issuestore/5/9/594688990559a062b35611182e6afaea0e08cff4,9\3\93a78909b6c7c5f5fc9b92a3b6166157aaef4759
 w
@@ -47,15 +43,9 @@ w
 G.idea/sonarlint/issuestore/c/4/c46409c25c20b3c68af2393fe9e46d62a102b2df,6\7\67cc79f97144be7098eae5a245ae4117225a0434
 [
 +src/test/java/etsisi/pilas/DLStackTest.java,8\7\87405440f1eb368dddf981d8a91fff4ff3acba67
-U
-%src/main/java/etsisi/pilas/Stack.java,8\f\8f70c741dff91c726d4b0235ccc2f296159da701
-_
-/src/main/java/etsisi/pilas/DLCircularStack.java,5\b\5b8dfea7ec8eda60e7467f3334912e37a837bc6b
 V
 &src/main/java/etsisi/pilas/DLNode.java,2\9\294bd3fd580a60235c14a9d9882e34d47e3d0d75
 c
 3src/main/java/etsisi/pilas/StackEmptyException.java,f\0\f0935604c33d68bece58866bd3ff78b899708355
-_
-/src/main/java/etsisi/pilas/IteratorDLStack.java,b\8\b84ad1061ca33340b6d908050bd6798988ae2bc1
 c
 3src/test/java/etsisi/pilas/DLCircularStackTest.java,9\a\9ab2d1bf5f2bab9d4ed912c151355101cbf06508
