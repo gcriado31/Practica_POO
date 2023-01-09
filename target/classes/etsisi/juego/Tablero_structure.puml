@@ -1,0 +1,528 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": false,
+    "cutTests": false,
+    "cutClient": false,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": false,
+    "cutConstructors": false
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "etsisi.juego.Tablero",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_101479138 { 
+   	label=juego
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Casilla1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Casilla</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   coordenadas: Coordenadas [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ficha: Ficha [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Casilla(fila: int, columna: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Casilla(coordenadas: Coordenadas)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ dibujar(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getFicha(): Ficha</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isEmpty(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setFicha(ficha: Ficha)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ColumnaIncorrectaException1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ColumnaIncorrectaException</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># ColumnaIncorrectaException(min: int, max: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ColumnaLlenaException1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ColumnaLlenaException</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ ColumnaLlenaException()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Conecta41092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Conecta4</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   BIENVENIDA: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   DESPEDIDA: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   demo: ModoDemo [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   enfrentamiento: ModoEnfrentamiento [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   entrenamiento: ModoEntrenamiento [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Conecta4()</TD></TR>
+<TR><TD ALIGN="LEFT" >- fin(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ jugar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+<TR><TD ALIGN="LEFT" >- seleccionModo(): char</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Coordenadas1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Coordenadas</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   columna: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   fila: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Coordenadas(fila: int, columna: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ dibujar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getColumna(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getFila(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setColumna(columna: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setFila(fila: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Ficha1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Ficha</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   color: Color [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   contenido: char [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Ficha(contenido: char, color: Color)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Ficha()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getColor(): Color</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getContenido(): char</TD></TR>
+<TR><TD ALIGN="LEFT" >+ mostrar(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Inicios1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Inicios</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- copiaCasillas(casillas: Casilla[][]): Casilla[][]</TD></TR>
+<TR><TD ALIGN="LEFT" >+ copiaTablero(tablero: Tablero): Tablero</TD></TR>
+<TR><TD ALIGN="LEFT" >+ inicializarArrayList(size: int): ArrayList&lt;Integer&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ iniciarCasillas(numFilas: int, numColumnas: int): Casilla[][]</TD></TR>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+<TR><TD ALIGN="LEFT" >+ nuevoTablero(numFilas: int, numColumnas: int): Tablero</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Jugador1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Jugador</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   ERROR_TABLERO_LLENO: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   MAX_FICHAS: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   ficha: Ficha [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   fichasRestantes: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   movimientos: DLStack&lt;Coordenadas&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   movimientosSacados: DLStack&lt;Tablero&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   nombre: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Jugador(nombre: String, ficha: Ficha)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getFicha(): Ficha</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getFichasRestantes(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getNombre(): String</TD></TR>
+<TR><TD ALIGN="LEFT" ># poner(tablero: Tablero): Coordenadas</TD></TR>
+<TR><TD ALIGN="LEFT" ># redo(tablero: Tablero)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setFichasRestantes(fichasRestantes: int)</TD></TR>
+<TR><TD ALIGN="LEFT" ># undo(tablero: Tablero)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+JugadorIA1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)JugadorIA</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   columnasDisponibles: ArrayList&lt;Integer&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ JugadorIA(ficha: Ficha, tablero: Tablero)</TD></TR>
+<TR><TD ALIGN="LEFT" >- animacionCarga()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ poner(tablero: Tablero): Coordenadas</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ModoDemo1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ModoDemo</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   ganador: Jugador [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ ModoDemo()</TD></TR>
+<TR><TD ALIGN="LEFT" ># jugar()</TD></TR>
+<TR><TD ALIGN="LEFT" ># menuJugadores(): DLCircularStack&lt;Jugador&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- pararSimulacion(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" ># redo()</TD></TR>
+<TR><TD ALIGN="LEFT" ># resultados()</TD></TR>
+<TR><TD ALIGN="LEFT" ># undo()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ModoEnfrentamiento1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ModoEnfrentamiento</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   INICIO_BUCLE: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ ModoEnfrentamiento()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ jugar()</TD></TR>
+<TR><TD ALIGN="LEFT" ># menuJugadores(): DLCircularStack&lt;Jugador&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" ># resultados()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ModoEntrenamiento1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ModoEntrenamiento</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   ganador: Jugador [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ ModoEntrenamiento()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ dibujarTableros()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ jugar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+<TR><TD ALIGN="LEFT" ># menuJugadores(): DLCircularStack&lt;Jugador&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" ># redo()</TD></TR>
+<TR><TD ALIGN="LEFT" ># resultados()</TD></TR>
+<TR><TD ALIGN="LEFT" ># undo()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ModoJuego1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ModoJuego</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   EMPATE: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   GANADOR: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   INICIO_BUCLE: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   NUMERO_JUGADORES: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   NUM_COLUMNAS: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   NUM_FILAS: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   fichaAzul: Ficha [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   fichaRoja: Ficha [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   ganador: Jugador [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   iteradorJugadores: IteratorDLCircularStack&lt;Jugador&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   jugadores: DLCircularStack&lt;Jugador&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   reglas: Validaciones [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   tablero: Tablero [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   turno: Turno [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># ModoJuego()</TD></TR>
+<TR><TD ALIGN="LEFT" ># actualizaTablero(tablero: Tablero)</TD></TR>
+<TR><TD ALIGN="LEFT" ># cambiaTurno()</TD></TR>
+<TR><TD ALIGN="LEFT" ># dibujar()</TD></TR>
+<TR><TD ALIGN="LEFT" ># fin(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" ># hayGanador(coordenadas: Coordenadas): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" ># infoJugador(): String</TD></TR>
+<TR><TD ALIGN="LEFT" ># jugar()</TD></TR>
+<TR><TD ALIGN="LEFT" ># menuJugadores(): DLCircularStack&lt;Jugador&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" ># nuevaPartida()</TD></TR>
+<TR><TD ALIGN="LEFT" ># ponerFicha(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" ># resultados()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ModoJuegoIA1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ModoJuegoIA</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   coordenadasMovimientos: DLStack&lt;Coordenadas&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   movimientos: DLStack&lt;Tablero&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   movimientosSacados: DLStack&lt;Tablero&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># ModoJuegoIA()</TD></TR>
+<TR><TD ALIGN="LEFT" ># eleccionMovimiento(): char</TD></TR>
+<TR><TD ALIGN="LEFT" >+ nuevaPartida()</TD></TR>
+<TR><TD ALIGN="LEFT" ># opciones(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" ># ponerFicha(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" ># redo()</TD></TR>
+<TR><TD ALIGN="LEFT" ># undo()</TD></TR>
+<TR><TD ALIGN="LEFT" >- vaciarMovimientos()</TD></TR>
+<TR><TD ALIGN="LEFT" >- vaciarMovimientosSacados()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Movimiento1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Movimiento</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   fichaIntroducida: Coordenadas [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tablero: Tablero [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Movimiento(tablero: Tablero, fichaIntroducida: Coordenadas)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getFichaIntroducida(): Coordenadas</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getTablero(): Tablero</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setFichaIntroducida(fichaIntroducida: Coordenadas)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setTablero(tablero: Tablero)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Tablero1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Tablero</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   INICIO_BUCLE: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   INTRODUCIR_COLUMNA: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   casillas: Casilla[][] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   numColumnas: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   numFilas: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Tablero(numFilas: int, numColumnas: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ borrarFicha(coordenadas: Coordenadas)</TD></TR>
+<TR><TD ALIGN="LEFT" ># caeFichaFila(columna: int): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ caeFichaIA(columna: int): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- cambiarFicha(coordenadas: Coordenadas)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ dibujar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCasillas(): Casilla[][]</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getFichaPos(fila: int, columna: int): Ficha</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getNumColumnas(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getNumFilas(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- gravedad(coordenadas: Coordenadas)</TD></TR>
+<TR><TD ALIGN="LEFT" ># isEmpty(fila: int, columna: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+<TR><TD ALIGN="LEFT" >- pedirColumna(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ ponerFicha(ficha: Ficha): Coordenadas</TD></TR>
+<TR><TD ALIGN="LEFT" >+ ponerFichaIA(fila: int, columna: int, ficha: Ficha): Coordenadas</TD></TR>
+<TR><TD ALIGN="LEFT" >+ quitarFicha(coordenadas: Coordenadas)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setCasillas(casillas: Casilla[][])</TD></TR>
+<TR><TD ALIGN="LEFT" >+ tableroLleno(): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Turno1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Turno</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   JUGADOR_INICIAL: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   iteradorJugadores: IteratorDLCircularStack&lt;Jugador&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   jugadorEnCurso: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jugadores: DLCircularStack&lt;Jugador&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Turno(jugadores: DLCircularStack&lt;Jugador&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >- calculaSiguienteJugador(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ cambiaTurno()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ nombreJugadorConTurno(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ tieneTurno(): Jugador</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Validaciones1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Validaciones</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   INICIO_BUCLE: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   NUM_FICHAS_GANADOR: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   numColumnas: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   numFilas: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tablero: Tablero [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Validaciones(tablero: Tablero)</TD></TR>
+<TR><TD ALIGN="LEFT" >- checkColumnas(ficha: Ficha, posicion: Coordenadas): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- checkDiagonales(ficha: Ficha, posicion: Coordenadas): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- checkFilas(ficha: Ficha, posicion: Coordenadas): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- diagonalDerechaAbajo(ficha: Ficha, posicion: Coordenadas): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- diagonalDerechaArriba(ficha: Ficha, posicion: Coordenadas): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- diagonalIzquierdaAbajo(ficha: Ficha, posicion: Coordenadas): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- diagonalIzquierdaArriba(ficha: Ficha, posicion: Coordenadas): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hayGanador(ficha: Ficha, posicion: Coordenadas): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isInArray(fila: int, columna: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setTablero(tablero: Tablero)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+Conecta41092129905 -> ModoEnfrentamiento1092129905[label="enfrentamiento
+[0..1]"];
+Inicios1092129905 -> Casilla1092129905[label="iniciarCasillas() -> Casilla()"];
+Jugador1092129905 -> JugadorIA1092129905[arrowhead=none, arrowtail=empty, dir=both];
+Jugador1092129905 -> Tablero1092129905[label="movimientosSacados
+[0..1]"];
+ModoDemo1092129905 -> Jugador1092129905[label="ganador
+[0..1]"];
+ModoEntrenamiento1092129905 -> Jugador1092129905[label="ganador
+[0..1]"];
+ModoJuego1092129905 -> Jugador1092129905[label="ganador
+[0..1]"];
+ModoJuego1092129905 -> Jugador1092129905[label="iteradorJugadores
+[0..1]"];
+ModoJuego1092129905 -> Jugador1092129905[label="jugadores
+[0..1]"];
+ModoJuego1092129905 -> ModoEnfrentamiento1092129905[arrowhead=none, arrowtail=empty, dir=both];
+ModoJuego1092129905 -> ModoJuegoIA1092129905[arrowhead=none, arrowtail=empty, dir=both];
+ModoJuego1092129905 -> Tablero1092129905[label="tablero
+[0..1]"];
+ModoJuego1092129905 -> Turno1092129905[label="turno
+[0..1]"];
+ModoJuego1092129905 -> Validaciones1092129905[label="reglas
+[0..1]"];
+ModoJuegoIA1092129905 -> ModoDemo1092129905[arrowhead=none, arrowtail=empty, dir=both];
+ModoJuegoIA1092129905 -> ModoEntrenamiento1092129905[arrowhead=none, arrowtail=empty, dir=both];
+ModoJuegoIA1092129905 -> Tablero1092129905[label="movimientos
+[0..1]"];
+ModoJuegoIA1092129905 -> Tablero1092129905[label="movimientosSacados
+[0..1]"];
+Movimiento1092129905 -> Tablero1092129905[label="tablero
+[0..1]"];
+Tablero1092129905 -> Casilla1092129905[label="casillas
+[0..*]"];
+Tablero1092129905 -> ColumnaIncorrectaException1092129905[label="pedirColumna() -> ColumnaIncorrectaException()"];
+Tablero1092129905 -> ColumnaLlenaException1092129905[label="caeFichaFila() -> ColumnaLlenaException()"];
+Tablero1092129905 -> Inicios1092129905[label="Tablero() -> iniciarCasillas()"];
+Turno1092129905 -> Jugador1092129905[label="iteradorJugadores
+[0..1]"];
+Turno1092129905 -> Jugador1092129905[label="jugadores
+[0..1]"];
+Validaciones1092129905 -> Tablero1092129905[label="tablero
+[0..1]"];
+    
+}
+@enduml

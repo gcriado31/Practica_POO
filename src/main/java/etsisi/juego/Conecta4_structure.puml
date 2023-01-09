@@ -1,0 +1,682 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": true,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 30,
+    "backwardDepth": 30,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": false, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "BothDirections" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 3,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "etsisi.juego.Conecta4",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_101479138 { 
+   	label=juego
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Casilla1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Casilla</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   coordenadas: Coordenadas [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ficha: Ficha [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ dibujar(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Conecta41092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Conecta4</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   BIENVENIDA: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   DESPEDIDA: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   MODO_ENFRENTAMIENTO: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   MODO_ENTRENAMIENTO: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   OPCIONES: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   SALIR: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   TECLA_INCOORECTA: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   demo: ModoDemo [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   enfrentamiento: ModoEnfrentamiento [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   entrenamiento: ModoEntrenamiento [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- fin(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ jugar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+<TR><TD ALIGN="LEFT" >- seleccionModo(): char</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Coordenadas1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Coordenadas</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   columna: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   dibujo: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   fila: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ dibujar()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Ficha1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Ficha</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   color: Color [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   contenido: char [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ mostrar(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Inicios1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Inicios</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ inicializarArrayList(size: int): ArrayList&lt;Integer&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ iniciarCasillas(numFilas: int, numColumnas: int): Casilla[][]</TD></TR>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+<TR><TD ALIGN="LEFT" >+ nuevoTablero(numFilas: int, numColumnas: int): Tablero</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Jugador1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Jugador</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   ERROR_TABLERO_LLENO: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   MAX_FICHAS: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   ficha: Ficha [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   fichasRestantes: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   movimientos: DLStack&lt;Coordenadas&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   movimientosSacados: DLStack&lt;Tablero&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   nombre: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># poner(tablero: Tablero): Coordenadas</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+JugadorIA1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)JugadorIA</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   columnasDisponibles: ArrayList&lt;Integer&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- animacionCarga()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ poner(tablero: Tablero): Coordenadas</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ModoDemo1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ModoDemo</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   BIENVENIDA_MODODEMO: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ganador: Jugador [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># jugar()</TD></TR>
+<TR><TD ALIGN="LEFT" ># menuJugadores(): DLCircularStack&lt;Jugador&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" ># resultados()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ModoEnfrentamiento1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ModoEnfrentamiento</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   INICIO_BUCLE: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   NO_MOVIMIENTOS: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ jugar()</TD></TR>
+<TR><TD ALIGN="LEFT" ># menuJugadores(): DLCircularStack&lt;Jugador&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" ># redo()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ restarFichasRestantes()</TD></TR>
+<TR><TD ALIGN="LEFT" ># resultados()</TD></TR>
+<TR><TD ALIGN="LEFT" >- sacarMovientoJugador(fichaJugador: Ficha): Movimiento</TD></TR>
+<TR><TD ALIGN="LEFT" >+ sumarFichasRestantes()</TD></TR>
+<TR><TD ALIGN="LEFT" >- trasnferirMovimientos(pilaOrigen: DLStack&lt;Movimiento&gt;, pilaDestino: DLStack&lt;Movimiento&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" ># undo()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ModoEntrenamiento1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ModoEntrenamiento</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ jugar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+<TR><TD ALIGN="LEFT" ># menuJugadores(): DLCircularStack&lt;Jugador&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" ># redo()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ restarFichasRestantes()</TD></TR>
+<TR><TD ALIGN="LEFT" ># resultados()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ sumarFichasRestantes()</TD></TR>
+<TR><TD ALIGN="LEFT" ># undo()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ModoJuego1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ModoJuego</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   EMPATE: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   GANADOR: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   INICIO_BUCLE: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   INTRODUCIR_NOMBRE: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   NUEVA_PARTIDA: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   NUMERO_JUGADORES: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   RESULTANTE: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   VOLVER_A_JUGAR_MODO: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   fichaAzul: Ficha [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   fichaRoja: Ficha [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   ganador: Jugador [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   jugadores: DLCircularStack&lt;Jugador&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   reglas: Validaciones [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   tablero: Tablero [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   turno: Turno [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># cambiaTurno()</TD></TR>
+<TR><TD ALIGN="LEFT" ># dibujar()</TD></TR>
+<TR><TD ALIGN="LEFT" ># fin(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" ># hayGanador(coordenadas: Coordenadas): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" ># infoJugador(): String</TD></TR>
+<TR><TD ALIGN="LEFT" ># jugar()</TD></TR>
+<TR><TD ALIGN="LEFT" ># menuJugadores(): DLCircularStack&lt;Jugador&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" ># nuevaPartida()</TD></TR>
+<TR><TD ALIGN="LEFT" ># ponerFicha(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" ># resultados()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ModoJuegoHumano1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ModoJuegoHumano</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   ELECCION_BASICA: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   NO_REHECHO: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   NO_RETROCEDIDO: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   OPCION_0: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   OPCION_2: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   OPCION_3: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   REHECHO: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   RETROCEDIDO: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   TECLA_INCORRECTA: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   movimientos: DLStack&lt;Movimiento&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   movimientosSacados: DLStack&lt;Movimiento&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># eleccionMovimiento(): char</TD></TR>
+<TR><TD ALIGN="LEFT" ># finModo()</TD></TR>
+<TR><TD ALIGN="LEFT" >- mostarElecciones(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ nuevaPartida()</TD></TR>
+<TR><TD ALIGN="LEFT" ># opciones(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" ># ponerFicha(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" ># redo()</TD></TR>
+<TR><TD ALIGN="LEFT" ># restarFichasRestantes()</TD></TR>
+<TR><TD ALIGN="LEFT" ># sumarFichasRestantes()</TD></TR>
+<TR><TD ALIGN="LEFT" ># undo()</TD></TR>
+<TR><TD ALIGN="LEFT" >- vaciarMovimientos()</TD></TR>
+<TR><TD ALIGN="LEFT" >- vaciarMovimientosSacados()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Movimiento1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Movimiento</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   coordenadasFichaIntroducida: Coordenadas [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   fichaJugador: Ficha [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Tablero1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Tablero</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   FORMATO_NUMERO: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   INICIO_BUCLE: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   INTRODUCIR_COLUMNA: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   LINEAS: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   casillas: Casilla[][] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   numColumnas: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   numFilas: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- borrarColumna(coordenadas: Coordenadas)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ borrarFicha(coordenadas: Coordenadas)</TD></TR>
+<TR><TD ALIGN="LEFT" ># caeFichaFila(columna: int): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ caeFichaIA(columna: int): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- cambiarFichaAbajo(coordenadas: Coordenadas)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ cambiarFichasArriba(movimiento: Movimiento)</TD></TR>
+<TR><TD ALIGN="LEFT" >- cambiarFichasArribaAux(fila: int, columna: int, deseada: Ficha): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ dibujar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getFichaPos(fila: int, columna: int): Ficha</TD></TR>
+<TR><TD ALIGN="LEFT" >- gravedad(coordenadas: Coordenadas)</TD></TR>
+<TR><TD ALIGN="LEFT" ># isEmpty(fila: int, columna: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+<TR><TD ALIGN="LEFT" >- pedirColumna(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ ponerFicha(ficha: Ficha): Coordenadas</TD></TR>
+<TR><TD ALIGN="LEFT" >+ ponerFichaIA(fila: int, columna: int, ficha: Ficha): Coordenadas</TD></TR>
+<TR><TD ALIGN="LEFT" >+ quitarFicha(coordenadas: Coordenadas)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ reponerFicha(coordenadas: Coordenadas, ficha: Ficha)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ tableroLleno(): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Turno1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Turno</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   JUGADOR_INICIAL: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   iteradorJugadores: IteratorDLCircularStack&lt;Jugador&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   jugadorEnCurso: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jugadores: DLCircularStack&lt;Jugador&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- calculaSiguienteJugador(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ cambiaTurno()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ nombreJugadorConTurno(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ tieneTurno(): Jugador</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Validaciones1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Validaciones</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   INICIO_BUCLE: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   NUM_FICHAS_GANADOR: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   numColumnas: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   numFilas: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tablero: Tablero [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- checkColumnas(ficha: Ficha, posicion: Coordenadas): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- checkDiagonales(ficha: Ficha, posicion: Coordenadas): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- checkFilas(ficha: Ficha, posicion: Coordenadas): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- diagonalDerechaAbajo(ficha: Ficha, posicion: Coordenadas): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- diagonalDerechaArriba(ficha: Ficha, posicion: Coordenadas): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- diagonalIzquierdaAbajo(ficha: Ficha, posicion: Coordenadas): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- diagonalIzquierdaArriba(ficha: Ficha, posicion: Coordenadas): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hayGanador(ficha: Ficha, posicion: Coordenadas): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isInArray(fila: int, columna: int): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Viewer1092129905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Viewer</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ introducirSaltoLinea()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ options(msg: String): char</TD></TR>
+<TR><TD ALIGN="LEFT" >+ print(msg: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ printString(msg: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ readInt(msg: String): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ readLine(msg: String): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_106669317 { 
+   	label=pilas
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   DLCircularStack1086939726[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DLCircularStack&lt;E&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   size: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tail: DLNode&lt;E&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   top: DLNode&lt;E&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ generateIterator(): IteratorDLCircularStack&lt;E&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pop(): E</TD></TR>
+<TR><TD ALIGN="LEFT" >+ push(info: E)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ size(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ top(): E</TD></TR>
+<TR><TD ALIGN="LEFT" >+ vacuum()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DLNode1086939726[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DLNode&lt;E&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   info: E [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   next: DLNode&lt;E&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   prev: DLNode&lt;E&gt; [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DLStack1086939726[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DLStack&lt;E&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   size: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tail: DLNode&lt;E&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   top: DLNode&lt;E&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ generateIterator(): IteratorDLStack&lt;E&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pop(): E</TD></TR>
+<TR><TD ALIGN="LEFT" >+ push(info: E)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ size(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ top(): E</TD></TR>
+<TR><TD ALIGN="LEFT" >+ vacuum()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Iterator1086939726[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(I)Iterator&lt;E&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ backToFrist()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getInfo(): E</TD></TR>
+<TR><TD ALIGN="LEFT" >+ next()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#F1E5FD"
+];
+
+IteratorDLCircularStack1086939726[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)IteratorDLCircularStack&lt;E&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   actualNode: DLNode&lt;E&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stack: DLCircularStack&lt;E&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ backToFrist()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ next()</TD></TR>
+<TR><TD ALIGN="LEFT" >- passNode()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+IteratorDLStack1086939726[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)IteratorDLStack&lt;E&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   actualNode: DLNode&lt;E&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stack: DLStack&lt;E&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ backToFrist()</TD></TR>
+<TR><TD ALIGN="LEFT" >- isInStack()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ next()</TD></TR>
+<TR><TD ALIGN="LEFT" >- passNode()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Stack1086939726[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(I)Stack&lt;E&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ isEmpty(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pop(): E</TD></TR>
+<TR><TD ALIGN="LEFT" >+ push(info: E)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ size(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ top(): E</TD></TR>
+<TR><TD ALIGN="LEFT" >+ vacuum()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#F1E5FD"
+];
+} 
+
+'edges    
+Casilla1092129905 -> Coordenadas1092129905[label="coordenadas
+[0..1]"];
+Casilla1092129905 -> Ficha1092129905[label="ficha
+[0..1]"];
+Conecta41092129905 -> ModoDemo1092129905[label="demo
+[0..1]"];
+Conecta41092129905 -> ModoEnfrentamiento1092129905[label="enfrentamiento
+[0..1]"];
+Conecta41092129905 -> ModoEntrenamiento1092129905[label="entrenamiento
+[0..1]"];
+Coordenadas1092129905 -> Viewer1092129905[label="dibujar() -> printString()"];
+DLCircularStack1086939726 -> DLNode1086939726[label="tail
+[0..1]"];
+DLCircularStack1086939726 -> DLNode1086939726[label="top
+[0..1]"];
+DLStack1086939726 -> DLNode1086939726[label="tail
+[0..1]"];
+DLStack1086939726 -> DLNode1086939726[label="top
+[0..1]"];
+Iterator1086939726 -> IteratorDLCircularStack1086939726[arrowhead=none, arrowtail=empty, dir=both];
+Iterator1086939726 -> IteratorDLStack1086939726[arrowhead=none, arrowtail=empty, dir=both];
+IteratorDLCircularStack1086939726 -> DLCircularStack1086939726[label="stack
+[0..1]"];
+IteratorDLCircularStack1086939726 -> DLNode1086939726[label="actualNode
+[0..1]"];
+IteratorDLStack1086939726 -> DLNode1086939726[label="actualNode
+[0..1]"];
+IteratorDLStack1086939726 -> DLStack1086939726[label="stack
+[0..1]"];
+Jugador1092129905 -> Coordenadas1092129905[label="movimientos
+[0..1]"];
+Jugador1092129905 -> DLStack1086939726[label="movimientos
+[0..1]"];
+Jugador1092129905 -> DLStack1086939726[label="movimientosSacados
+[0..1]"];
+Jugador1092129905 -> Ficha1092129905[label="ficha
+[0..1]"];
+Jugador1092129905 -> JugadorIA1092129905[arrowhead=none, arrowtail=empty, dir=both];
+Jugador1092129905 -> Tablero1092129905[label="movimientosSacados
+[0..1]"];
+Jugador1092129905 -> Viewer1092129905[label="poner() -> printString()"];
+ModoDemo1092129905 -> Jugador1092129905[label="ganador
+[0..1]"];
+ModoJuego1092129905 -> DLCircularStack1086939726[label="jugadores
+[0..1]"];
+ModoJuego1092129905 -> Ficha1092129905[label="fichaAzul
+[0..1]"];
+ModoJuego1092129905 -> Ficha1092129905[label="fichaRoja
+[0..1]"];
+ModoJuego1092129905 -> Inicios1092129905[label="nuevaPartida() -> nuevoTablero()"];
+ModoJuego1092129905 -> Jugador1092129905[label="ganador
+[0..1]"];
+ModoJuego1092129905 -> Jugador1092129905[label="jugadores
+[0..1]"];
+ModoJuego1092129905 -> ModoDemo1092129905[arrowhead=none, arrowtail=empty, dir=both];
+ModoJuego1092129905 -> ModoJuegoHumano1092129905[arrowhead=none, arrowtail=empty, dir=both];
+ModoJuego1092129905 -> Tablero1092129905[label="tablero
+[0..1]"];
+ModoJuego1092129905 -> Turno1092129905[label="turno
+[0..1]"];
+ModoJuego1092129905 -> Validaciones1092129905[label="reglas
+[0..1]"];
+ModoJuegoHumano1092129905 -> DLStack1086939726[label="movimientos
+[0..1]"];
+ModoJuegoHumano1092129905 -> DLStack1086939726[label="movimientosSacados
+[0..1]"];
+ModoJuegoHumano1092129905 -> Jugador1092129905[label="ponerFicha() -> poner()"];
+ModoJuegoHumano1092129905 -> ModoEnfrentamiento1092129905[arrowhead=none, arrowtail=empty, dir=both];
+ModoJuegoHumano1092129905 -> ModoEntrenamiento1092129905[arrowhead=none, arrowtail=empty, dir=both];
+ModoJuegoHumano1092129905 -> Movimiento1092129905[label="movimientos
+[0..1]"];
+ModoJuegoHumano1092129905 -> Movimiento1092129905[label="movimientosSacados
+[0..1]"];
+Movimiento1092129905 -> Coordenadas1092129905[label="coordenadasFichaIntroducida
+[0..1]"];
+Movimiento1092129905 -> Ficha1092129905[label="fichaJugador
+[0..1]"];
+Stack1086939726 -> DLCircularStack1086939726[arrowhead=none, arrowtail=empty, dir=both];
+Stack1086939726 -> DLStack1086939726[arrowhead=none, arrowtail=empty, dir=both];
+Tablero1092129905 -> Casilla1092129905[label="casillas
+[0..*]"];
+Turno1092129905 -> DLCircularStack1086939726[label="jugadores
+[0..1]"];
+Turno1092129905 -> IteratorDLCircularStack1086939726[label="iteradorJugadores
+[0..1]"];
+Turno1092129905 -> Jugador1092129905[label="iteradorJugadores
+[0..1]"];
+Turno1092129905 -> Jugador1092129905[label="jugadores
+[0..1]"];
+Validaciones1092129905 -> Tablero1092129905[label="tablero
+[0..1]"];
+    
+}
+@enduml

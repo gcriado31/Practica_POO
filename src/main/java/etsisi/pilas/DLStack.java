@@ -1,7 +1,7 @@
 package etsisi.pilas;
 
 /**
- *
+ * Pila de un cualquier objeto.
  * @param <E> Será el tipo de información que queramos guardar.
  */
 public class DLStack <E> implements Stack<E> {

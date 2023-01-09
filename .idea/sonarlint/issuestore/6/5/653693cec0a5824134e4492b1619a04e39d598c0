@@ -1,11 +1,0 @@
-
-q	java:S116"WRename this field "INICIO_BUCLE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š±º¿üÿÿÿÿ
-w	java:S116"]Rename this field "NUM_FICHAS_GANADOR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì¹æëüÿÿÿÿ
-<
-java:S1170"!Make this final field static too.(š±º¿üÿÿÿÿ
-<
-java:S1170"!Make this final field static too.(ì¹æëüÿÿÿÿ
-b
-java:S1871*"LThis branch's code block is the same as the block for the branch on line 40.(§‘ž
-b
-java:S1871,"LThis branch's code block is the same as the block for the branch on line 40.(ÂßµŒ
