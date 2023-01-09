@@ -11,8 +11,6 @@ public class Jugador {
     // ATRIBUTOS
     protected String nombre;
     protected int fichasRestantes;
-    private DLStack<Coordenadas> movimientos;
-    private DLStack<Tablero> movimientosSacados;
     protected Ficha ficha;
     protected final String ERROR_TABLERO_LLENO="ERROR: TABLERO LLENO";
     private final int MAX_FICHAS=21;
@@ -22,8 +20,6 @@ public class Jugador {
         this.nombre=nombre;
         this.ficha=ficha;
         this.fichasRestantes=MAX_FICHAS;
-        this.movimientosSacados=new DLStack<>();
-        this.movimientos=new DLStack<>();
     }
 
     // SETTERS Y GETTERS
@@ -49,7 +45,6 @@ public class Jugador {
      * Método del jugador para poner su ficha.
      */
     protected Coordenadas poner (Tablero tablero) throws SinFichasException {
-        this.movimientosSacados.vacuum();
         if(!tablero.tableroLleno()){
             this.fichasRestantes--;
             return tablero.ponerFicha(ficha);

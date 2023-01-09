@@ -184,8 +184,6 @@ Jugador1092129905[
 <TR><TD ALIGN="LEFT" >-   MAX_FICHAS: int [1]</TD></TR>
 <TR><TD ALIGN="LEFT" >#   ficha: Ficha [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >#   fichasRestantes: int [1]</TD></TR>
-<TR><TD ALIGN="LEFT" >-   movimientos: DLStack&lt;Coordenadas&gt; [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >-   movimientosSacados: DLStack&lt;Tablero&gt; [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >#   nombre: String [0..1]</TD></TR>
 <HR/>
 <TR><TD ALIGN="LEFT" ># poner(tablero: Tablero): Coordenadas</TD></TR>
@@ -615,17 +613,9 @@ IteratorDLStack1086939726 -> DLNode1086939726[label="actualNode
 [0..1]"];
 IteratorDLStack1086939726 -> DLStack1086939726[label="stack
 [0..1]"];
-Jugador1092129905 -> Coordenadas1092129905[label="movimientos
-[0..1]"];
-Jugador1092129905 -> DLStack1086939726[label="movimientos
-[0..1]"];
-Jugador1092129905 -> DLStack1086939726[label="movimientosSacados
-[0..1]"];
 Jugador1092129905 -> Ficha1092129905[label="ficha
 [0..1]"];
 Jugador1092129905 -> JugadorIA1092129905[arrowhead=none, arrowtail=empty, dir=both];
-Jugador1092129905 -> Tablero1092129905[label="movimientosSacados
-[0..1]"];
 Jugador1092129905 -> Viewer1092129905[label="poner() -> printString()"];
 ModoDemo1092129905 -> Jugador1092129905[label="ganador
 [0..1]"];
