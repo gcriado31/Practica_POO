@@ -135,10 +135,7 @@ Coordenadas1092129905[
 <TR><TD ALIGN="LEFT" >(C)Coordenadas</TD></TR>
 <HR/>
 <TR><TD ALIGN="LEFT" >-   columna: int [1]</TD></TR>
-<TR><TD ALIGN="LEFT" >-   dibujo: String [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   fila: int [1]</TD></TR>
-<HR/>
-<TR><TD ALIGN="LEFT" >+ dibujar()</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -214,7 +211,6 @@ ModoDemo1092129905[
 <TR><TD ALIGN="LEFT" >(C)ModoDemo</TD></TR>
 <HR/>
 <TR><TD ALIGN="LEFT" >-   BIENVENIDA_MODODEMO: String [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >-   ganador: Jugador [0..1]</TD></TR>
 <HR/>
 <TR><TD ALIGN="LEFT" ># jugar()</TD></TR>
 <TR><TD ALIGN="LEFT" ># menuJugadores(): DLCircularStack&lt;Jugador&gt;</TD></TR>
@@ -445,6 +441,7 @@ Viewer1092129905[
 <TR><TD ALIGN="LEFT" >+ printString(msg: String)</TD></TR>
 <TR><TD ALIGN="LEFT" >+ readInt(msg: String): int</TD></TR>
 <TR><TD ALIGN="LEFT" >+ readLine(msg: String): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ reset()</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -594,7 +591,6 @@ Conecta41092129905 -> ModoEnfrentamiento1092129905[label="enfrentamiento
 [0..1]"];
 Conecta41092129905 -> ModoEntrenamiento1092129905[label="entrenamiento
 [0..1]"];
-Coordenadas1092129905 -> Viewer1092129905[label="dibujar() -> printString()"];
 DLCircularStack1086939726 -> DLNode1086939726[label="tail
 [0..1]"];
 DLCircularStack1086939726 -> DLNode1086939726[label="top
@@ -617,8 +613,6 @@ Jugador1092129905 -> Ficha1092129905[label="ficha
 [0..1]"];
 Jugador1092129905 -> JugadorIA1092129905[arrowhead=none, arrowtail=empty, dir=both];
 Jugador1092129905 -> Viewer1092129905[label="poner() -> printString()"];
-ModoDemo1092129905 -> Jugador1092129905[label="ganador
-[0..1]"];
 ModoJuego1092129905 -> DLCircularStack1086939726[label="jugadores
 [0..1]"];
 ModoJuego1092129905 -> Ficha1092129905[label="fichaAzul
