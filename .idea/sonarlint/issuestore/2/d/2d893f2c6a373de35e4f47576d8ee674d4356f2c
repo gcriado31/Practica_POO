@@ -1,0 +1,28 @@
+
+k	java:S116"VRename this field "RETROCEDIDO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï°Àç
+n	java:S116"YRename this field "NO_RETROCEDIDO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕîÐç
+g	java:S116"RRename this field "REHECHO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Á’®Ö
+j	java:S116"URename this field "NO_REHECHO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÂüÎì
+t	java:S116"ZRename this field "ELECCION_BASICA" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“äÇ‘ÿÿÿÿÿ
+m	java:S116"SRename this field "OPCION_2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µàöñýÿÿÿÿ
+h	java:S116"SRename this field "OPCION_3" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·¯ûì
+m	java:S116"SRename this field "OPCION_0" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì®Ó£þÿÿÿÿ
+u	java:S116"[Rename this field "TECLA_INCORRECTA" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»žÚØÿÿÿÿÿ
+7
+java:S1170"!Make this final field static too.(Ï°Àç
+7
+java:S1170"!Make this final field static too.(ÕîÐç
+7
+java:S1170"!Make this final field static too.(Á’®Ö
+7
+java:S1170"!Make this final field static too.(ÂüÎì
+<
+java:S1170"!Make this final field static too.(“äÇ‘ÿÿÿÿÿ
+<
+java:S1170"!Make this final field static too.(µàöñýÿÿÿÿ
+7
+java:S1170"!Make this final field static too.(·¯ûì
+<
+java:S1170"!Make this final field static too.(ì®Ó£þÿÿÿÿ
+<
+java:S1170"!Make this final field static too.(»žÚØÿÿÿÿÿ

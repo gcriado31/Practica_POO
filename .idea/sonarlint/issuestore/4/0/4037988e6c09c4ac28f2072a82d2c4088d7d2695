@@ -1,0 +1,9 @@
+
+z	java:S116"^Rename this field "ERROR_TABLERO_LLENO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÇÄœÛ8ò©†‘Ù0
+v	java:S116"URename this field "MAX_FICHAS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ô×÷Šùÿÿÿÿ8ò©†‘Ù0
+>
+java:S1170"!Make this final field static too.(ÇÄœÛ8ó©†‘Ù0
+C
+java:S1170"!Make this final field static too.(ô×÷Šùÿÿÿÿ8ó©†‘Ù0
+F
+java:S1128")Remove this unused import 'etsisi.pilas'.(ÌÉÍ´8Óß¶¾Ù0

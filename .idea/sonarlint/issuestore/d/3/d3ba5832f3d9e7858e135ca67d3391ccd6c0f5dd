@@ -1,0 +1,7 @@
+
+t
+java:S22939"YReplace the type specification in this constructor call with the diamond operator ("<>").(è¸ƒûÿÿÿÿ
+m	java:S127<"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ
+x	java:S116"^Rename this field "BIENVENIDA_MODODEMO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ëßˆƒüÿÿÿÿ
+<
+java:S1170"!Make this final field static too.(Ëßˆƒüÿÿÿÿ

@@ -1,0 +1,8 @@
+
+{
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ªøÊÌùÿÿÿÿ8¹¹û•Ù0
+
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Ä½¹¶8¾¹û•Ù0
+Z	java:S1068"9Replace this use of System.out or System.err by a logger.(ÃÆñøÿÿÿÿ8ñ¹û•Ù0
+U	java:S1069"9Replace this use of System.out or System.err by a logger.(àüˆÉ8ò¹û•Ù0
+U	java:S106;"9Replace this use of System.out or System.err by a logger.(ö–Ù©8ò¹û•Ù0
