@@ -1,7 +1,7 @@
 # Práctica POO
 
 <div>
-    <img src="https://img.shields.io/badge/testing-passed-green?logo=junit5)" alt="testing" style="display: inline-block; margin-right: 10px;">
+    <img src="https://img.shields.io/badge/testing-passed-green?logo=junit5" alt="testing" style="display: inline-block; margin-right: 10px;">
     <img src="https://img.shields.io/badge/project-finished-green?logo=apachemaven" alt="project" style="display: inline-block; margin-right: 10px;">  
 </div>
 
